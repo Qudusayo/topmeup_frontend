@@ -1,0 +1,129 @@
+@import "./../../styles/variables.scss";
+
+.footer {
+    background: linear-gradient(135deg, $richblack,$black);
+    color: $white;
+    font-family: $NL;
+    padding: 3em 1em 1em;
+
+    .flex {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+
+        @media screen and (max-width: 768px) {
+            display: block;
+        }
+
+        div {
+            flex: 1;
+
+            &.address {
+                flex-grow: 1.5;
+            }
+
+            &.info {
+                flex-grow: 2;
+                padding: 0 1em 0 0;
+                font-size: 1em;
+
+                @media screen and (max-width: 768px) {
+                    padding: 0;
+                }
+            }
+
+            &.pages {
+                padding-left: 2em;
+
+                ul {
+                    li {
+                        margin: 0.5em 0;
+                        font-size: 1em;
+
+                        a{
+                            color: $white;
+                            text-decoration: none;
+
+                            &.active{
+                                color: $menionyellow;
+                            }
+                        }
+                    }
+                }
+
+                @media screen and (max-width: 768px) {
+                    padding-left: 0;
+                }
+            }
+
+            &.table {
+                table {
+                    tr {
+                        td {
+                            &.disabled {
+                                color: $platinum;
+                                font-size: 1.2em;
+                                font-family: $NB;
+                                padding-right: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+
+            h2 {
+                margin-top: 0;
+                font-weight: 300;
+
+                @media screen and (max-width: 768px) {
+                    margin-top: 1.5em;
+                    margin-bottom: 0.5em;
+                }
+            }
+
+            ul {
+                list-style-type: none;
+                padding-inline-start: 0;
+            }
+
+            div.par {
+                h2 {
+                    margin: 0;
+
+                    @media screen and (max-width: 768px) {
+                        margin: 0;
+                        font-size: 1.4em;
+                    }
+                }
+                p {
+                    margin: 0;
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+
+    .logo {
+        width: 2.5em;
+        max-width: 2.5em;
+        color: $platinum;
+        cursor: pointer;
+
+        @media screen and (max-width: 768px) {
+            margin-top: 1em;
+        }
+
+        &:nth-of-type(2),
+        &:nth-of-type(3),
+        &:nth-of-type(4) {
+            margin-left: 0.5em;
+        }
+    }
+
+    .copyright {
+        @media screen and (max-width: 768px) {
+            display: inline-block;
+            margin-top: 1.5em;
+        }
+    }
+}

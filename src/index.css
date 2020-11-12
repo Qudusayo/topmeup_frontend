@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.yellow{
+  color: #FEE440;
+}
+
+button{
+  cursor: pointer;
+}

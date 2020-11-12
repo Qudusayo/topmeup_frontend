@@ -1,0 +1,49 @@
+@import "./../../../styles/variables.scss";
+
+.banner{
+    min-height: 80vh;
+    background: linear-gradient(45deg, $richblack,$black);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+
+    .content{
+        margin-left: 2em;
+        width: 40%;
+
+        h1{
+            margin: .2em 0;
+            font-size: 2.7em;
+            line-height: 1em;
+            color: $white;
+        }
+
+        small{
+            color: $white;
+            font-weight: bold;
+
+            &:nth-of-type(1){
+                color: $menionyellow;
+            }
+        }
+
+        button{
+            outline: none;
+            border: none;
+            margin-left: 2em;
+            padding: .6em 1.2em;
+            border-radius: 4px;
+            background-color: $menionyellow;
+            font-weight: bold;
+            margin-top: .7em;
+            
+            &:nth-of-type(1){
+                margin-left: 0;
+                background-color: $lightgreen;
+            }
+        }
+    }
+}

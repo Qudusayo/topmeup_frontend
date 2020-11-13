@@ -12,10 +12,12 @@ function Index() {
         <div className={styles.footer}>
             <div className={styles.flex}>
                 <div className={styles.info}>
-                    <h2>TOPE<span className="yellow">ME</span>UP</h2>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Animi quia voluptates officiis repudiandae nesciunt sed
-                    fugit.
+                    <h2>
+                        TOPE<span className="yellow">ME</span>UP
+                    </h2>
+                    We offer instant recharge of Airtime, Databundle, CableTV
+                    (DStv, GOtv & Startimes), Electricity Bill Payemnt and so
+                    much more.
                 </div>
                 <div className={styles.table}>
                     <h2>Opening Hours</h2>
@@ -52,32 +54,51 @@ function Index() {
                     <h2>Services</h2>
                     <ul>
                         <li>
-                            <NavLink to="/" exact activeClassName={styles.active}>
+                            <NavLink
+                                to="/"
+                                exact
+                                activeClassName={styles.active}
+                            >
                                 Home
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/about" activeClassName={styles.active}>
+                            <NavLink
+                                to="/about"
+                                activeClassName={styles.active}
+                            >
                                 About
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/services" activeClassName={styles.active}>
+                            <NavLink
+                                to="/services"
+                                activeClassName={styles.active}
+                            >
                                 Services
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/oprations" activeClassName={styles.active}>
+                            <NavLink
+                                to="/oprations"
+                                activeClassName={styles.active}
+                            >
                                 Operations
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/orgonogram" activeClassName={styles.active}>
+                            <NavLink
+                                to="/orgonogram"
+                                activeClassName={styles.active}
+                            >
                                 Organogram
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/contacts" activeClassName={styles.active}>
+                            <NavLink
+                                to="/contacts"
+                                activeClassName={styles.active}
+                            >
                                 Contacts
                             </NavLink>
                         </li>
@@ -97,13 +118,21 @@ function Index() {
                 </div>
             </div>
             <div>
+                <img
+                    src={facebook}
+                    className={styles.logo}
+                    alt="facebook-logo"
+                />
+                <img src={twitter} className={styles.logo} alt="twitter-logo" />
+                <img
+                    src={instagram}
+                    className={styles.logo}
+                    alt="instagram-logo"
+                />
+                <br />
                 <span className={styles.copyright}>
                     <small>© Copyright 2020. All rights reserved</small>
                 </span>
-                <br />
-                <img src={facebook} className={styles.logo} alt="facebook-logo" />
-                <img src={twitter} className={styles.logo} alt="twitter-logo" />
-                <img src={instagram} className={styles.logo} alt="instagram-logo" />
             </div>
         </div>
     );

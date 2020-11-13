@@ -9,7 +9,7 @@
     bottom: 0;
     position: sticky;
     z-index: 100;
-    background-color: $bluesapphire;
+    background-color: $white;
     position: sticky;
     top: 0;
     box-shadow: 0 3px 4px rgba($color: #000000, $alpha: .1);
@@ -23,7 +23,7 @@
 
         a{
             text-decoration: none;
-            color: $white;
+            color: $black;
 
             .yellow{
                 color: $menionyellow;
@@ -64,7 +64,8 @@
             margin: 0 1em;
 
             a{
-                color: $white;
+                color: $black;
+                font-weight: bold;
                 text-decoration: none;
                 transition: color .3s linear;
 
@@ -77,8 +78,9 @@
 
     button {
         outline: none;
-        border: 1px solid $menionyellow;
+        border: 2px solid $menionyellow;
         color: $menionyellow;
+        font-weight: bold;
         cursor: pointer;
         font-family: $N;
         font-size: 1.2em;
@@ -93,7 +95,7 @@
 
         &:hover {
             background-color: $menionyellow;
-            border: 1px solid $menionyellow;
+            border: 2px solid $menionyellow;
             color: #fff;
         }
     }

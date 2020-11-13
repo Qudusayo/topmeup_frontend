@@ -1,1 +1,26 @@
 @import "./../../styles/variables.scss";
+
+.cards{
+    display: flex;
+    justify-content: space-around;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
+
+
+}
+
+.titles{
+    width: 50%;
+    margin: auto;
+    margin-top: 5em;
+
+    @media screen and ( max-width: 768px ) {
+        width: 85%;
+    }
+
+    h2{
+        margin-bottom: 0;
+    }
+}

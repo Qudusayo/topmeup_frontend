@@ -19,3 +19,11 @@ code {
 button{
   cursor: pointer;
 }
+
+.flex{
+  display: flex;
+}
+
+.center{
+  text-align: center;
+}

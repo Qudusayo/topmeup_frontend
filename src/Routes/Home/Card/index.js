@@ -7,6 +7,7 @@ function index(props) {
             <img alt="symbol" src={props.src} />
             <h4>{props.title}</h4>
             <p>{props.info}</p>
+            {props.children}
         </div>
     )
 }

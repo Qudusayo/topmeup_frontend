@@ -89,6 +89,48 @@ function index() {
                     title="Bulk Sms"
                 />
             </div>
+            <div className={[styles.titles, "center"].join(" ")}>
+                <h2>OUR AFFORDABLE DATA PLAN</h2>
+                <span>Subscribe for cheap data plans at affordable price for all network</span>
+            </div>
+
+            <div className={styles.cards}>
+                <Card
+                    styles="card45"
+                    info="We offer this service at a very cheap and attractive rate please contact the admin on 07016412041 to get current conversion rate."
+                    src={logo7}
+                    title="Airtime To Cash"
+                />
+                <Card
+                    styles="card45"
+                    info="Because we understand your needs, we have made bills and utilities payment more convenient."
+                    src={logo8}
+                    title="Utilities Payment"
+                />
+            </div>
+            <div className={styles.cards}>
+                <Card
+                    styles="card45"
+                    info="We offer this service at a very cheap and attractive rate please contact the admin on 07016412041 to get current conversion rate."
+                    src={logo7}
+                    title="Airtime To Cash"
+                />
+                <Card
+                    styles="card45"
+                    info="Because we understand your needs, we have made bills and utilities payment more convenient."
+                    src={logo8}
+                    title="Utilities Payment"
+                />
+            </div>
+
+
+            <div  className={styles.label}>
+                <div>
+                    <h2>Contact us</h2>
+                    <p>Do you have any comments or questions about the products then contact us.</p>
+                </div>
+                <h1>+234 701 641 2041</h1>
+            </div>
         </div>
     );
 }

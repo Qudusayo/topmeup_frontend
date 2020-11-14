@@ -7,7 +7,7 @@ function index() {
             <div className={styles.content}>
                 <small>We are to top you up</small>
                 <h1>TOP<span className="yellow">ME</span>UP anytime anywhere</h1>
-                <small>Buy cheap and affordable plan with easiy cable subscriptions</small>
+                <small>Buy cheap and affordable plans easily and cable subscriptions</small>
                 <div className={styles.flex}>
                     <button>Register Now !</button>
                     <button>Login</button>

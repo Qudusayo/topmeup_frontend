@@ -27,8 +27,18 @@
     }
 }
 
-.card45{
-    width: 40%;
+.card25{
+    width: 20%;
+    padding: 1em;
+    text-align: center;
+    color: $white;
+    transition: transform .3s linear;
+    
+    &:hover{
+        transform: scale(1.05);
+        cursor: pointer;
+        box-shadow: 0px 10px 30px 4px rgba(0, 0, 0, 0.15);
+    }
 }
 .card30{
     width: 25%;
@@ -39,13 +49,31 @@
     flex-direction: column;
 
     &:hover{
-        background-color: $richblack;
+        background-color: $fidalgo;
         color: $white;
     }
 }
 
+.mtn{
+    background: yellow;
+    color:  $black;
+}
+
+.glo{
+    background: green;
+}
+
+.airtel{
+    background: red;
+}
+
+.nmobile{
+    background: linear-gradient(60deg, #006848, #b4c404);
+    color:  $black;
+}
+
 @media screen and (max-width: 768px) {
-    .card45, .card30{
+    .card25, .card30{
         width: 80%;
     }
 }

@@ -80,26 +80,18 @@ function Index() {
                         </li>
                         <li>
                             <NavLink
-                                to="/oprations"
+                                to="/login"
                                 activeClassName={styles.active}
                             >
-                                Operations
+                                Login
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to="/orgonogram"
+                                to="/register"
                                 activeClassName={styles.active}
                             >
-                                Organogram
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/contacts"
-                                activeClassName={styles.active}
-                            >
-                                Contacts
+                                Register
                             </NavLink>
                         </li>
                     </ul>
@@ -109,8 +101,7 @@ function Index() {
                     <div className={styles.par}>
                         <h2>Ibadan</h2>
                         <p>
-                            Al-amin Plaza, Opposite HLA primary school, Ojoo
-                            Market,
+                            No. 4 Ibunkunoluwa Street, Opposite Community primary school, Tose, Moniya, Ibadan
                             <br />
                             Oyo State, Nigeria.
                         </p>
@@ -134,6 +125,7 @@ function Index() {
                     <small>© Copyright 2020. All rights reserved</small>
                 </span>
             </div>
+            <div className={styles.label}>Developed by <a href="https://devqudusayo.ml">Qudusayo</a> </div>
         </div>
     );
 }

@@ -45,7 +45,7 @@
                             text-decoration: none;
 
                             &.active{
-                                color: $menionyellow;
+                                color: $fidalgo;
                             }
                         }
                     }
@@ -124,6 +124,20 @@
         @media screen and (max-width: 768px) {
             display: inline-block;
             margin-top: 1.5em;
+        }
+    }
+
+    .label{
+        background-color: $fidalgo;
+        text-align: center;
+        margin: 2em -1em 0;
+        padding: .3em 0;
+        color: $black;
+
+        a{
+            text-decoration: none;
+            font-weight: bold;
+            color: $black;
         }
     }
 }

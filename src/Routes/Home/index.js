@@ -46,7 +46,9 @@ function index() {
             <div className={[styles.titles, "center"].join(" ")}>
                 <h2>SERVICES WE RENDER</h2>
                 <span>
-                We offer instant recharge of Airtime, Databundle, CableTV (DStv, GOtv & Startimes), Electricity Bill Payemnt and so much more.
+                    We offer instant recharge of Airtime, Databundle, CableTV
+                    (DStv, GOtv & Startimes), Electricity Bill Payemnt and so
+                    much more.
                 </span>
             </div>
             <div className={styles.cards}>
@@ -91,47 +93,62 @@ function index() {
             </div>
             <div className={[styles.titles, "center"].join(" ")}>
                 <h2>OUR AFFORDABLE DATA PLAN</h2>
-                <span>Subscribe for cheap data plans at affordable price for all network</span>
+                <span>
+                    Subscribe for cheap data plans at affordable price for all
+                    network
+                </span>
             </div>
 
             <div className={styles.cards}>
-                <Card
-                    styles="card45"
-                    info="We offer this service at a very cheap and attractive rate please contact the admin on 07016412041 to get current conversion rate."
-                    src={logo7}
-                    title="Airtime To Cash"
-                />
-                <Card
-                    styles="card45"
-                    info="Because we understand your needs, we have made bills and utilities payment more convenient."
-                    src={logo8}
-                    title="Utilities Payment"
-                />
-            </div>
-            <div className={styles.cards}>
-                <Card
-                    styles="card45"
-                    info="We offer this service at a very cheap and attractive rate please contact the admin on 07016412041 to get current conversion rate."
-                    src={logo7}
-                    title="Airtime To Cash"
-                />
-                <Card
-                    styles="card45"
-                    info="Because we understand your needs, we have made bills and utilities payment more convenient."
-                    src={logo8}
-                    title="Utilities Payment"
-                />
+                <Card styles="card25" network="mtn">
+                    <h1>MTN</h1>
+                    {cardInfo("₦300 1GB")}
+                </Card>
+                <Card styles="card25" network="airtel">
+                    <h1>AIRTEL</h1>
+                    {cardInfo("₦920 1GB")}
+                </Card>
+                <Card styles="card25" network="glo">
+                    <h1>GLO</h1>
+                    {cardInfo("₦450 1GB")}
+                </Card>
+                <Card styles="card25" network="nmobile">
+                    <h1>9MOBILE</h1>
+                    {cardInfo("₦700 1.5GB")}
+                </Card>
             </div>
 
-
-            <div  className={styles.label}>
+            <div className={styles.label}>
                 <div>
                     <h2>Contact us</h2>
-                    <p>Do you have any comments or questions about the products then contact us.</p>
+                    <p>
+                        Do you have any comments or questions about the products
+                        then contact us.
+                    </p>
                 </div>
                 <h1>+234 701 641 2041</h1>
             </div>
+
+            <div className={[styles.titles, "center"].join(" ")}>
+                <h2>TESTIMONIAL</h2>
+                <span>See what our Customers are saying about us:</span>
+            </div>
         </div>
+    );
+}
+
+function cardInfo(value) {
+    return (
+        <>
+            <p className={styles.line}><b>{value}</b></p>
+            <p className={styles.line}><b>1 Months Validity</b></p>
+            <p className={styles.line}><b>4G LTE Support</b></p>
+            <p className={styles.line}><b>Hotspot Sharing Support</b></p>
+            <p className={styles.line}><b>Laptop Usage Support</b></p>
+            <p className={styles.line}><b>iphones Usage Support</b></p>
+            <p className={styles.line}><b>Multiple Devices Support</b></p>
+            <button className={styles.button}>PURCHASE NOW</button>
+        </>
     );
 }
 

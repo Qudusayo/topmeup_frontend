@@ -33,7 +33,7 @@ function Index(props) {
                     </NavLink>
                 </li>
             </ul>
-            <button>Join Us</button>
+            <Link to="/register"><button>Join Us</button></Link>
             <div className={styles.hamburger}>
                 <input
                     type="checkbox"

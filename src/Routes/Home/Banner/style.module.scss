@@ -46,10 +46,13 @@
             }
         }
 
+        .left {
+            margin-left: 2em;
+        }
+
         button {
             outline: none;
             border: none;
-            margin-left: 2em;
             padding: 0.6em 1.2em;
             border-radius: 4px;
             background-color: $fidalgo;
@@ -57,11 +60,7 @@
             margin-top: 0.7em;
             color: $white;
             border: 1px solid $fidalgo;
-            transition: all .2s ease-in-out;
-
-            &:nth-of-type(1) {
-                margin-left: 0;
-            }
+            transition: all 0.2s ease-in-out;
 
             &:hover {
                 background-color: $white;

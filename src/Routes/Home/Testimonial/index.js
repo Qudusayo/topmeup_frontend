@@ -46,7 +46,7 @@ function index() {
                     <div>
                         <p className={styles.testimony}>
                             A friend refer me to this website to start a small
-                            business and since have join Isquaredata, they have
+                            business and since have join TopMeUp, they have
                             had never let me down for once. Am happy.
                         </p>
                         <p className={styles.testimonial}>

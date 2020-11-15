@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import styles from './style.module.scss'
 
 function index() {
@@ -10,8 +12,8 @@ function index() {
                 <h1>TOP<span className="yellow">ME</span>UP anytime anywhere</h1>
                 <small>Buy cheap and affordable plans easily and cable subscriptions</small>
                 <div className={styles.flex}>
-                    <button>Register Now !</button>
-                    <button>Login</button>
+                    <Link to="/register"><button>Register Now !</button></Link>
+                    <Link to="/login" className={styles.left}><button>Login</button></Link>
                 </div>
             </div>
         </div>

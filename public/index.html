@@ -40,18 +40,40 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   <!-- GetButton.io widget -->
-  <script type="text/javascript">
-    (function () {
-      var options = {
-        whatsapp: "+234701641220421", // WhatsApp number
-        call_to_action: "Chat Us", // Call to action
-        position: "left", // Position may be 'right' or 'left'
-      };
-      var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
-      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-      s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-      var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-    })();
+  <script>
+    var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?21875';
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = url;
+    var options = {
+      "enabled": true,
+      "chatButtonSetting": {
+        "backgroundColor": "#127EB1",
+        "ctaText": "",
+        "borderRadius": "12",
+        "marginLeft": "5",
+        "marginBottom": "5",
+        "marginRight": "1",
+        "position": "left"
+      },
+      "brandSetting": {
+        "brandName": "TOPMEUP",
+        "brandSubTitle": "Buy cheap and affordable plans easily and cable subscriptions",
+        "brandImg": "https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-whatsapp-circle-512.png",
+        "welcomeText": "Hi, there!\nI am here to make more enqiury about your service!",
+        "backgroundColor": "#127EB1",
+        "ctaText": "Start Chat",
+        "borderRadius": "25",
+        "autoShow": false,
+        "phoneNumber": "234701642120421"
+      }
+    };
+    s.onload = function () {
+      CreateWhatsappChatWidget(options);
+    };
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
   </script>
 </body>
 

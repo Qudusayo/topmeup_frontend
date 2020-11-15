@@ -97,7 +97,7 @@ function Index() {
                     </ul>
                 </div>
                 <div className={styles.address}>
-                    <h2>Contacts</h2>
+                    <h2>Address</h2>
                     <div className={styles.par}>
                         <h2>Ibadan</h2>
                         <p>

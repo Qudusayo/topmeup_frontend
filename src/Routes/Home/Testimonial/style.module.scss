@@ -1,0 +1,91 @@
+@import "./../../../styles/variables.scss";
+
+.Testimonial {
+    .Container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        font-family: $N;
+
+        .Children {
+            width: 60%;
+            margin: auto;
+            height: 15em;
+            color: red;
+            position: relative;
+
+            @media screen and (min-width: 768px) {
+                height: 10em;
+            }
+
+            @media screen and (max-width: 768px) {
+                width: 80%;
+                height: 10em;
+            }
+
+            @media screen and (max-width: 600px) {
+                width: 80%;
+                height: 15em;
+            }
+
+            @media screen and (max-width: 599px) {
+                width: 80%;
+                height: 12em;
+            }
+
+            @media screen and (max-width: 425px) {
+                height: 15em;
+                width: 75%;
+                margin-left: auto;
+                margin-right: 5%;
+            }
+
+            p{
+                color: black;
+                position: relative;
+                
+                &.testimony{
+                    &::before{
+                        content: open-quote;
+                        font-size: 10em;
+                        position: absolute;
+                        top: -.35em;
+                        left: -.35em;
+                        color: $fidalgo;
+                    }
+                }
+
+                &.testimonial{
+                    width: 100%;
+                    text-align: right;
+
+                    .name{
+                        font-family: $NB;
+
+                        &:before{
+                            content: '- ';
+                        }
+                    }
+
+                    .title{
+                        font-size: .8em;
+                    }
+                }
+            }
+        }
+
+        .Dots {
+            text-align: center;
+            z-index: 100;
+            width: 100%;
+
+            .Dot {
+                font-size: 1.5em;
+                cursor: pointer;
+                text-shadow: 1px 1px 1px #fff;
+                color: $fidalgo;
+                user-select: none;
+            }
+        }
+    }
+}

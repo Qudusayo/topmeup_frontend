@@ -11,11 +11,17 @@ import logo7 from "./../../assets/images/logos/cash.svg";
 import logo8 from "./../../assets/images/logos/electricity-bill.svg";
 import logo9 from "./../../assets/images/logos/messages.svg";
 
+import Navbar from "./../../Components/Navbar";
+import Footer from "./../../Components/Footer";
 import Banner from "./Banner";
 import Card from "./Card";
+import Testimonial from "./Testimonial"
+import Contact from "./Contact"
 
 function index() {
     return (
+        <>
+        <Navbar />
         <div className={styles.home}>
             <Banner />
             <div className={[styles.titles, "center"].join(" ")}>
@@ -133,7 +139,16 @@ function index() {
                 <h2>TESTIMONIAL</h2>
                 <span>See what our Customers are saying about us:</span>
             </div>
+            <Testimonial />
+
+            <div className={[styles.titles, "center"].join(" ")}>
+                <h2>CONTACT US</h2>
+                <span>Have enquiries ? Please contact us.</span>
+            </div>
+            <Contact />
         </div>
+        <Footer />
+        </>
     );
 }
 

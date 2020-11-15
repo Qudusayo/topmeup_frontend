@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import Home from "./Routes/Home"
-import Navbar from './Components/Navbar';
-import Footer from './Components/Footer';
+import { Switch, Route } from "react-router-dom";
+
+import Home from "./Routes/Home";
+import Login from "./Routes/Login";
 
 function App(props) {
-  return (
-    <>
-      <Navbar/>
-      <Home />
-      <Footer />
-    </>
-  )
+    return (
+        <Switch>
+            <Route path="/" component={Home} exact></Route>
+            <Route path="/login" component={Login} exact></Route>
+        </Switch>
+    );
 }
 
-export default App
+export default App;

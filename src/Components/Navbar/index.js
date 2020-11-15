@@ -28,7 +28,7 @@ function Index(props) {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/oprations" activeClassName={styles.active}>
+                    <NavLink to="/login" activeClassName={styles.active}>
                         Login
                     </NavLink>
                 </li>

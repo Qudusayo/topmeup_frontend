@@ -3,6 +3,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Home from "./Routes/Home";
+import Error from "./Routes/Error";
 import Login from "./Routes/Forms/Login";
 import SignUp from "./Routes/Forms/SignUp";
 import ForgetPin from "./Routes/Forms/ForgetPin";
@@ -19,7 +20,7 @@ function App(props) {
 
             <Route path="/dashboard" component={Dashboard} exact></Route>
 
-            <Route path="*" component={Home} exact></Route>
+            <Route path="*" component={Error} exact></Route>
         </Switch>
     );
 }

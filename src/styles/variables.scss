@@ -3,21 +3,6 @@
     font-family: "Nunito";
 }
 
-@font-face{
-    src: url(./../assets/fonts/Nunito/Nunito-Bold.ttf);
-    font-family: "NunitoBold";
-}
-
-@font-face{
-    src: url(./../assets/fonts/Nunito/Nunito-Light.ttf);
-    font-family: "NunitoLight";
-}
-
-@font-face{
-    src: url(./../assets/fonts/Nunito/Nunito-SemiBold.ttf);
-    font-family: "NunitoMedium";
-}
-
 $blue: #329bff;
 $lblue: #3A6EA5;
 $platinum: #EBEBEB;
@@ -34,11 +19,8 @@ $richblack: #001A23;
 $fidalgo: #127EB1;
 
 $N: "Nunito", sans-serif;
-$NB: "NunitoBold", sans-serif;
-$NL: "NunitoLight", sans-serif;
-$NM: "NunitoMedium", sans-serif;
 
 *{
     font-family: $N;
-    font-display: fallback;
+    font-display: swap;
 }

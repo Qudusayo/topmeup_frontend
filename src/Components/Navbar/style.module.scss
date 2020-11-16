@@ -42,14 +42,15 @@
             top: 0em;
             margin-top: 0em;
             align-items: flex-start;
-            justify-content: space-around;
+            justify-content: center;
             width: 100%;
             padding-left: 2em;
             background-color: $white;
             flex-direction: column;
             min-height: 100vh;
             height: 100vh;
-            transition: all .7s  linear;
+            transition: all .3s  linear;
+            padding-left: 0;
             
             &.visibleNav{
                 left: 0;
@@ -61,7 +62,9 @@
         }
 
         li {
-            margin: 0 1em;
+            text-align: center;
+            width: 100%;
+            margin: 1em auto;
 
             a{
                 color: $black;

@@ -1,3 +1,96 @@
-.dashboard{
-    background-color: rgba($color: grey, $alpha: .3);
+@import "./../../styles/variables.scss";
+
+.dashboard {
+    background-color: rgba($color: grey, $alpha: 0.3);
+    height: 100%;
+    flex: 1;
+    overflow-y: auto;
+
+    nav {
+        border-bottom: 1px solid grey;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1em;
+
+        h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: $fidalgo;
+        }
+
+        button {
+            outline: none;
+            border: 2px solid $fidalgo;
+            color: $fidalgo;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: $N;
+            font-size: 1.2em;
+            border-radius: 25px;
+            padding: 0.5em 2em;
+            background-color: transparent;
+            transition: background .3s linear;
+
+            &:hover {
+                background-color: $fidalgo;
+                border: 2px solid $fidalgo;
+                color: #fff;
+            }
+        }
+    }
+
+    .card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: $fidalgo;
+        background-color: $white;
+        box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+        padding: 2em;
+        margin: 2em auto;
+        border-radius: 5px;
+        width: 85%;
+        text-align: right;
+
+        h1,
+        h2,
+        p {
+            margin: 0;
+        }
+
+        button {
+            outline: none;
+            border: none;
+            font-size: 5em;
+            border-radius: 50%;
+            width: 1em;
+            height: 1em;
+            background-color: $fidalgo;
+            color: $white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .cards {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 92%;
+        margin: 2em auto;
+
+        div {
+            background-color: $white;
+            box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+            width: 30%;
+            text-align: center;
+            padding: 1em 0;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
 }

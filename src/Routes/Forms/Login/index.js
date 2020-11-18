@@ -82,7 +82,7 @@ class index extends Component {
         return (
             <>
                 <Navbar />
-                <div className={styles.container}>
+                <div className={styles.FormContainer}>
                     <h2 className={styles.title}>
                         <Link to="/">
                             TOP <span className="yellow">ME</span> UP

@@ -7,7 +7,7 @@
     overflow-y: hidden;
 
     .dashboard {
-        background-color: rgba($color: grey, $alpha: 0.3);
+        background-color: darken($color: $white, $amount: 5%);
         height: 100%;
         flex: 1;
         overflow-y: auto;

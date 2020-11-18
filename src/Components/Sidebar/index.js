@@ -13,7 +13,11 @@ function index(props) {
         >
             <nav>
                 <ul>
-                    <NavLink to="/dashboard" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/dashboard"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>DASHBOARD</li>
                     </NavLink>
                     <NavLink to="/" exact activeClassName={styles.active}>
@@ -22,10 +26,18 @@ function index(props) {
                     <NavLink to="/" exact activeClassName={styles.active}>
                         <li>USER PROFILE</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/airtime-topup"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>AIRTIME TOP-UP</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/data-subscription"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>BUY DATA BUNDLE</li>
                     </NavLink>
                     <NavLink to="/" exact activeClassName={styles.active}>
@@ -34,19 +46,35 @@ function index(props) {
                     <NavLink to="/" exact activeClassName={styles.active}>
                         <li>ELECTRICITY BILL</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/cable-TV"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>TV/CABLE PAYMENT</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/airtime-converter"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>AIRTIME TO CASH</li>
                     </NavLink>
-                    <NavLink to="/transfer-fund" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/transfer-fund"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>TRANSFER FUND</li>
                     </NavLink>
                     <NavLink to="/" exact activeClassName={styles.active}>
                         <li>WITHDRAW FUND</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/contact-form"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>CONTACT FORM</li>
                     </NavLink>
                     <NavLink to="/" exact activeClassName={styles.active}>

@@ -1,6 +1,6 @@
 @import "./../../styles/variables.scss";
 
-.container {
+.FormContainer {
     width: 100%;
     max-width: 500px;
     min-height: 100vh;
@@ -126,6 +126,11 @@
             @media screen and (max-width: 490px) {
                 width: 85%;
             }
+        }
+
+        @media screen and (max-width: 768px) {
+            padding: 0;
+            padding-bottom: 1.5em;
         }
     }
 

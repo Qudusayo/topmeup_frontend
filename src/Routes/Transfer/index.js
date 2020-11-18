@@ -31,7 +31,7 @@ class index extends Component {
                         Another Wallet Account In Just Some Few Clicks.
                     </p>
                 </div>
-                <form>
+                <form className={styles.Form}>
                     <h3>Transfer Fund</h3>
                     <input
                         type="text"

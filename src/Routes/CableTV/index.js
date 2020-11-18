@@ -21,7 +21,7 @@ class index extends Component {
         return (
             <Wrapper>
                 <form className={styles.Form}>
-                    <h1>DATA BUNDLE</h1>
+                    <h1>TV SUBSCRIPTION</h1>
                     <h3>PURCHASE DATA</h3>
                     <select
                         name="networkProvider"
@@ -30,20 +30,11 @@ class index extends Component {
                         required
                     >
                         <option value="" hidden>
-                            Network Provider
+                            Cable Name
                         </option>
-                        <option value="1995">
-                            9MOBLIE
-                        </option>
-                        <option value="1995">
-                            AIRTEL
-                        </option>
-                        <option value="1995">
-                            GLOBACOM
-                        </option>
-                        <option value="1996">
-                            MTN
-                        </option>
+                        <option value="1995">DSTV</option>
+                        <option value="1995">GOTV</option>
+                        <option value="1995">STARTIMES</option>
                     </select>
                     <select
                         name="dataPlan"
@@ -52,11 +43,9 @@ class index extends Component {
                         required
                     >
                         <option value="" hidden>
-                            Data Plan
+                            Cable TV Plan
                         </option>
-                        <option value="1995">
-                            9MOBLIE
-                        </option>
+                        <option value="1995">9MOBLIE</option>
                     </select>
                     <input
                         onChange={this.onChange}
@@ -64,7 +53,7 @@ class index extends Component {
                         name="reciever"
                         id="reciever"
                         autoComplete="off"
-                        placeholder="Phone Number"
+                        placeholder="Smart Card number / IUC number*"
                         value={this.state.reciever}
                         required={true}
                         disabled={this.state.waiting}
@@ -77,10 +66,19 @@ class index extends Component {
                                 alt="spinner"
                             />
                         ) : (
-                            "PURCHASE DATA"
+                            "VALIDATE"
                         )}
                     </button>
                 </form>
+                <div className={styles.card}>
+                    <b>
+                        You can contact DSTV/GOtv's customers care unit on
+                        01-2703232/08039003788 or the toll free lines:
+                        08149860333, 07080630333, and 09090630333 for
+                        assistance, STARTIMES's customers care unit on
+                        (094618888, 014618888)
+                    </b>
+                </div>
             </Wrapper>
         );
     }

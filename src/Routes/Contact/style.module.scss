@@ -22,7 +22,7 @@
     border-radius: 5px;
     width: 85%;
 
-    h1{
+    h1 {
         margin-bottom: 0;
         text-align: center;
     }
@@ -32,7 +32,7 @@
         margin-top: 0;
     }
 
-    select.networkProvider{
+    select.networkProvider {
         height: 3.5em;
         width: 78%;
         padding-left: 1em;
@@ -58,11 +58,10 @@
         }
     }
 
-    input {
+    textarea {
         display: block;
         width: 75%;
-        padding-left: 1em;
-        height: 45px;
+        padding: 1em;
         border-radius: 7px;
         font-size: 1em;
         margin: 2em auto;
@@ -82,9 +81,9 @@
         }
     }
 
-    button {
+    .button {
         display: block;
-        width: 78%;
+        width: 80%;
         margin: auto;
         height: 50px;
         border-radius: 7px;
@@ -96,10 +95,6 @@
         color: $white;
         box-shadow: 0 4px 1px rgba($black, 0.4);
         transition: box-shadow 0.2s linear;
-
-        &.danger {
-            background-color: $imperialred;
-        }
 
         &:hover {
             box-shadow: 0 4px 1px rgba($black, 0.7);

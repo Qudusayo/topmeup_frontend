@@ -21,8 +21,8 @@ class index extends Component {
         return (
             <Wrapper>
                 <form className={styles.Form}>
-                    <h1>DATA BUNDLE</h1>
-                    <h3>PURCHASE DATA</h3>
+                    <h1>QUICK TOPUP</h1>
+                    <h3>PURCHASE AIRTIME</h3>
                     <select
                         name="networkProvider"
                         id="networkProvider"
@@ -45,19 +45,6 @@ class index extends Component {
                             MTN
                         </option>
                     </select>
-                    <select
-                        name="dataPlan"
-                        id="dataPlan"
-                        className={styles.networkProvider}
-                        required
-                    >
-                        <option value="" hidden>
-                            Data Plan
-                        </option>
-                        <option value="1995">
-                            9MOBLIE
-                        </option>
-                    </select>
                     <input
                         onChange={this.onChange}
                         type="tel"
@@ -69,6 +56,17 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <input
+                        onChange={this.onChange}
+                        type="number"
+                        name="firstName"
+                        id="firstName"
+                        autoComplete="off"
+                        placeholder="Amount"
+                        value={this.state.amount}
+                        required={true}
+                        disabled={this.state.waiting}
+                    />
                     <button type="submit" disabled={this.state.waiting}>
                         {this.state.waiting ? (
                             <img
@@ -77,7 +75,7 @@ class index extends Component {
                                 alt="spinner"
                             />
                         ) : (
-                            "PURCHASE DATA"
+                            "PURCHASE AIRTIME"
                         )}
                     </button>
                 </form>

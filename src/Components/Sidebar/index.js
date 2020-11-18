@@ -40,7 +40,7 @@ function index(props) {
                     <NavLink to="/" exact activeClassName={styles.active}>
                         <li>AIRTIME TO CASH</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink to="/transfer-fund" exact activeClassName={styles.active}>
                         <li>TRANSFER FUND</li>
                     </NavLink>
                     <NavLink to="/" exact activeClassName={styles.active}>

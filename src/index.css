@@ -8,21 +8,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html{
-  height: 100vh;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .yellow{
-  color: #127EB1;
+  color: rgb(82, 101, 110);
 }
 
 button{
   cursor: pointer;
+  outline: none;
+  border: none;
 }
 
 .flex{

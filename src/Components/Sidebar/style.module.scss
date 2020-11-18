@@ -1,6 +1,5 @@
 @import "./../../styles/variables.scss";
 
-
 .sidebar {
     width: 25%;
     // padding: 1em 3em 0;
@@ -19,8 +18,8 @@
                 padding: 2em 3em;
                 font-size: 0.9em;
                 font-weight: 600;
-                color: $white;
-                transition: background-color .2s linear;
+                // color: $white;
+                transition: background-color 0.2s linear;
 
                 &:hover {
                     background-color: $white;
@@ -28,17 +27,57 @@
                     cursor: pointer;
                 }
             }
+
+            a {
+                text-decoration: none;
+                color: $white;
+
+                &.active {
+                    display: block;
+                    background-color: $white;
+                    color: $black;
+                }
+            }
         }
     }
 
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
         width: 8px;
     }
-    &::-webkit-scrollbar-thumb{
+    &::-webkit-scrollbar-thumb {
         background-color: $platinum;
         border-radius: 50px;
     }
-    &::-webkit-scrollbar-track{
+    &::-webkit-scrollbar-track {
         background-color: $fidalgo;
+    }
+
+    @media screen and (max-width: 880px) {
+        position: fixed;
+        z-index: 1000;
+        top: 0em;
+        margin-top: 0em;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+        min-height: 100vh;
+        height: 100vh;
+        transition: all 0.3s linear;
+        padding-left: 0;
+
+        ul {
+            li {
+                text-align: center;
+            }
+        }
+
+        &.visibleNav {
+            left: 0;
+        }
+
+        &.inVisibleNav {
+            left: -150%;
+        }
     }
 }

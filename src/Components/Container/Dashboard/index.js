@@ -1,16 +1,32 @@
 import React, { Component } from "react";
 
 import styles from "./styles.module.scss";
-import Container from "./../Container";
 
-class index extends Component {
+class Index extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
-            <Container>
+            <>
                 <div className={styles.dashboard}>
                     <nav>
+                        <div className={styles.hamburger}>
+                            <input
+                                type="checkbox"
+                                tabIndex="-1"
+                                id="checkbox"
+                                className={styles.hamburger_check}
+                                defaultChecked={this.props.visible}
+                                onChange={() => this.props.setVisibility()}
+                            />
+                            <label htmlFor="checkbox">
+                                <span className={styles.hamburger_bars}></span>
+                                <span className={styles.hamburger_bars}></span>
+                                <span className={styles.hamburger_bars}></span>
+                            </label>
+                        </div>
                         <h2>WELCOME QUDUSAYO</h2>
-                        <button>LogOut</button>
                     </nav>
                     <div className={styles.card}>
                         <button>+</button>
@@ -31,9 +47,9 @@ class index extends Component {
                         <div>TRANSFER MONEY</div>
                     </div>
                 </div>
-            </Container>
+            </>
         );
     }
 }
 
-export default index;
+export default Index;

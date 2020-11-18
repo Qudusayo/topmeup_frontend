@@ -1,31 +1,67 @@
-import React from 'react'
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
 
 import styles from "./style.module.scss";
 
-function index() {
+function index(props) {
     return (
-        <div className={styles.sidebar}>
+        <div
+            className={[
+                styles.sidebar,
+                props.visible ? styles.visibleNav : styles.inVisibleNav,
+            ].join(" ")}
+        >
             <nav>
                 <ul>
-                    <li>DASHBOARD</li>
-                    <li>FUND WALLET</li>
-                    <li>USER PROFILE</li>
-                    <li>AIRTIME TOP-UP</li>
-                    <li>BUY DATA BUNDLE</li>
-                    <li>EXAM CARD</li>
-                    <li>ELECTRICITY BILL</li>
-                    <li>TV/CABLE PAYMENT</li>
-                    <li>AIRTIME TO CASH</li>
-                    <li>TRANSFER FUND</li>
-                    <li>WITHDRAW FUND</li>
-                    <li>CONTACT FORM</li>
-                    <li>TRANSACTION HISTORY</li>
-                    <li>SETTINGS</li>
-                    <li>LOGOUT</li>
+                    <NavLink to="/dashboard" exact activeClassName={styles.active}>
+                        <li>DASHBOARD</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>FUND WALLET</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>USER PROFILE</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>AIRTIME TOP-UP</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>BUY DATA BUNDLE</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>EXAM CARD</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>ELECTRICITY BILL</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>TV/CABLE PAYMENT</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>AIRTIME TO CASH</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>TRANSFER FUND</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>WITHDRAW FUND</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>CONTACT FORM</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>TRANSACTION HISTORY</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>SETTINGS</li>
+                    </NavLink>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>LOGOUT</li>
+                    </NavLink>
                 </ul>
             </nav>
         </div>
-    )
+    );
 }
 
-export default index
+export default index;

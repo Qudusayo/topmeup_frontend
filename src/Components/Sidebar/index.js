@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+import avatar from "./../../assets/images/av2.png";
+
 import styles from "./style.module.scss";
 
 function index(props) {
@@ -13,7 +15,18 @@ function index(props) {
         >
             <nav>
                 <ul>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <li className={styles.preview}>
+                    <img  src={avatar} alt="avatar" />
+                    <div>
+                        <h4>Qudusayo</h4>
+                        <p>₦ 45,000</p>
+                    </div>
+                    </li>
+                    <NavLink
+                        to="/user-profile"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>USER PROFILE</li>
                     </NavLink>
                     <NavLink

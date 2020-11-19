@@ -26,6 +26,21 @@
                     color: $black;
                     cursor: pointer;
                 }
+                
+                &.preview{
+                    background-color: $white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    img{
+                        width: 5em;
+                    }
+
+                    h4,p{
+                        margin: 0;
+                    }
+                }
             }
 
             a {

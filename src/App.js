@@ -10,6 +10,7 @@ import ForgetPin from "./Routes/Forms/ForgetPin";
 
 import Dashboard from "./Routes/Dashboard";
 import Transfer from "./Routes/Transfer";
+import Profile from "./Routes/Profile";
 import Contact from "./Routes/Contact";
 import Airtime from "./Routes/Airtime";
 import Cash from "./Routes/Cash";
@@ -34,6 +35,7 @@ function App(props) {
                 exact
             ></Route>
             <Route path="/contact-form" component={Contact} exact></Route>
+            <Route path="/user-profile" component={Profile} exact></Route>
             <Route path="/airtime-topup" component={Airtime} exact></Route>
             <Route path="/airtime-converter" component={Cash} exact></Route>
             <Route path="/fund-wallet" component={Fund} exact></Route>

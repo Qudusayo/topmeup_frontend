@@ -10,13 +10,17 @@ class index extends Component {
         super(props);
 
         this.state = {
-            balance: "45,000",
-            reciever: "",
-            amount: "",
+            message: "",
             waiting: false,
         };
+
+        this.onChange = this.onChange.bind(this);
     }
-    onChange() {}
+
+    onChange = (e) => {
+        this.setState({ [e.target.id]: e.target.value });
+    };
+
     render() {
         return (
             <Wrapper>
@@ -32,10 +36,14 @@ class index extends Component {
                         autoComplete="off"
                         placeholder="Dear Admin, I really love your service. I will write a complaint when needed"
                         value={this.state.message}
-                        required={true}
                         disabled={this.state.waiting}
+                        required={true}
                     ></textarea>
-                    <button className={styles.button} type="submit" disabled={this.state.waiting}>
+                    <button
+                        className={styles.button}
+                        type="submit"
+                        disabled={this.state.waiting}
+                    >
                         {this.state.waiting ? (
                             <img
                                 className={styles.spinner}

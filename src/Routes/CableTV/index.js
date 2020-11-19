@@ -10,13 +10,19 @@ class index extends Component {
         super(props);
 
         this.state = {
-            balance: "45,000",
-            reciever: "",
-            amount: "",
+            networkProvider: "",
+            tvPlan: "",
+            cardNumber: "",
             waiting: false,
         };
+
+        this.onChange = this.onChange.bind(this);
     }
-    onChange() {}
+
+    onChange = (e) => {
+        this.setState({ [e.target.id]: e.target.value });
+    };
+
     render() {
         return (
             <Wrapper>
@@ -27,6 +33,7 @@ class index extends Component {
                         name="networkProvider"
                         id="networkProvider"
                         className={styles.networkProvider}
+                        onChange={this.onChange}
                         required
                     >
                         <option value="" hidden>
@@ -37,9 +44,10 @@ class index extends Component {
                         <option value="1995">STARTIMES</option>
                     </select>
                     <select
-                        name="dataPlan"
-                        id="dataPlan"
+                        name="tvPlan"
+                        id="tvPlan"
                         className={styles.networkProvider}
+                        onChange={this.onChange}
                         required
                     >
                         <option value="" hidden>
@@ -50,11 +58,11 @@ class index extends Component {
                     <input
                         onChange={this.onChange}
                         type="tel"
-                        name="reciever"
-                        id="reciever"
+                        name="cardNumber"
+                        id="cardNumber"
                         autoComplete="off"
                         placeholder="Smart Card number / IUC number*"
-                        value={this.state.reciever}
+                        value={this.state.cardNumber}
                         required={true}
                         disabled={this.state.waiting}
                     />

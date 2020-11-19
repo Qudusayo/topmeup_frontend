@@ -10,13 +10,18 @@ class index extends Component {
         super(props);
 
         this.state = {
-            balance: "45,000",
-            reciever: "",
+            networkProvider: "",
             amount: "",
             waiting: false,
         };
+
+        this.onChange = this.onChange.bind(this);
     }
-    onChange() {}
+
+    onChange = (e) => {
+        this.setState({ [e.target.id]: e.target.value });
+    };
+
     render() {
         return (
             <Wrapper>
@@ -27,34 +32,36 @@ class index extends Component {
                         name="networkProvider"
                         id="networkProvider"
                         className={styles.networkProvider}
+                        onChange={this.onChange}
+                        value={this.state.networkProvider}
                         required
                     >
                         <option value="" hidden>
                             Network Provider
                         </option>
-                        <option value="1995">
+                        <option value="9mobile">
                             9MOBLIE
                         </option>
-                        <option value="1995">
+                        <option value="airtel">
                             AIRTEL
                         </option>
-                        <option value="1995">
+                        <option value="globacom">
                             GLOBACOM
                         </option>
-                        <option value="1996">
+                        <option value="mtn">
                             MTN
                         </option>
                     </select>
                     <input
                         onChange={this.onChange}
                         type="number"
-                        name="firstName"
-                        id="firstName"
+                        name="amount"
+                        id="amount"
                         autoComplete="off"
                         placeholder="Amount"
                         value={this.state.amount}
-                        required={true}
                         disabled={this.state.waiting}
+                        required={true}
                     />
                     <button type="submit" disabled={this.state.waiting}>
                         {this.state.waiting ? (

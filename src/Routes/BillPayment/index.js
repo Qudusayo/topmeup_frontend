@@ -10,8 +10,9 @@ class index extends Component {
         super(props);
 
         this.state = {
-            networkProvider: "",
-            reciever: "",
+            discoName: "",
+            meterType: "",
+            meterNumber: "",
             amount: "",
             waiting: false,
         };
@@ -27,38 +28,56 @@ class index extends Component {
         return (
             <Wrapper>
                 <form className={styles.Form}>
-                    <h1>QUICK TOPUP</h1>
-                    <h3>PURCHASE AIRTIME</h3>
+                    <h1>BUY POWER</h1>
+                    <h3>ELECTRICITY PAYMENT</h3>
                     <select
-                        name="networkProvider"
-                        id="networkProvider"
+                        name="discoName"
+                        id="discoName"
+                        value={this.state.discoName}
                         className={styles.networkProvider}
-                        value={this.state.networkProvider}
                         onChange={this.onChange}
                         required
                     >
                         <option value="" hidden>
-                            Network Provider
+                            Disco Name
                         </option>
-                        <option value="9mobile">9MOBLIE</option>
-                        <option value="airtel">AIRTEL</option>
-                        <option value="globacom">GLOBACOM</option>
-                        <option value="mtn">MTN</option>
+                        <option value="IBEDC">Ibadan Electric - IBEDC</option>
+                        <option value="EKEDC">Eko Electric - EKEDC</option>
+                        <option value="PHED">
+                            PortHarcourt Electric - PHED
+                        </option>
+                        <option value="IKEDC">Ikeja Electric - IKEDC</option>
+                        <option value="JED">Jos Electric - JED</option>
+                        <option value="KEDCO">Kano Electric - KEDCO</option>
+                    </select>
+                    <select
+                        name="meterType"
+                        id="meterType"
+                        className={styles.networkProvider}
+                        onChange={this.onChange}
+                        value={this.state.meterType}
+                        required
+                    >
+                        <option value="" hidden>
+                            Meter Type
+                        </option>
+                        <option value="prepaid">PREPAID</option>
+                        <option value="postpaid">POSTPAID</option>
                     </select>
                     <input
                         onChange={this.onChange}
                         type="tel"
-                        name="reciever"
-                        id="reciever"
+                        name="meterNumber"
+                        id="meterNumber"
                         autoComplete="off"
-                        placeholder="Phone Number"
-                        value={this.state.reciever}
+                        placeholder="Meter Number"
+                        value={this.state.meterNumber}
                         required={true}
                         disabled={this.state.waiting}
                     />
                     <input
                         onChange={this.onChange}
-                        type="number"
+                        type="tel"
                         name="amount"
                         id="amount"
                         autoComplete="off"
@@ -75,7 +94,7 @@ class index extends Component {
                                 alt="spinner"
                             />
                         ) : (
-                            "PURCHASE AIRTIME"
+                            "PURCHASE POWER"
                         )}
                     </button>
                 </form>

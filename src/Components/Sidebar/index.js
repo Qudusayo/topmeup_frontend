@@ -13,6 +13,9 @@ function index(props) {
         >
             <nav>
                 <ul>
+                    <NavLink to="/" exact activeClassName={styles.active}>
+                        <li>USER PROFILE</li>
+                    </NavLink>
                     <NavLink
                         to="/dashboard"
                         exact
@@ -20,12 +23,14 @@ function index(props) {
                     >
                         <li>DASHBOARD</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/fund-wallet"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>FUND WALLET</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
-                        <li>USER PROFILE</li>
-                    </NavLink>
+
                     <NavLink
                         to="/airtime-topup"
                         exact
@@ -40,10 +45,18 @@ function index(props) {
                     >
                         <li>BUY DATA BUNDLE</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/buy-scratch-card"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>EXAM CARD</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/bill-payment"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>ELECTRICITY BILL</li>
                     </NavLink>
                     <NavLink

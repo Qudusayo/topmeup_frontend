@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link }  from 'react-router-dom'
 import Wrapper from './../../Components/Container'
 
 import styles from './style.module.scss'
@@ -8,7 +9,7 @@ class index extends Component {
         return (
             <Wrapper>
                 <div className={styles.card}>
-                    <button>+</button>
+                    <Link to="/fund-wallet"><button>+</button></Link>
                     <div>
                         <h2>Balance</h2>
                         <h1>₦ 45,000</h1>

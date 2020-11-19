@@ -10,64 +10,47 @@ class index extends Component {
         super(props);
 
         this.state = {
-            networkProvider: "",
+            balance: "45,000",
             reciever: "",
             amount: "",
             waiting: false,
         };
-
-        this.onChange = this.onChange.bind(this);
     }
-
-    onChange = (e) => {
-        this.setState({ [e.target.id]: e.target.value });
-    };
-
+    onChange() {}
     render() {
         return (
             <Wrapper>
                 <form className={styles.Form}>
-                    <h1>QUICK TOPUP</h1>
-                    <h3>PURCHASE AIRTIME</h3>
+                    <h1>EXAMINATION PIN</h1>
+                    <h3>COMING  SOON!!</h3>
                     <select
                         name="networkProvider"
                         id="networkProvider"
                         className={styles.networkProvider}
-                        value={this.state.networkProvider}
-                        onChange={this.onChange}
                         required
                     >
                         <option value="" hidden>
-                            Network Provider
+                            Examination Type
                         </option>
-                        <option value="9mobile">9MOBLIE</option>
-                        <option value="airtel">AIRTEL</option>
-                        <option value="globacom">GLOBACOM</option>
-                        <option value="mtn">MTN</option>
+                        <option value="WAEC">
+                            WAEC (Cost ₦1750)
+                        </option>
+                        <option value="NECO">
+                            NECO (Cost ₦700)
+                        </option>
                     </select>
                     <input
                         onChange={this.onChange}
-                        type="tel"
-                        name="reciever"
-                        id="reciever"
-                        autoComplete="off"
-                        placeholder="Phone Number"
-                        value={this.state.reciever}
-                        required={true}
-                        disabled={this.state.waiting}
-                    />
-                    <input
-                        onChange={this.onChange}
                         type="number"
-                        name="amount"
-                        id="amount"
+                        name="quantity"
+                        id="quantity"
                         autoComplete="off"
-                        placeholder="Amount"
-                        value={this.state.amount}
+                        placeholder="Quantity"
+                        value={this.state.quantity}
                         required={true}
                         disabled={this.state.waiting}
                     />
-                    <button type="submit" disabled={this.state.waiting}>
+                    {/* <button type="submit" disabled={true}>
                         {this.state.waiting ? (
                             <img
                                 className={styles.spinner}
@@ -75,9 +58,9 @@ class index extends Component {
                                 alt="spinner"
                             />
                         ) : (
-                            "PURCHASE AIRTIME"
+                            "COMING SOON"
                         )}
-                    </button>
+                    </button> */}
                 </form>
             </Wrapper>
         );

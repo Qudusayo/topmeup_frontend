@@ -15,10 +15,14 @@ class index extends Component {
             amount: "",
             waiting: false,
         };
+
+        this.onChange = this.onChange.bind(this);
     }
-    onChange (){
-        
-    }
+
+    onChange = (e) => {
+        this.setState({ [e.target.id]: e.target.value });
+    };
+
     render() {
         return (
             <Wrapper>
@@ -56,8 +60,8 @@ class index extends Component {
                     <input
                         onChange={this.onChange}
                         type="number"
-                        name="firstName"
-                        id="firstName"
+                        name="amount"
+                        id="amount"
                         autoComplete="off"
                         placeholder="Amount"
                         value={this.state.amount}

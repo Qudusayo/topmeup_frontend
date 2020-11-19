@@ -10,13 +10,19 @@ class index extends Component {
         super(props);
 
         this.state = {
-            balance: "45,000",
+            networkProvider: "",
+            dataPlan: "",
             reciever: "",
-            amount: "",
             waiting: false,
         };
+    
+        this.onChange = this.onChange.bind(this);
     }
-    onChange() {}
+
+    onChange = (e) => {
+        this.setState({ [e.target.id]: e.target.value });
+    };
+    
     render() {
         return (
             <Wrapper>
@@ -26,6 +32,8 @@ class index extends Component {
                     <select
                         name="networkProvider"
                         id="networkProvider"
+                        onChange={this.onChange}
+                        value={this.state.networkProvider}
                         className={styles.networkProvider}
                         required
                     >
@@ -49,6 +57,8 @@ class index extends Component {
                         name="dataPlan"
                         id="dataPlan"
                         className={styles.networkProvider}
+                        onChange={this.onChange}
+                        value={this.state.dataPlan}
                         required
                     >
                         <option value="" hidden>

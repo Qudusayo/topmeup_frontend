@@ -17,6 +17,8 @@ import Cash from "./Routes/Cash";
 import Fund from "./Routes/Fund";
 import Exam from "./Routes/Exam";
 import CableTV from "./Routes/CableTV";
+import Withdraw from "./Routes/Withdraw";
+import History from "./Routes/History";
 import BillPayment from "./Routes/BillPayment";
 import DataSubscription from "./Routes/DataSubscription";
 
@@ -40,6 +42,8 @@ function App(props) {
             <Route path="/airtime-converter" component={Cash} exact></Route>
             <Route path="/fund-wallet" component={Fund} exact></Route>
             <Route path="/cable-TV" component={CableTV} exact></Route>
+            <Route path="/withdraw" component={Withdraw} exact></Route>
+            <Route path="/history" component={History} exact></Route>
             <Route path="/buy-scratch-card" component={Exam} exact></Route>
             <Route path="/bill-payment" component={BillPayment} exact></Route>
             <Route path="/transfer-fund" component={Transfer} exact></Route>

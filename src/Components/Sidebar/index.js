@@ -16,11 +16,11 @@ function index(props) {
             <nav>
                 <ul>
                     <li className={styles.preview}>
-                    <img  src={avatar} alt="avatar" />
-                    <div>
-                        <h4>Qudusayo</h4>
-                        <p>₦ 45,000</p>
-                    </div>
+                        <img src={avatar} alt="avatar" />
+                        <div>
+                            <h4>Qudusayo</h4>
+                            <p>₦ 45,000</p>
+                        </div>
                     </li>
                     <NavLink
                         to="/user-profile"
@@ -93,7 +93,11 @@ function index(props) {
                     >
                         <li>TRANSFER FUND</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink
+                        to="/withdraw"
+                        exact
+                        activeClassName={styles.active}
+                    >
                         <li>WITHDRAW FUND</li>
                     </NavLink>
                     <NavLink
@@ -103,7 +107,7 @@ function index(props) {
                     >
                         <li>CONTACT FORM</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink to="/history" exact activeClassName={styles.active}>
                         <li>TRANSACTION HISTORY</li>
                     </NavLink>
                     <NavLink to="/" exact activeClassName={styles.active}>

@@ -113,7 +113,7 @@ function index(props) {
                     <NavLink to="/" exact activeClassName={styles.active}>
                         <li>SETTINGS</li>
                     </NavLink>
-                    <NavLink to="/" exact activeClassName={styles.active}>
+                    <NavLink to="/login" exact activeClassName={styles.active}>
                         <li>LOGOUT</li>
                     </NavLink>
                 </ul>

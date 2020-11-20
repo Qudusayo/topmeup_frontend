@@ -20,8 +20,31 @@ class index extends Component {
     render() {
         return (
             <Wrapper>
-                <div className={styles.card}>
-                    <h4>Transaction History</h4>
+                <form className={[styles.Form, styles.loose].join(" ")}>
+                    <h1>Transactions</h1>
+                    <h3>Your Previous Transactions</h3>
+                </form>
+                <div className={[styles.card, styles.loose].join(" ")}>
+                    <div className={[styles.infos].join(" ")}>
+                        <h4>Data Bundle</h4>
+                        <p>22:44, Nov 12, 2020</p>
+                    </div>
+                    <h2>₦500</h2>
+                    <div className={[styles.infos].join(" ")}>
+                        <p>Topped Up: 07016412041</p>
+                        <p className={styles.success}>Success</p>
+                    </div>
+                </div>
+                <div className={[styles.card, styles.loose].join(" ")}>
+                    <div className={[styles.infos].join(" ")}>
+                        <h4>Data Bundle</h4>
+                        <p>22:44, Nov 12, 2020</p>
+                    </div>
+                    <h2>₦500</h2>
+                    <div className={[styles.infos].join(" ")}>
+                        <p>Topped Up: 07016412041</p>
+                        <p className={styles.success}>Success</p>
+                    </div>
                 </div>
             </Wrapper>
         );

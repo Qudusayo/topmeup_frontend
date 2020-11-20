@@ -32,6 +32,11 @@ function Index(props) {
                         Login
                     </NavLink>
                 </li>
+                <li className={styles.hidden}>
+                    <NavLink to="/register" activeClassName={styles.active}>
+                        Register
+                    </NavLink>
+                </li>
             </ul>
             <Link to="/register"><button>Join Us</button></Link>
             <div className={styles.hamburger}>

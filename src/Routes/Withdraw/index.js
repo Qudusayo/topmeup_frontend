@@ -30,6 +30,7 @@ class index extends Component {
                 <form className={styles.Form}>
                     <h1>WITHDRAW FUND</h1>
                     <h3>WITH ₦ 100 CHARGES</h3>
+                    <label>Bank Name</label>
                     <select
                         name="bankName"
                         id="bankName"
@@ -60,6 +61,7 @@ class index extends Component {
                         <option value="FIdelity Bank">FIdelity Bank</option>
                         <option value="ECO Bank">ECO Bank</option>
                     </select>
+                    <label>Account Name</label>
                     <input
                         onChange={this.onChange}
                         type="text"
@@ -71,6 +73,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Account Number</label>
                     <input
                         onChange={this.onChange}
                         type="tel"
@@ -82,6 +85,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Amount</label>
                     <input
                         onChange={this.onChange}
                         type="number"

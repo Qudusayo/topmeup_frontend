@@ -50,6 +50,7 @@ class index extends Component {
                     <h3>
                         Payment can be done by using any of the options below:{" "}
                     </h3>
+                    <label>Payment Method</label>
                     <select
                         name="payment"
                         id="payment"
@@ -100,9 +101,10 @@ class index extends Component {
                     <form className={styles.Form}>
                         <h1>BANK PAYMENT</h1>
                         <h3>SUBMIT A REQUEST</h3>
+                        <label>Depositors Name</label>
                         <input
                             onChange={this.onChange}
-                            type="tel"
+                            type="text"
                             name="reciever"
                             id="reciever"
                             autoComplete="off"
@@ -111,6 +113,7 @@ class index extends Component {
                             required={true}
                             disabled={this.state.waiting}
                         />
+                        <label>Amount</label>
                         <input
                             onChange={this.onChange}
                             type="tel"

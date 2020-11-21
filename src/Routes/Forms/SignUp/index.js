@@ -104,26 +104,7 @@ class index extends Component {
                 </h2>
                 <span>CREATE ACCOUNT</span>
                 <form onSubmit={this.onSubmit} className={styles.form}>
-                    {this.state.errorMessages ? (
-                        <span className={styles.error}>
-                            {this.state.errorMessages}
-                        </span>
-                    ) : null}
-                    <select
-                        name="yearOfGraduation"
-                        id="yearOfGraduation"
-                        required
-                    >
-                        <option value="" hidden>
-                            Choose
-                        </option>
-                        <option value="1995">
-                            RESELLER PLAN (₦1000 One Time Fee Apply)
-                        </option>
-                        <option value="1996">
-                            END USER ( Signup for free )
-                        </option>
-                    </select>
+                    <label>Referral</label>
                     <input
                         onChange={this.onChange}
                         type="text"
@@ -135,6 +116,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>First Name</label>
                     <input
                         onChange={this.onChange}
                         type="text"
@@ -146,6 +128,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Last Name</label>
                     <input
                         onChange={this.onChange}
                         type="text"
@@ -157,6 +140,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Phone Number</label>
                     <input
                         onChange={this.onChange}
                         type="tel"
@@ -168,6 +152,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Username</label>
                     <input
                         onChange={this.onChange}
                         type="text"
@@ -179,6 +164,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Email</label>
                     <input
                         onChange={this.onChange}
                         type="email"
@@ -190,6 +176,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Password</label>
                     <input
                         onChange={this.onChange}
                         type="password"
@@ -200,6 +187,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Confirm Password</label>
                     <input
                         onChange={this.onChange}
                         type="password"
@@ -210,6 +198,11 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    {this.state.errorMessages ? (
+                        <span className={styles.error}>
+                            {this.state.errorMessages}
+                        </span>
+                    ) : null}
                     <button type="submit" disabled={this.state.waiting}>
                         {this.state.waiting ? (
                             <img

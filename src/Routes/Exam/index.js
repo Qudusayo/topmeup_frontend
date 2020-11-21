@@ -23,6 +23,7 @@ class index extends Component {
                 <form className={styles.Form}>
                     <h1>EXAMINATION PIN</h1>
                     <h3>COMING  SOON!!</h3>
+                    <label>Examination Type</label>
                     <select
                         name="networkProvider"
                         id="networkProvider"
@@ -39,6 +40,7 @@ class index extends Component {
                             NECO (Cost ₦700)
                         </option>
                     </select>
+                    <label>Quantity</label>
                     <input
                         onChange={this.onChange}
                         type="number"

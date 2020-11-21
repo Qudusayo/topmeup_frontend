@@ -27,6 +27,22 @@ class index extends Component {
                 <form className={styles.Form}>
                     <h1>CONTACT FORM</h1>
                     <h3>DROP A MESSAGE</h3>
+                    <label>Type</label>
+                    <select
+                        name="networkProvider"
+                        id="networkProvider"
+                        className={styles.networkProvider}
+                        onChange={this.onChange}
+                        required
+                    >
+                        <option value="" hidden>
+                            Cable Name
+                        </option>
+                        <option value="1995">Complain</option>
+                        <option value="1995">Suggestion</option>
+                        <option value="1995">Other</option>
+                    </select>
+                    <label>Message</label>
                     <textarea
                         onChange={this.onChange}
                         type="tel"

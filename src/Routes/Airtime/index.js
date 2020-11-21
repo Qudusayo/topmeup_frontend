@@ -29,6 +29,7 @@ class index extends Component {
                 <form className={styles.Form}>
                     <h1>QUICK TOPUP</h1>
                     <h3>PURCHASE AIRTIME</h3>
+                    <label>Network Provider</label>
                     <select
                         name="networkProvider"
                         id="networkProvider"
@@ -45,6 +46,7 @@ class index extends Component {
                         <option value="globacom">GLOBACOM</option>
                         <option value="mtn">MTN</option>
                     </select>
+                    <label>Phone Number</label>
                     <input
                         onChange={this.onChange}
                         type="tel"
@@ -56,6 +58,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Amount</label>
                     <input
                         onChange={this.onChange}
                         type="number"

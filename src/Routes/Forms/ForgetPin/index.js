@@ -38,6 +38,7 @@ class index extends Component {
                     </h2>
                     <span>RESET PASSWORD</span>
                     <form onSubmit={this.onSubmit} className={styles.form}>
+                        <label>Email</label>
                         <input
                             onChange={this.onChange}
                             type="email"

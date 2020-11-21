@@ -32,9 +32,22 @@
         margin-top: 0;
     }
 
+    
+    label {
+        display: block;
+        width: 100%;
+        margin: auto;
+        font-size: .9em;
+        color: $richblack;
+
+        &:nth-of-type(1){
+            margin-top: 2em;
+        }
+    }
+
     select.networkProvider {
         height: 3.5em;
-        width: 78%;
+        width: 100%;
         padding-left: 1em;
         padding-right: 1em;
         font-size: 0.9em;
@@ -49,7 +62,7 @@
         border-radius: 5px;
         outline: none;
         display: block;
-        margin: 2em auto;
+        margin: .3em auto 2em;
         padding: 1rem;
         padding-left: 2em;
 
@@ -60,11 +73,11 @@
 
     textarea {
         display: block;
-        width: 75%;
+        width: 94%;
         padding: 1em;
         border-radius: 7px;
         font-size: 1em;
-        margin: 2em auto;
+        margin: .3em auto 2em;
         outline: none;
         border: 1px solid $silver;
 
@@ -83,7 +96,7 @@
 
     .button {
         display: block;
-        width: 80%;
+        width: 100%;
         margin: auto;
         height: 50px;
         border-radius: 7px;

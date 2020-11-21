@@ -28,6 +28,7 @@ class index extends Component {
                 <form className={styles.Form}>
                     <h1>CONVERT AIRTIME</h1>
                     <h3>TO CASH</h3>
+                    <label>Network Provider</label>
                     <select
                         name="networkProvider"
                         id="networkProvider"
@@ -52,6 +53,7 @@ class index extends Component {
                             MTN
                         </option>
                     </select>
+                    <label>Amount</label>
                     <input
                         onChange={this.onChange}
                         type="number"

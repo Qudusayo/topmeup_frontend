@@ -29,6 +29,7 @@ class index extends Component {
                 <form className={styles.Form}>
                     <h1>TV SUBSCRIPTION</h1>
                     <h3>PURCHASE DATA</h3>
+                    <label>Cable Name</label>
                     <select
                         name="networkProvider"
                         id="networkProvider"
@@ -43,6 +44,7 @@ class index extends Component {
                         <option value="1995">GOTV</option>
                         <option value="1995">STARTIMES</option>
                     </select>
+                    <label>TV Plan</label>
                     <select
                         name="tvPlan"
                         id="tvPlan"
@@ -55,6 +57,7 @@ class index extends Component {
                         </option>
                         <option value="1995">9MOBLIE</option>
                     </select>
+                    <label>Card Number</label>
                     <input
                         onChange={this.onChange}
                         type="tel"

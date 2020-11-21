@@ -30,6 +30,7 @@ class index extends Component {
                 <form className={styles.Form}>
                     <h1>BUY POWER</h1>
                     <h3>ELECTRICITY PAYMENT</h3>
+                    <label>Disco Name</label>
                     <select
                         name="discoName"
                         id="discoName"
@@ -50,6 +51,7 @@ class index extends Component {
                         <option value="JED">Jos Electric - JED</option>
                         <option value="KEDCO">Kano Electric - KEDCO</option>
                     </select>
+                    <label>Meter Type</label>
                     <select
                         name="meterType"
                         id="meterType"
@@ -64,6 +66,7 @@ class index extends Component {
                         <option value="prepaid">PREPAID</option>
                         <option value="postpaid">POSTPAID</option>
                     </select>
+                    <label>Meter Number</label>
                     <input
                         onChange={this.onChange}
                         type="tel"
@@ -75,6 +78,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Amount</label>
                     <input
                         onChange={this.onChange}
                         type="tel"

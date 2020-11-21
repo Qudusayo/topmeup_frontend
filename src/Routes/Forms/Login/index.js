@@ -95,6 +95,7 @@ class index extends Component {
                                 {this.state.errorMessages}
                             </span>
                         ) : null}
+                        <label>Email</label>
                         <input
                             onChange={this.onChange}
                             type="email"
@@ -106,6 +107,7 @@ class index extends Component {
                             required={true}
                             disabled={this.state.waiting}
                         />
+                        <label>Password</label>
                         <input
                             onChange={this.onChange}
                             type="password"

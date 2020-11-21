@@ -29,6 +29,7 @@ class index extends Component {
                 <form className={styles.Form}>
                     <h1>DATA BUNDLE</h1>
                     <h3>PURCHASE DATA</h3>
+                    <label>Network Provider</label>
                     <select
                         name="networkProvider"
                         id="networkProvider"
@@ -53,6 +54,7 @@ class index extends Component {
                             MTN
                         </option>
                     </select>
+                    <label>Data Plan</label>
                     <select
                         name="dataPlan"
                         id="dataPlan"
@@ -68,6 +70,7 @@ class index extends Component {
                             9MOBLIE
                         </option>
                     </select>
+                    <label>Recievers Number</label>
                     <input
                         onChange={this.onChange}
                         type="tel"

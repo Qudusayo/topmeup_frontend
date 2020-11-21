@@ -40,6 +40,7 @@ class index extends Component {
                 </div>
                 <form className={styles.Form}>
                     <h3>UPDATE PROFILE</h3>
+                    <label>First Name</label>
                     <input
                         onChange={this.onChange}
                         type="text"
@@ -51,6 +52,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Last Name</label>
                     <input
                         onChange={this.onChange}
                         type="text"
@@ -62,6 +64,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <label>Phone Number</label>
                     <input
                         onChange={this.onChange}
                         type="tel"
@@ -87,6 +90,7 @@ class index extends Component {
                 </form>
                 <form className={styles.Form}>
                     <h3>UPDATE PASSWORD</h3>
+                    <label>Old Password</label>
                     <input
                         onChange={this.onChange}
                         type="password"
@@ -98,6 +102,7 @@ class index extends Component {
                         value={this.state.oldPassword}
                         disabled={this.state.waiting}
                     />
+                    <label>New Password</label>
                     <input
                         onChange={this.onChange}
                         type="password"
@@ -109,6 +114,7 @@ class index extends Component {
                         value={this.state.newPassword}
                         disabled={this.state.waiting}
                     />
+                    <label>Confirm Password</label>
                     <input
                         onChange={this.onChange}
                         type="password"

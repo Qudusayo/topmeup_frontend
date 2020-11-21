@@ -10,13 +10,25 @@ class index extends Component {
         super(props);
 
         this.state = {
-            balance: "45,000",
+            payment: "",
+            tranferred: false,
             reciever: "",
             amount: "",
             waiting: false,
         };
+
+        this.onChange = this.onChange.bind(this);
     }
-    onChange() {}
+
+    onChange = (e) => {
+        this.setState({ [e.target.id]: e.target.value, tranferred: false });
+
+    };
+
+    transferredBtn = () => {
+        this.setState({ tranferred: true });
+    };
+
     render() {
         return (
             <Wrapper>
@@ -39,28 +51,90 @@ class index extends Component {
                         Payment can be done by using any of the options below:{" "}
                     </h3>
                     <select
-                        name="networkProvider"
-                        id="networkProvider"
+                        name="payment"
+                        id="payment"
+                        onChange={this.onChange}
+                        value={this.state.payment}
                         className={styles.networkProvider}
                         required
                     >
                         <option value="" hidden>
                             Select Payment Method
                         </option>
-                        <option value="1996">
+                        <option value="bankPayment">
                             Bank Payment (Min ₦1000, 0% Fee)
                         </option>
-                        <option value="1995">
+                        <option value="onlinePayment">
                             Online Payment (Min ₦100, 1.5% Fee)
                         </option>
-                        <option value="1995">
+                        <option value="airtimePayment">
                             Airtime Payment (Min ₦120, 20% Fee)
                         </option>
-                        <option value="1995">
+                        <option value="abPayment">
                             Auto Bank Payment (Min ₦100, 0.75% Fee)
                         </option>
                     </select>
+                    <br />
+                    {this.state.payment === "bankPayment" ? (
+                        <>
+                            <div className={styles.bankInfo}>
+                                <h4>0501764158</h4>
+                                <h4>Sterling Bank</h4>
+                                <h4>Abdulqudus Bolaji</h4>
+                                <br />
+                                <p>
+                                    Bank Deposit/Atm Transfer/Online Bank
+                                    Transfer/ USSD & others (Instant/Automated)
+                                    (Minimum of #1,000): Payments are accepted
+                                    into any of our bank accounts stated on this
+                                    page.
+                                </p>
+                            </div>
+                            <button onClick={this.transferredBtn} type="button">
+                                TRANSFERRED
+                            </button>
+                        </>
+                    ) : null}
                 </form>
+                {this.state.tranferred ? (
+                    <form className={styles.Form}>
+                        <h1>BANK PAYMENT</h1>
+                        <h3>SUBMIT A REQUEST</h3>
+                        <input
+                            onChange={this.onChange}
+                            type="tel"
+                            name="reciever"
+                            id="reciever"
+                            autoComplete="off"
+                            placeholder="Depositors Name"
+                            value={this.state.reciever}
+                            required={true}
+                            disabled={this.state.waiting}
+                        />
+                        <input
+                            onChange={this.onChange}
+                            type="tel"
+                            name="reciever"
+                            id="reciever"
+                            autoComplete="off"
+                            placeholder="Amount"
+                            value={this.state.reciever}
+                            required={true}
+                            disabled={this.state.waiting}
+                        />
+                        <button type="submit" disabled={this.state.waiting}>
+                            {this.state.waiting ? (
+                                <img
+                                    className={styles.spinner}
+                                    src={spinner}
+                                    alt="spinner"
+                                />
+                            ) : (
+                                "SUBMIT"
+                            )}
+                        </button>
+                    </form>
+                ) : null}
             </Wrapper>
         );
     }

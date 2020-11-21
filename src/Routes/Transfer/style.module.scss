@@ -65,9 +65,21 @@
         margin-top: 0;
     }
 
+    h4{
+        margin: 0;
+    }
+
+    .bankInfo{
+        border: 1px solid $black;
+        border-radius: 7px;
+        padding: 1em 4%;
+        margin: 0 auto 1em;
+        width: 92%;
+    }
+
     select.networkProvider{
         height: 3.5em;
-        width: 78%;
+        width: 100%;
         padding-left: 1em;
         padding-right: 1em;
         font-size: 0.9em;
@@ -93,7 +105,7 @@
 
     input {
         display: block;
-        width: 75%;
+        width: 96%;
         padding-left: 1em;
         height: 45px;
         border-radius: 7px;
@@ -117,7 +129,7 @@
 
     button {
         display: block;
-        width: 78%;
+        width: 100%;
         margin: auto;
         height: 50px;
         border-radius: 7px;

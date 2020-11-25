@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import swal from "@sweetalert/with-react";
+import axios from "axios";
+
 import Wrapper from "./../../Components/Container";
 
 import spinner from "./../../assets/images/logos/loading.png";
@@ -11,22 +14,66 @@ class index extends Component {
 
         this.state = {
             payment: "",
-            tranferred: false,
-            reciever: "",
+            depositorsName: "",
             amount: "",
             waiting: false,
         };
 
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange = (e) => {
         this.setState({ [e.target.id]: e.target.value, tranferred: false });
-
     };
 
-    transferredBtn = () => {
-        this.setState({ tranferred: true });
+    onSubmit = (e) => {
+        this.setState({ waiting: true });
+        e.preventDefault();
+        const data = {
+            depositorsName: this.state.depositorsName,
+            amount: this.state.amount,
+        };
+        const api = `http://localhost:5000/sendInfo/payment`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        axios
+            .post(api, data, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((res) => {
+                console.log(res.data);
+                if (!res.data.error) {
+                    swal(
+                        "Completed",
+                        "Payment will be updated shortly",
+                        "success"
+                    );
+                    this.setState({
+                        depositorsName: "",
+                        amount: "",
+                        waiting: false,
+                    });
+                    this.props.history.push("/dashboard")
+                } else {
+                    swal(
+                        "Error Sending Info",
+                        "Kindly try again or chat us on Whatsapp",
+                        "warning"
+                    );
+                    this.setState({ waiting: false });
+                }
+            })
+            .catch((err) => {
+                swal(
+                    "Error Sending Info",
+                    "Kindly try again or chat us on Whatsapp",
+                    "warning"
+                );
+                this.setState({ waiting: false });
+            });
     };
 
     render() {
@@ -91,37 +138,40 @@ class index extends Component {
                                     page.
                                 </p>
                             </div>
-                            <button onClick={this.transferredBtn} type="button">
-                                TRANSFERRED
-                            </button>
+                            <div className={styles.bankInfo}>
+                                <p>
+                                    Kindly Fill the form below if transferred
+                                </p>
+                            </div>
                         </>
                     ) : null}
                 </form>
-                {this.state.tranferred ? (
-                    <form className={styles.Form}>
+                {this.state.payment === "bankPayment" ? (
+                    <form className={styles.Form} onSubmit={this.onSubmit}>
                         <h1>BANK PAYMENT</h1>
                         <h3>SUBMIT A REQUEST</h3>
                         <label>Depositors Name</label>
                         <input
                             onChange={this.onChange}
                             type="text"
-                            name="reciever"
-                            id="reciever"
+                            name="depositorsName"
+                            id="depositorsName"
                             autoComplete="off"
                             placeholder="Depositors Name"
-                            value={this.state.reciever}
+                            value={this.state.depositorsName}
                             required={true}
                             disabled={this.state.waiting}
                         />
                         <label>Amount</label>
                         <input
                             onChange={this.onChange}
-                            type="tel"
-                            name="reciever"
-                            id="reciever"
+                            type="number"
+                            name="amount"
+                            id="amount"
                             autoComplete="off"
                             placeholder="Amount"
-                            value={this.state.reciever}
+                            value={this.state.amount}
+                            min="500"
                             required={true}
                             disabled={this.state.waiting}
                         />

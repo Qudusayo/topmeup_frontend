@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import axios from "axios";
+import swalt from "@sweetalert/with-react";
+import Swal from "sweetalert2";
 import Wrapper from "./../../Components/Container";
 
 import spinner from "./../../assets/images/logos/loading.png";
@@ -10,37 +13,106 @@ class index extends Component {
         super(props);
 
         this.state = {
+            messageType: "",
             message: "",
             waiting: false,
         };
 
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange = (e) => {
         this.setState({ [e.target.id]: e.target.value });
     };
 
+    onSubmit = (e) => {
+        this.setState({ waiting: true });
+        e.preventDefault();
+        const data = {
+            messageType: this.state.messageType,
+            message: this.state.message,
+        };
+        const api = `http://localhost:5000/sendInfo/message`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        axios
+            .post(api, data, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((res) => {
+                console.log(res.data);
+                if (!res.data.error) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener(
+                                "mouseenter",
+                                Swal.stopTimer
+                            );
+                            toast.addEventListener(
+                                "mouseleave",
+                                Swal.resumeTimer
+                            );
+                        },
+                    });
+
+                    Toast.fire({
+                        icon: "success",
+                        title: "Message sent successfully",
+                    });
+                    this.setState({
+                        depositorsName: "",
+                        amount: "",
+                        waiting: false,
+                    });
+                    this.props.history.push("/dashboard")
+                } else {
+                    swalt(
+                        "Error Sending Info",
+                        "Kindly try again or chat us on Whatsapp",
+                        "warning"
+                    );
+                    this.setState({ waiting: false });
+                }
+            })
+            .catch((err) => {
+                swalt(
+                    "Error Sending Info",
+                    "Kindly try again or chat us on Whatsapp",
+                    "warning"
+                );
+                this.setState({ waiting: false });
+            });
+    };
+
     render() {
         return (
             <Wrapper>
-                <form className={styles.Form}>
+                <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h1>CONTACT FORM</h1>
                     <h3>DROP A MESSAGE</h3>
                     <label>Type</label>
                     <select
-                        name="networkProvider"
-                        id="networkProvider"
+                        name="messageType"
+                        id="messageType"
                         className={styles.networkProvider}
                         onChange={this.onChange}
+                        value={this.state.messageType}
                         required
                     >
                         <option value="" hidden>
-                            Cable Name
+                            Message Type
                         </option>
-                        <option value="1995">Complain</option>
-                        <option value="1995">Suggestion</option>
-                        <option value="1995">Other</option>
+                        <option value="complain">Complain</option>
+                        <option value="suggestion">Suggestion</option>
+                        <option value="other">Other</option>
                     </select>
                     <label>Message</label>
                     <textarea

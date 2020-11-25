@@ -14,6 +14,40 @@ class index extends Component {
             dataPlan: "",
             reciever: "",
             waiting: false,
+            dataSubscription: {
+                mtn: [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                ],
+                glo: [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                ],
+                airtel: [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                ],
+                nmobile: [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                ]
+            }
         };
     
         this.onChange = this.onChange.bind(this);

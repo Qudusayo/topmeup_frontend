@@ -1,4 +1,5 @@
 import React from "react";
+import { Provider } from "react-redux";
 
 import { Switch, Route } from "react-router-dom";
 
@@ -22,34 +23,46 @@ import History from "./Routes/History";
 import BillPayment from "./Routes/BillPayment";
 import DataSubscription from "./Routes/DataSubscription";
 
+import store from './store'
+
 function App(props) {
     return (
-        <Switch>
-            <Route path="/" component={Home} exact></Route>
-            <Route path="/login" component={Login} exact></Route>
-            <Route path="/register" component={SignUp} exact></Route>
-            <Route path="/forget-password" component={ForgetPin} exact></Route>
+        <Provider store={store}>
+            <Switch>
+                <Route path="/" component={Home} exact></Route>
+                <Route path="/login" component={Login} exact></Route>
+                <Route path="/register" component={SignUp} exact></Route>
+                <Route
+                    path="/forget-password"
+                    component={ForgetPin}
+                    exact
+                ></Route>
 
-            <Route path="/dashboard" component={Dashboard} exact></Route>
-            <Route
-                path="/data-subscription"
-                component={DataSubscription}
-                exact
-            ></Route>
-            <Route path="/contact-form" component={Contact} exact></Route>
-            <Route path="/user-profile" component={Profile} exact></Route>
-            <Route path="/airtime-topup" component={Airtime} exact></Route>
-            <Route path="/airtime-converter" component={Cash} exact></Route>
-            <Route path="/fund-wallet" component={Fund} exact></Route>
-            <Route path="/cable-TV" component={CableTV} exact></Route>
-            <Route path="/withdraw" component={Withdraw} exact></Route>
-            <Route path="/history" component={History} exact></Route>
-            <Route path="/buy-scratch-card" component={Exam} exact></Route>
-            <Route path="/bill-payment" component={BillPayment} exact></Route>
-            <Route path="/transfer-fund" component={Transfer} exact></Route>
+                <Route path="/dashboard" component={Dashboard} exact></Route>
+                <Route
+                    path="/data-subscription"
+                    component={DataSubscription}
+                    exact
+                ></Route>
+                <Route path="/contact-form" component={Contact} exact></Route>
+                <Route path="/user-profile" component={Profile} exact></Route>
+                <Route path="/airtime-topup" component={Airtime} exact></Route>
+                <Route path="/airtime-converter" component={Cash} exact></Route>
+                <Route path="/fund-wallet" component={Fund} exact></Route>
+                <Route path="/cable-TV" component={CableTV} exact></Route>
+                <Route path="/withdraw" component={Withdraw} exact></Route>
+                <Route path="/history" component={History} exact></Route>
+                <Route path="/buy-scratch-card" component={Exam} exact></Route>
+                <Route
+                    path="/bill-payment"
+                    component={BillPayment}
+                    exact
+                ></Route>
+                <Route path="/transfer-fund" component={Transfer} exact></Route>
 
-            <Route path="*" component={Error} exact></Route>
-        </Switch>
+                <Route path="*" component={Error} exact></Route>
+            </Switch>
+        </Provider>
     );
 }
 

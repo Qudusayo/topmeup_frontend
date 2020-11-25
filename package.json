@@ -20,6 +20,7 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^10.10.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

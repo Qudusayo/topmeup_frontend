@@ -1,17 +1,21 @@
 import React, { Component } from "react";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
+import { authUser, getUserInfo } from "./../../../actions/usersAction";
 import Navbar from "./../../../Components/Navbar";
 
 import spinner from "./../../../assets/images/logos/loading.png";
 
 import styles from "./../style.module.scss";
 
-class index extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
+            username: "",
             password: "",
             errorMessage: "",
             waiting: false,
@@ -28,18 +32,16 @@ class index extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const data = {
-            email: this.state.email,
+            userName: this.state.username,
             password: this.state.password,
         };
-        if (!data.email) {
-            return this.error("Email is required");
+        if (!data.userName) {
+            return this.error("Username is required");
         } else if (!data.password) {
             return this.error("Password is required");
-        } else if (data.password.length < 6) {
-            return this.error("Password should be > 5 characters");
         } else {
             this.setState({ waiting: true });
-            fetch("https://login-backend-e5394a.eu1.kinto.io/login", {
+            fetch("http://localhost:5000/login", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -48,24 +50,46 @@ class index extends Component {
             })
                 .then((res) => res.json())
                 .then((response) => {
+                    console.log(response);
                     if (response.errorMsg) {
                         this.setState({ waiting: false });
-                        return this.error(response.message);
+                        return this.error("Invalid username or password");
                     } else {
-                        this.setState({
-                            email: "",
-                            password: "",
-                            confirmPassword: "",
-                            errorMessages: "",
-                            waiting: false,
+                        sessionStorage.setItem(
+                            "topuplab",
+                            JSON.stringify({ token: response.accessToken })
+                        );
+                        this.props.authUser();
+                        this.props.getUserInfo();
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener(
+                                    "mouseenter",
+                                    Swal.stopTimer
+                                );
+                                toast.addEventListener(
+                                    "mouseleave",
+                                    Swal.resumeTimer
+                                );
+                            },
                         });
-                        return this.props.history.push("/home");
+
+                        Toast.fire({
+                            icon: "success",
+                            title: "Signed in successfully",
+                        });
+                        return this.props.history.push("/dashboard");
                     }
                 })
                 .catch((error) => {
                     this.setState({ waiting: false });
                     return this.error(
-                        "Error registering user, Kindly try again"
+                        "Error Fetching user info, Kindly try again"
                     );
                 });
         }
@@ -90,18 +114,13 @@ class index extends Component {
                     </h2>
                     <span>LOGIN USER</span>
                     <form onSubmit={this.onSubmit} className={styles.form}>
-                        {this.state.errorMessages ? (
-                            <span className={styles.error}>
-                                {this.state.errorMessages}
-                            </span>
-                        ) : null}
-                        <label>Email</label>
+                        <label>Username</label>
                         <input
                             onChange={this.onChange}
-                            type="email"
-                            name="email"
-                            id="email"
-                            placeholder="Email"
+                            type="text"
+                            name="username"
+                            id="username"
+                            placeholder="Username"
                             autoComplete="off"
                             value={this.state.email}
                             required={true}
@@ -118,6 +137,14 @@ class index extends Component {
                             required={true}
                             disabled={this.state.waiting}
                         />
+                        {this.state.errorMessages ? (
+                            <span
+                                className={styles.error}
+                                style={{ fontSize: ".8em", display: "block" }}
+                            >
+                                {this.state.errorMessages}
+                            </span>
+                        ) : null}
                         <button type="submit" disabled={this.state.waiting}>
                             {this.state.waiting ? (
                                 <img
@@ -148,4 +175,9 @@ class index extends Component {
     }
 }
 
-export default index;
+Index.propsTypes = {
+    authUser: PropTypes.func.isRequired,
+    getUserInfo: PropTypes.func.isRequired,
+};
+
+export default connect("", { authUser, getUserInfo })(Index);

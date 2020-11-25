@@ -1,16 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
 import avatar from "./../../assets/images/av2.png";
+import { withRouter } from 'react-router-dom'
 
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import styles from "./style.module.scss";
 
-function index(props) {
+class Index extends Component {
+    constructor(props) {
+        super(props);
+
+    }
+    render(){
     return (
         <div
             className={[
                 styles.sidebar,
-                props.visible ? styles.visibleNav : styles.inVisibleNav,
+                this.props.visible ? styles.visibleNav : styles.inVisibleNav,
             ].join(" ")}
         >
             <nav>
@@ -18,8 +26,8 @@ function index(props) {
                     <li className={styles.preview}>
                         <img src={avatar} alt="avatar" />
                         <div>
-                            <h4>Qudusayo</h4>
-                            <p>₦ 45,000</p>
+                            <h4>{this.props.userInfo.userName.toUpperCase()}</h4>
+                            <p style={{textAlign: 'right'}}>₦ {this.props.userInfo.balance}</p>
                         </div>
                     </li>
                     <NavLink
@@ -120,6 +128,15 @@ function index(props) {
             </nav>
         </div>
     );
+        }
 }
 
-export default index;
+Index.propTypes = {
+    userInfo: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+    userInfo: state.user.userInfo,
+});
+
+export default connect(mapStateToProps, { })(withRouter(Index));

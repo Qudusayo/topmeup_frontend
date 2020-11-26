@@ -59,7 +59,7 @@ class index extends Component {
             return this.error("Password too short, min of 6 chars");
         } else {
             this.setState({ waiting: true });
-            fetch("http://localhost:5000/signup", {
+            fetch(`${process.env.REACT_APP_BACKEND_URI}/signup`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",

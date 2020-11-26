@@ -16,7 +16,7 @@ export const revokeUser = (data) => (dispatch) => {
 };
 
 export const getUserInfo = () => (dispatch) => {
-    const api = `http://localhost:5000/getUserInfo`;
+    const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo`;
     const token = JSON.parse(sessionStorage.getItem('topuplab')).token
     axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })

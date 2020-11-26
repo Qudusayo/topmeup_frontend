@@ -41,7 +41,8 @@ class Index extends Component {
             return this.error("Password is required");
         } else {
             this.setState({ waiting: true });
-            fetch("http://localhost:5000/login", {
+            console.log(`${process.env.REACT_APP_BACKEND_URI}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URI}/login`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",

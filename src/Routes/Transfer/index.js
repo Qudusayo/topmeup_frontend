@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 import Wrapper from "./../../Components/Container";
 
 import spinner from "./../../assets/images/logos/loading.png";
@@ -10,17 +12,77 @@ class index extends Component {
         super(props);
 
         this.state = {
-            balance: "45,000",
+            balance: "0",
             reciever: "",
             amount: "",
             waiting: false,
         };
 
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange = (e) => {
         this.setState({ [e.target.id]: e.target.value });
+    };
+
+    componentDidMount() {
+        if(!sessionStorage.getItem("topuplab")) return this.props.history.push('/login')
+        const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/balance`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        axios
+            .get(api, { headers: { Authorization: `Bearer ${token}` } })
+            .then((res) => {
+                this.setState({ balance: res.data.balance });
+            });
+    }
+
+    onSubmit = (e) => {
+        this.setState({ waiting: true });
+        e.preventDefault();
+        const data = {
+            amount: this.state.amount,
+            reciever: this.state.reciever,
+        };
+        const api = `${process.env.REACT_APP_BACKEND_URI}/sendMoney`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        axios
+            .post(api, data, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((res) => {
+                console.log(res.data);
+                if (!res.data.error) {
+                    Swal.fire(
+                        'Success',
+                        'Money transferred successfully!',
+                        'success'
+                      )
+                    this.setState({
+                        amount: "",
+                        reciever: "",
+                    });
+                    this.props.history.push("/dashboard");
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                      })
+                    this.setState({ waiting: false });
+                }
+            })
+            .catch((err) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                  })
+                this.setState({ waiting: false });
+            });
     };
 
     render() {
@@ -35,7 +97,7 @@ class index extends Component {
                         Another Wallet Account In Just Some Few Clicks.
                     </p>
                 </div>
-                <form className={styles.Form}>
+                <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h3>Transfer Fund</h3>
                     <input
                         type="text"

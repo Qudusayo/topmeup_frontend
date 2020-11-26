@@ -45,7 +45,7 @@ class Index extends Component {
             lastName: this.state.lastName,
             phoneNumber: this.state.phoneNumber,
         };
-        const api = `http://localhost:5000/getUserInfo/updateProfile`;
+        const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/updateProfile`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
         axios
             .post(api, data, {
@@ -85,7 +85,7 @@ class Index extends Component {
         if (data.confirmPassword !== data.newPassword)
             return swal("Error", "New password mis-match", "warning");
 
-        const api = `http://localhost:5000/getUserInfo/updatePassword`;
+        const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/updatePassword`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
         axios
             .post(api, data, {

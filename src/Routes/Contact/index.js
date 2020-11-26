@@ -33,7 +33,7 @@ class index extends Component {
             messageType: this.state.messageType,
             message: this.state.message,
         };
-        const api = `http://localhost:5000/sendInfo/message`;
+        const api = `${process.env.REACT_APP_BACKEND_URI}/sendInfo/message`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
         axios
             .post(api, data, {

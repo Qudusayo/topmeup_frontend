@@ -14,7 +14,8 @@ class index extends Component {
     }
 
     componentDidMount() {
-        const api = `http://localhost:5000/getUserInfo/balance`;
+        if(!sessionStorage.getItem("topuplab")) return this.props.history.push('/login')
+        const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/balance`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
         axios
             .get(api, { headers: { Authorization: `Bearer ${token}` } })

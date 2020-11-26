@@ -34,7 +34,7 @@ class index extends Component {
             depositorsName: this.state.depositorsName,
             amount: this.state.amount,
         };
-        const api = `http://localhost:5000/sendInfo/payment`;
+        const api = `${process.env.REACT_APP_BACKEND_URI}/sendInfo/payment`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
         axios
             .post(api, data, {

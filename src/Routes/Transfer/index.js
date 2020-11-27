@@ -27,7 +27,8 @@ class index extends Component {
     };
 
     componentDidMount() {
-        if(!sessionStorage.getItem("topuplab")) return this.props.history.push('/login')
+        if (!sessionStorage.getItem("topuplab"))
+            return this.props.history.push("/login");
         const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/balance`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
         axios
@@ -43,6 +44,7 @@ class index extends Component {
         const data = {
             amount: this.state.amount,
             reciever: this.state.reciever,
+            type: "Transfer Fund"
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/sendMoney`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
@@ -56,11 +58,14 @@ class index extends Component {
             .then((res) => {
                 console.log(res.data);
                 if (!res.data.error) {
-                    Swal.fire(
-                        'Success',
-                        'Money transferred successfully!',
-                        'success'
-                      )
+                    Swal.fire({
+                        title: "Transaction Completed",
+                        text: "Money transferred successfully!",
+                        icon: "success",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                    });
                     this.setState({
                         amount: "",
                         reciever: "",
@@ -68,19 +73,22 @@ class index extends Component {
                     this.props.history.push("/dashboard");
                 } else {
                     Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong!',
-                      })
+                        icon: "error",
+                        title: "Transaction Failed",
+                        text: `${res.data.message}`,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                    });
                     this.setState({ waiting: false });
                 }
             })
             .catch((err) => {
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                  })
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                });
                 this.setState({ waiting: false });
             });
     };

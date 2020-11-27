@@ -11,8 +11,12 @@ import styles from "./style.module.scss";
 class Index extends Component {
     constructor(props) {
         super(props);
-
     }
+
+    logout(){
+        sessionStorage.removeItem("topuplab")
+    }
+
     render(){
     return (
         <div
@@ -121,7 +125,7 @@ class Index extends Component {
                     <NavLink to="/" exact activeClassName={styles.active}>
                         <li>SETTINGS</li>
                     </NavLink>
-                    <NavLink to="/login" exact activeClassName={styles.active}>
+                    <NavLink to="/login" exact activeClassName={styles.active} onClick={this.logout}>
                         <li>LOGOUT</li>
                     </NavLink>
                 </ul>

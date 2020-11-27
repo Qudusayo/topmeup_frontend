@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Wrapper from "./../../Components/Container";
-
+import axios from "axios";
 // import spinner from "./../../assets/images/logos/loading.png";
 
 import styles from "./../Transfer/style.module.scss";
@@ -10,13 +10,20 @@ class index extends Component {
         super(props);
 
         this.state = {
-            balance: "45,000",
-            reciever: "",
-            amount: "",
-            waiting: false,
+            history: [],
         };
     }
-    onChange() {}
+
+    componentDidMount() {
+        if (!sessionStorage.getItem("topuplab"))
+            return this.props.history.push("/login");
+        const api = `${process.env.REACT_APP_BACKEND_URI}/getHistory`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        axios
+            .get(api, { headers: { Authorization: `Bearer ${token}` } })
+            .then((response) => this.setState({ history: response.data }));
+    }
+
     render() {
         return (
             <Wrapper>
@@ -24,28 +31,27 @@ class index extends Component {
                     <h1>Transactions</h1>
                     <h3>Your Previous Transactions</h3>
                 </form>
-                <div className={[styles.card, styles.loose].join(" ")}>
-                    <div className={[styles.infos].join(" ")}>
-                        <h4>Data Bundle</h4>
-                        <p>22:44, Nov 12, 2020</p>
-                    </div>
-                    <h2>₦500</h2>
-                    <div className={[styles.infos].join(" ")}>
-                        <p>Topped Up: 07016412041</p>
-                        <p className={styles.success}>Success</p>
-                    </div>
-                </div>
-                <div className={[styles.card, styles.loose].join(" ")}>
-                    <div className={[styles.infos].join(" ")}>
-                        <h4>Data Bundle</h4>
-                        <p>22:44, Nov 12, 2020</p>
-                    </div>
-                    <h2>₦500</h2>
-                    <div className={[styles.infos].join(" ")}>
-                        <p>Topped Up: 07016412041</p>
-                        <p className={styles.success}>Success</p>
-                    </div>
-                </div>
+                {this.state.history
+                    ? this.state.history.reverse().map((trans) => {
+                          return (
+                              <div
+                                  className={[styles.card, styles.loose].join(
+                                      " "
+                                  )}
+                              >
+                                  <div className={[styles.infos].join(" ")}>
+                                      <h4>{trans.type}</h4>
+                                      <p>22:44, Nov 12, 2020</p>
+                                  </div>
+                                  <h2>₦{trans.amount}</h2>
+                                  <div className={[styles.infos].join(" ")}>
+                                      <p>Topped Up: {trans.reciever}</p>
+                                      <p className={styles.success}>Success</p>
+                                  </div>
+                              </div>
+                          );
+                      })
+                    : "No transactions Found"}
             </Wrapper>
         );
     }

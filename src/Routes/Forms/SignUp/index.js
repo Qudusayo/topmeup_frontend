@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 import Navbar from "./../../../Components/Navbar";
 
@@ -43,6 +44,23 @@ class index extends Component {
             password: this.state.password,
             confirmPassword: this.state.confirmPassword,
         };
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener(
+                    "mouseenter",
+                    Swal.stopTimer
+                );
+                toast.addEventListener(
+                    "mouseleave",
+                    Swal.resumeTimer
+                );
+            },
+        });
         if (
             !data.email &&
             !data.firstName &&
@@ -86,8 +104,12 @@ class index extends Component {
                             errorMessages: "",
                             waiting: false,
                         });
-                        this.props.history.push("/login");
-                        console.log("Signup Successful");
+                        Toast.fire({
+                            icon: "success",
+                            title: "Registration successfully",
+                        });
+
+                        return this.props.history.push("/login");
                     }
                 })
                 .catch((error) => {

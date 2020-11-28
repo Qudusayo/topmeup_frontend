@@ -125,7 +125,6 @@ function Index() {
                     <small>© Copyright 2020. All rights reserved</small>
                 </span>
             </div>
-            <div className={styles.label}>Developed by <a href="https://devqudusayo.ml">Qudusayo</a> </div>
         </div>
     );
 }

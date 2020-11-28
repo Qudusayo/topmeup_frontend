@@ -35,6 +35,24 @@ class Index extends Component {
             userName: this.state.username,
             password: this.state.password,
         };
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener(
+                    "mouseenter",
+                    Swal.stopTimer
+                );
+                toast.addEventListener(
+                    "mouseleave",
+                    Swal.resumeTimer
+                );
+            },
+        });
+        
         if (!data.userName) {
             return this.error("Username is required");
         } else if (!data.password) {
@@ -62,23 +80,7 @@ class Index extends Component {
                         );
                         this.props.authUser();
                         this.props.getUserInfo();
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener(
-                                    "mouseenter",
-                                    Swal.stopTimer
-                                );
-                                toast.addEventListener(
-                                    "mouseleave",
-                                    Swal.resumeTimer
-                                );
-                            },
-                        });
+                       
 
                         Toast.fire({
                             icon: "success",
@@ -98,10 +100,29 @@ class Index extends Component {
 
     error = (message) => {
         this.setState({ errorMessages: message });
-        setTimeout(() => {
-            this.setState({ errorMessages: "" });
-        }, 5000);
+        this.errorAlert(message)
     };
+
+    errorAlert = (message) => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'error',
+            title: message
+          }).then(() => {
+            this.setState({ errorMessages: '' });
+          })
+    }
 
     render() {
         return (
@@ -138,14 +159,6 @@ class Index extends Component {
                             required={true}
                             disabled={this.state.waiting}
                         />
-                        {this.state.errorMessages ? (
-                            <span
-                                className={styles.error}
-                                style={{ fontSize: ".8em", display: "block" }}
-                            >
-                                {this.state.errorMessages}
-                            </span>
-                        ) : null}
                         <button type="submit" disabled={this.state.waiting}>
                             {this.state.waiting ? (
                                 <img

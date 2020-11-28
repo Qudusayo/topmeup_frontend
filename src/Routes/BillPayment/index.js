@@ -86,6 +86,8 @@ class index extends Component {
                         id="amount"
                         autoComplete="off"
                         placeholder="Amount"
+                        min="1000"
+                        max="50000"
                         value={this.state.amount}
                         required={true}
                         disabled={this.state.waiting}

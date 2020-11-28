@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Wrapper from "./../../Components/Container";
+import axios from "axios";
 
 import spinner from "./../../assets/images/logos/loading.png";
 
@@ -14,49 +15,24 @@ class index extends Component {
             dataPlan: "",
             reciever: "",
             waiting: false,
-            dataSubscription: {
-                mtn: [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                ],
-                glo: [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                ],
-                airtel: [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                ],
-                nmobile: [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                    {},
-                ]
-            }
+            dataSubscription: {},
         };
-    
+
         this.onChange = this.onChange.bind(this);
     }
 
     onChange = (e) => {
         this.setState({ [e.target.id]: e.target.value });
+        console.log(this.state.dataSubscription[this.state.networkProvider]);
     };
-    
+
+    componentDidMount() {
+        axios.get("http://localhost:8900/networkProviders").then((res) => {
+            this.setState({ dataSubscription: res.data });
+            console.log(res.data);
+        });
+    }
+
     render() {
         return (
             <Wrapper>
@@ -75,18 +51,10 @@ class index extends Component {
                         <option value="" hidden>
                             Network Provider
                         </option>
-                        <option value="1995">
-                            9MOBLIE
-                        </option>
-                        <option value="1995">
-                            AIRTEL
-                        </option>
-                        <option value="1995">
-                            GLOBACOM
-                        </option>
-                        <option value="1996">
-                            MTN
-                        </option>
+                        <option value="nmobile">9MOBLIE</option>
+                        <option value="airtel">AIRTEL</option>
+                        <option value="glo">GLOBACOM</option>
+                        <option value="mtn">MTN</option>
                     </select>
                     <label>Data Plan</label>
                     <select
@@ -100,9 +68,17 @@ class index extends Component {
                         <option value="" hidden>
                             Data Plan
                         </option>
-                        <option value="1995">
-                            9MOBLIE
-                        </option>
+                        {this.state.dataSubscription[this.state.networkProvider]
+                            ? this.state.dataSubscription[
+                                  this.state.networkProvider
+                              ].map((network, index) => {
+                                  return (
+                                      <option value={network.price} key={index}>
+                                          {network.name} --- ₦{network.price}
+                                      </option>
+                                  );
+                              })
+                            : null}
                     </select>
                     <label>Recievers Number</label>
                     <input

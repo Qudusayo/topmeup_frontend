@@ -31,7 +31,7 @@ class Index extends Component {
                         <img src={avatar} alt="avatar" />
                         <div>
                             <h4>{this.props.userInfo.userName.toUpperCase()}</h4>
-                            <p style={{textAlign: 'right'}}>₦ {this.props.userInfo.balance}</p>
+                            <p style={{textAlign: 'center', backgroundColor: '#001A23', borderRadius: '25px', color: '#FFFFFF', fontWeight: '.5em'}}>{this.props.userInfo.accountType ? this.props.userInfo.accountType.toUpperCase(): null}</p>
                         </div>
                     </li>
                     <NavLink

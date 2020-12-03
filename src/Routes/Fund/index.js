@@ -47,7 +47,7 @@ class index extends Component {
                 console.log(res.data);
                 if (!res.data.error) {
                     swal(
-                        "Completed",
+                        "Request Sent",
                         "Payment will be updated shortly",
                         "success"
                     );

@@ -77,8 +77,8 @@ class index extends Component {
                     this.props.history.push("/dashboard");
                 } else {
                     swalt(
-                        "Error Sending Info",
-                        "Kindly try again or chat us on Whatsapp",
+                        "Airtime Purchase Failed",
+                        `${res.data.errorMsg}`,
                         "warning"
                     );
                     this.setState({ waiting: false });
@@ -86,9 +86,9 @@ class index extends Component {
             })
             .catch((err) => {
                 swalt(
-                    "Error Sending Info",
-                    "Kindly try again or chat us on Whatsapp",
-                    "warning"
+                    "Airtime Purchase Failed",
+                    "Error  completing the transaction",
+                    "error"
                 );
                 this.setState({ waiting: false });
             });
@@ -125,6 +125,8 @@ class index extends Component {
                         id="reciever"
                         autoComplete="off"
                         placeholder="Phone Number"
+                        minLength="11"
+                        maxLength="11"
                         value={this.state.reciever}
                         required={true}
                         disabled={this.state.waiting}

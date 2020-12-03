@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Wrapper from "./../../Components/Container";
 
 import spinner from "./../../assets/images/logos/loading.png";
@@ -14,19 +15,35 @@ class index extends Component {
             tvPlan: "",
             cardNumber: "",
             waiting: false,
+            tvSubscriptions: [],
         };
 
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange = (e) => {
         this.setState({ [e.target.id]: e.target.value });
     };
 
+    onSubmit(e) {
+        e.preventDefault();
+    }
+
+    componentDidMount() {
+        if (!sessionStorage.getItem("topuplab"))
+            return this.props.history.push("/login");
+        const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/tvSubscriptions`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        axios
+            .get(api, { headers: { Authorization: `Bearer ${token}` } })
+            .then((response) => this.setState({ tvSubscriptions: response.data }));
+    }
+
     render() {
         return (
             <Wrapper>
-                <form className={styles.Form}>
+                <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h1>TV SUBSCRIPTION</h1>
                     <h3>PURCHASE DATA</h3>
                     <label>Cable Name</label>
@@ -40,9 +57,9 @@ class index extends Component {
                         <option value="" hidden>
                             Cable Name
                         </option>
-                        <option value="1995">DSTV</option>
-                        <option value="1995">GOTV</option>
-                        <option value="1995">STARTIMES</option>
+                        <option value="dstv">DSTV</option>
+                        <option value="gotv">GOTV</option>
+                        <option value="startimes">STARTIMES</option>
                     </select>
                     <label>TV Plan</label>
                     <select
@@ -53,9 +70,19 @@ class index extends Component {
                         required
                     >
                         <option value="" hidden>
-                            Cable TV Plan
+                            TV Plan
                         </option>
-                        <option value="1995">9MOBLIE</option>
+                        {this.state.tvSubscriptions[this.state.networkProvider]
+                            ? this.state.tvSubscriptions[
+                                  this.state.networkProvider
+                              ].map((network, index) => {
+                                  return (
+                                      <option value={network.price} key={index}>
+                                          {network.name} --- ₦{network.price}
+                                      </option>
+                                  );
+                              })
+                            : null}
                     </select>
                     <label>Card Number</label>
                     <input

@@ -11,6 +11,9 @@ class index extends Component {
 
         this.state = {
             history: [],
+            success: 'rgb(0, 255, 106)',
+            pending: '#FEE440',
+            failed: '#EF233C',
         };
     }
 
@@ -32,21 +35,22 @@ class index extends Component {
                     <h3>Your Previous Transactions</h3>
                 </form>
                 {this.state.history
-                    ? this.state.history.reverse().map((trans) => {
+                    ? this.state.history.reverse().map((trans, index) => {
                           return (
                               <div
                                   className={[styles.card, styles.loose].join(
                                       " "
                                   )}
+                                  key={index}
                               >
                                   <div className={[styles.infos].join(" ")}>
                                       <h4>{trans.type}</h4>
-                                      <p>22:44, Nov 12, 2020</p>
+                                      <p>{trans.date}</p>
                                   </div>
-                                  <h2>₦{trans.amount}</h2>
+                                  <h2>₦{parseFloat(trans.amount)}</h2>
                                   <div className={[styles.infos].join(" ")}>
-                                      <p>Topped Up: {trans.reciever}</p>
-                                      <p className={styles.success}>Success</p>
+                                      <p><b>Topped Up:</b> {trans.reciever}</p>
+                                      <p className={styles.success} style={{backgroundColor: this.state[trans.status]}}>{trans.status[0].toUpperCase() + trans.status.slice(1)}</p>
                                   </div>
                               </div>
                           );

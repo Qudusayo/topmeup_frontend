@@ -27,10 +27,13 @@ class index extends Component {
     };
 
     componentDidMount() {
-        axios.get("http://localhost:8900/networkProviders").then((res) => {
-            this.setState({ dataSubscription: res.data });
-            console.log(res.data);
-        });
+        if (!sessionStorage.getItem("topuplab"))
+            return this.props.history.push("/login");
+        const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/dataSubscriptions`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        axios
+            .get(api, { headers: { Authorization: `Bearer ${token}` } })
+            .then((response) => this.setState({ dataSubscription: response.data }));
     }
 
     render() {

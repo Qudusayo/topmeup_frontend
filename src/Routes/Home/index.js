@@ -36,18 +36,23 @@ function index() {
                         info="Our Data delivery and wallet funding is automated, Airtime topup and data purchase are automated and get delivered to you almost instantly.."
                         src={logo1}
                         title="We're Fast"
+                        anim="fade-up"
                     />
                     <Card
                         styles="card30"
                         info="Your wallet is the safest means of transacting with your mobile airtime. Your funds in your wallet can be kept as long as you want and it’s secured."
                         src={logo2}
                         title="You're Safe"
+                        anim="fade-up"
+                        delay="50"
                     />
                     <Card
                         styles="card30"
                         info="With our several years of experience and engineers, we have learnt in the past years to be able to fully optimize our platform for reliability and dependability.."
                         src={logo3}
                         title="We're Reliable"
+                        anim="fade-up"
+                        delay="100"
                     />
                 </div>
 
@@ -71,6 +76,8 @@ function index() {
                         info="Making online recharge cheap and easy to buy at all time of the day Oziseff Telecom Services.com.ng"
                         src={logo5}
                         title="Airtime Top-Up"
+                        anim="fade-up"
+                        delay="100"
                     />
                     <Card
                         styles="card30"

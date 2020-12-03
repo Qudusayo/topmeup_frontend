@@ -18,16 +18,36 @@ class index extends Component {
         };
 
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange = (e) => {
         this.setState({ [e.target.id]: e.target.value });
     };
 
+    onSubmit = (e) => {
+        this.setState({ waiting: true });
+        e.preventDefault();
+        const data = {
+            discoName: this.state.discoName,
+            meterType: this.state.meterType,
+            meterNumber: this.state.meterNumber,
+            amount: this.state.amount,
+        };
+        console.log(data);
+        this.setState({
+            discoName: "",
+            meterType: "",
+            meterNumber: "",
+            amount: "",
+            waiting: false,
+        });
+    };
+
     render() {
         return (
             <Wrapper>
-                <form className={styles.Form}>
+                <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h1>BUY POWER</h1>
                     <h3>ELECTRICITY PAYMENT</h3>
                     <label>Disco Name</label>
@@ -81,7 +101,7 @@ class index extends Component {
                     <label>Amount</label>
                     <input
                         onChange={this.onChange}
-                        type="tel"
+                        type="number"
                         name="amount"
                         id="amount"
                         autoComplete="off"

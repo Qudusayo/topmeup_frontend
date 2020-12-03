@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import Swal from "sweetalert2";
 
 import Navbar from "./../../../Components/Navbar";
@@ -51,14 +52,8 @@ class index extends Component {
             timer: 3000,
             timerProgressBar: true,
             didOpen: (toast) => {
-                toast.addEventListener(
-                    "mouseenter",
-                    Swal.stopTimer
-                );
-                toast.addEventListener(
-                    "mouseleave",
-                    Swal.resumeTimer
-                );
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
         });
         if (
@@ -77,21 +72,17 @@ class index extends Component {
             return this.error("Password too short, min of 6 chars");
         } else {
             this.setState({ waiting: true });
-            fetch(`${process.env.REACT_APP_BACKEND_URI}/signup`, {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                    "Access-Control-Allow-Origin": "*"
-                },
-                body: JSON.stringify(data),
-            })
-                .then((res) => res.json())
+            axios
+                .post(
+                    `${process.env.REACT_APP_BACKEND_URI}/signup`,
+                    data
+                )
                 .then((response) => {
-                    if (response.error) {
+                    if (response.data.error) {
                         this.setState({
                             waiting: false,
                         });
-                        return this.error(response.errorMsg);
+                        return this.error(response.data.errorMsg);
                     } else {
                         this.setState({
                             firstName: "",
@@ -124,9 +115,28 @@ class index extends Component {
 
     error = (message) => {
         this.setState({ errorMessages: message });
-        setTimeout(() => {
+        this.errorAlert(message);
+    };
+
+    errorAlert = (message) => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+        });
+
+        Toast.fire({
+            icon: "error",
+            title: message,
+        }).then(() => {
             this.setState({ errorMessages: "" });
-        }, 5000);
+        });
     };
 
     render() {
@@ -197,7 +207,7 @@ class index extends Component {
                             id="username"
                             autoComplete="off"
                             placeholder="Username"
-                            value={this.state.username}
+                            value={this.state.userame}
                             required={true}
                             disabled={this.state.waiting}
                         />
@@ -235,11 +245,6 @@ class index extends Component {
                             required={true}
                             disabled={this.state.waiting}
                         />
-                        {this.state.errorMessages ? (
-                            <span className={styles.error}>
-                                {this.state.errorMessages}
-                            </span>
-                        ) : null}
                         <button type="submit" disabled={this.state.waiting}>
                             {this.state.waiting ? (
                                 <img

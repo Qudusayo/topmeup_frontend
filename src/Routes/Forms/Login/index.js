@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -42,46 +43,30 @@ class Index extends Component {
             timer: 3000,
             timerProgressBar: true,
             didOpen: (toast) => {
-                toast.addEventListener(
-                    "mouseenter",
-                    Swal.stopTimer
-                );
-                toast.addEventListener(
-                    "mouseleave",
-                    Swal.resumeTimer
-                );
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
         });
-        
+
         if (!data.userName) {
             return this.error("Username is required");
         } else if (!data.password) {
             return this.error("Password is required");
         } else {
             this.setState({ waiting: true });
-            console.log(`${process.env.REACT_APP_BACKEND_URI}`)
-            fetch(`${process.env.REACT_APP_BACKEND_URI}/login`, {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                    "Access-Control-Allow-Origin": "*"
-                },
-                body: JSON.stringify(data),
-            })
-                .then((res) => res.json())
+            axios
+                .post(`${process.env.REACT_APP_BACKEND_URI}/login`, data)
                 .then((response) => {
-                    console.log(response);
-                    if (response.errorMsg) {
+                    if (response.data.errorMsg) {
                         this.setState({ waiting: false });
                         return this.error("Invalid username or password");
                     } else {
                         sessionStorage.setItem(
                             "topuplab",
-                            JSON.stringify({ token: response.accessToken })
+                            JSON.stringify({ token: response.data.accessToken })
                         );
                         this.props.authUser();
                         this.props.getUserInfo();
-                       
 
                         Toast.fire({
                             icon: "success",
@@ -101,29 +86,29 @@ class Index extends Component {
 
     error = (message) => {
         this.setState({ errorMessages: message });
-        this.errorAlert(message)
+        this.errorAlert(message);
     };
 
     errorAlert = (message) => {
         const Toast = Swal.mixin({
             toast: true,
-            position: 'top-end',
+            position: "top-end",
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
             didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-          })
-          
-          Toast.fire({
-            icon: 'error',
-            title: message
-          }).then(() => {
-            this.setState({ errorMessages: '' });
-          })
-    }
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+        });
+
+        Toast.fire({
+            icon: "error",
+            title: message,
+        }).then(() => {
+            this.setState({ errorMessages: "" });
+        });
+    };
 
     render() {
         return (

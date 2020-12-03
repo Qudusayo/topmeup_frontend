@@ -112,7 +112,7 @@ class index extends Component {
                         <option value="" hidden>
                             Network Provider
                         </option>
-                        <option value="9mobile">9MOBLIE</option>
+                        <option value="nmobile">9MOBLIE</option>
                         <option value="airtel">AIRTEL</option>
                         <option value="globacom">GLOBACOM</option>
                         <option value="mtn">MTN</option>

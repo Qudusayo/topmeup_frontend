@@ -9,7 +9,7 @@ function Index(props) {
     return (
         <div className={styles.MainNav}>
             <h2>
-                <Link to="/">TOP<span className={styles.yellow}>ME</span>UP</Link>
+                <Link to="/">TOP<span className={styles.yellow}>UP</span>LAB</Link>
             </h2>
             <ul className={visible ? styles.visibleNav : styles.inVisibleNav}>
                 <li>

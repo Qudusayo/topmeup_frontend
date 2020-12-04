@@ -37,6 +37,7 @@ function index() {
                         src={logo1}
                         title="We're Fast"
                         anim="fade-up"
+                        delay="50"
                     />
                     <Card
                         styles="card30"
@@ -44,7 +45,7 @@ function index() {
                         src={logo2}
                         title="You're Safe"
                         anim="fade-up"
-                        delay="50"
+                        delay="450"
                     />
                     <Card
                         styles="card30"
@@ -52,7 +53,7 @@ function index() {
                         src={logo3}
                         title="We're Reliable"
                         anim="fade-up"
-                        delay="100"
+                        delay="850"
                     />
                 </div>
 
@@ -70,6 +71,8 @@ function index() {
                         info="Sign up now and start enjoying extremely cheaper data plans to all networks in Nigeria."
                         src={logo4}
                         title="Data Bundle"
+                        anim="fade-up"
+                        delay="50"
                     />
                     <Card
                         styles="card30"
@@ -77,13 +80,15 @@ function index() {
                         src={logo5}
                         title="Airtime Top-Up"
                         anim="fade-up"
-                        delay="100"
+                        delay="450"
                     />
                     <Card
                         styles="card30"
                         info="Instant Activation of Cable subscription with favourable discount ."
                         src={logo6}
                         title="Cable/TV Subscription"
+                        anim="fade-up"
+                        delay="850"
                     />
                 </div>
                 <div className={styles.cards}>
@@ -92,18 +97,24 @@ function index() {
                         info="We offer this service at a very cheap and attractive rate please contact the admin on 07016412041 to get current conversion rate."
                         src={logo7}
                         title="Airtime To Cash"
+                        anim="fade-up"
+                        delay="1250"
                     />
                     <Card
                         styles="card30"
                         info="Because we understand your needs, we have made bills and utilities payment more convenient."
                         src={logo8}
                         title="Utilities Payment"
+                        anim="fade-up"
+                        delay="1650"
                     />
                     <Card
                         styles="card30"
                         info="Send BulkSMS to any number for as low as just 1.5kobo per unit."
                         src={logo9}
                         title="Bulk Sms"
+                        anim="fade-up"
+                        delay="2050"
                     />
                 </div>
                 <div className={[styles.titles, "center"].join(" ")}>
@@ -115,19 +126,19 @@ function index() {
                 </div>
 
                 <div className={styles.cards}>
-                    <Card styles="card25" network="mtn">
+                    <Card styles="card25" network="mtn" anim="fade-up" delay="50">
                         <h1>MTN</h1>
                         {cardInfo("₦300 1GB")}
                     </Card>
-                    <Card styles="card25" network="airtel">
+                    <Card styles="card25" network="airtel" anim="fade-up" delay="450">
                         <h1>AIRTEL</h1>
                         {cardInfo("₦920 1GB")}
                     </Card>
-                    <Card styles="card25" network="glo">
+                    <Card styles="card25" network="glo" anim="fade-up" delay="850">
                         <h1>GLO</h1>
                         {cardInfo("₦450 1GB")}
                     </Card>
-                    <Card styles="card25" network="nmobile">
+                    <Card styles="card25" network="nmobile" anim="fade-up" delay="1250">
                         <h1>9MOBILE</h1>
                         {cardInfo("₦700 1.5GB")}
                     </Card>

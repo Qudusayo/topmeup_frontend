@@ -13,7 +13,7 @@ function Index() {
             <div className={styles.flex}>
                 <div className={styles.info}>
                     <h2>
-                        TOPE<span className="yellow">ME</span>UP
+                        TOP<span className="yellow">UP</span>LAB
                     </h2>
                     We offer instant recharge of Airtime, Databundle, CableTV
                     (DStv, GOtv & Startimes), Electricity Bill Payemnt and so

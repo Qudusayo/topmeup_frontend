@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import styles from "./style.module.scss";
+import 'aos/dist/aos.css'
 
 import location from "./../../../assets/images/logos/location.svg";
 import mail from "./../../../assets/images/logos/mail.svg";
@@ -12,7 +13,7 @@ class index extends Component {
             <>
                 <div className={styles.Contacts}>
                     <div className={styles.Cards}>
-                        <div className={styles.Card}>
+                        <div className={styles.Card} data-aos-duration="500" data-aos="fade-up" data-aos-delay="50">
                             <img src={location} alt="location" />
                             <h2>Location</h2>
                             <p>
@@ -20,7 +21,7 @@ class index extends Component {
                                 Oyo State, Nigeria.
                             </p>
                         </div>
-                        <div className={styles.Card}>
+                        <div className={styles.Card} data-aos-duration="500" data-aos="fade-up" data-aos-delay="450">
                             <img src={phone} alt="phone" />
                             <h2>Phone</h2>
                             <p>
@@ -29,7 +30,7 @@ class index extends Component {
                                 Help: <span>+234 7042 4676 56</span>
                             </p>
                         </div>
-                        <div className={styles.Card}>
+                        <div className={styles.Card} data-aos-duration="500" data-aos="fade-up" data-aos-delay="850">
                             <img src={mail} alt="mail" />
                             <h2>Email</h2>
                             <p>

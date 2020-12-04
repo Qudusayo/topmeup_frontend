@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import Wrapper from "./../../Components/Container";
+import swalt from "@sweetalert/with-react";
+import Swal from "sweetalert2";
 import axios from "axios";
 
+import Wrapper from "./../../Components/Container";
 import spinner from "./../../assets/images/logos/loading.png";
 
 import styles from "./../Transfer/style.module.scss";
@@ -19,11 +21,80 @@ class index extends Component {
         };
 
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange = (e) => {
         this.setState({ [e.target.id]: e.target.value });
         console.log(this.state.dataSubscription[this.state.networkProvider]);
+    };
+
+    onSubmit = (e) => {
+        this.setState({ waiting: true });
+        e.preventDefault();
+        const data = {
+            networkProvider: this.state.networkProvider,
+            dataPlan: this.state.dataPlan,
+            reciever: this.state.reciever,
+        };
+        const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/data`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+
+        axios
+            .post(api, data, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((res) => {
+                console.log(res.data);
+                if (!res.data.error) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener(
+                                "mouseenter",
+                                Swal.stopTimer
+                            );
+                            toast.addEventListener(
+                                "mouseleave",
+                                Swal.resumeTimer
+                            );
+                        },
+                    });
+
+                    Toast.fire({
+                        icon: "success",
+                        title: "Data Subscription successful",
+                    });
+                    this.setState({
+                        networkProvider: "",
+                        dataPlan: "",
+                        reciever: "",
+                        waiting: false,
+                    });
+                } else {
+                    swalt(
+                        "Data Subscription Failed",
+                        `${res.data.errorMsg}`,
+                        "warning"
+                    );
+                    this.setState({ waiting: false });
+                }
+            })
+            .catch((err) => {
+                swalt(
+                    "Data Subscription Failed",
+                    "Error  completing the transaction",
+                    "error"
+                );
+                this.setState({ waiting: false });
+            });
     };
 
     componentDidMount() {
@@ -33,13 +104,15 @@ class index extends Component {
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
         axios
             .get(api, { headers: { Authorization: `Bearer ${token}` } })
-            .then((response) => this.setState({ dataSubscription: response.data }));
+            .then((response) =>
+                this.setState({ dataSubscription: response.data })
+            );
     }
 
     render() {
         return (
             <Wrapper>
-                <form className={styles.Form}>
+                <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h1>DATA BUNDLE</h1>
                     <h3>PURCHASE DATA</h3>
                     <label>Network Provider</label>

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Wrapper from "./../../Components/Container";
-
+import axios from "axios";
+import swalt from "@sweetalert/with-react";
+import Swal from "sweetalert2";
 import spinner from "./../../assets/images/logos/loading.png";
 
 import styles from "./../Transfer/style.module.scss";
@@ -34,13 +36,65 @@ class index extends Component {
             meterNumber: this.state.meterNumber,
             amount: this.state.amount,
         };
-        console.log(data);
-        this.setState({
-            discoName: "",
-            meterType: "",
-            meterNumber: "",
-            amount: "",
-            waiting: false,
+        const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/electricity`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+
+        axios
+        .post(api, data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        .then((res) => {
+            console.log(res.data);
+            if (!res.data.error) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener(
+                            "mouseenter",
+                            Swal.stopTimer
+                        );
+                        toast.addEventListener(
+                            "mouseleave",
+                            Swal.resumeTimer
+                        );
+                    },
+                });
+
+                Toast.fire({
+                    icon: "success",
+                    title: "Power Payment successful",
+                });
+                this.setState({
+                    discoName: "",
+                    meterType: "",
+                    meterNumber: "",
+                    amount: "",
+                    waiting: false,
+                });
+                this.props.history.push("/dashboard");
+            } else {
+                swalt(
+                    "Power Payment Failed",
+                    `${res.data.errorMsg}`,
+                    "warning"
+                );
+                this.setState({ waiting: false });
+            }
+        })
+        .catch((err) => {
+            swalt(
+                "Power Payment Failed",
+                "Error  completing the transaction",
+                "error"
+            );
+            this.setState({ waiting: false });
         });
     };
 

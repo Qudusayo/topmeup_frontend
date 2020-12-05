@@ -30,7 +30,6 @@ class index extends Component {
     };
 
     onSubmit = (e) => {
-        this.setState({ waiting: true });
         e.preventDefault();
         const data = {
             networkProvider: this.state.networkProvider,
@@ -40,61 +39,102 @@ class index extends Component {
         const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/data`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
 
-        axios
-            .post(api, data, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-            .then((res) => {
-                console.log(res.data);
-                if (!res.data.error) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener(
-                                "mouseenter",
-                                Swal.stopTimer
-                            );
-                            toast.addEventListener(
-                                "mouseleave",
-                                Swal.resumeTimer
-                            );
-                        },
-                    });
+        if (
+            !["mtn", "nmobile", "globacom", "airtel"].includes(
+                data.networkProvider
+            )
+        ) {
+            return swalt(
+                "Data Purchase Failed",
+                "Invalid transaction details",
+                "error"
+            );
+        } else if (
+            data.reciever.length < 11 ||
+            data.reciever.length > 11 ||
+            data.reciever[0] !== "0"
+        ) {
+            return swalt(
+                "Data Purchase Failed",
+                "Invalid Phone Number",
+                "error"
+            );
+        }
 
-                    Toast.fire({
-                        icon: "success",
-                        title: "Data Subscription successful",
+        Swal.fire({
+            title: "Verify Purchase",
+            text: "You won't be able to revert this!",
+            html: `<div><p style="display:flex;">Amount:-- <b>₦${
+                this.state.dataPlan
+            }</b></p><p style="display:flex;">Network Provider:-- <b>${this.state.networkProvider.toUpperCase()}</b></p> <p style="display:flex;">Phone Number:-- <b>${
+                this.state.reciever
+            }</b></p></div>`,
+            icon: "question",
+            backdrop: "#00000090",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Purchase Data Plan",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.setState({ waiting: true });
+                axios
+                    .post(api, data, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    })
+                    .then((res) => {
+                        console.log(res.data);
+                        if (!res.data.error) {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener(
+                                        "mouseenter",
+                                        Swal.stopTimer
+                                    );
+                                    toast.addEventListener(
+                                        "mouseleave",
+                                        Swal.resumeTimer
+                                    );
+                                },
+                            });
+
+                            Toast.fire({
+                                icon: "success",
+                                title: "Data Subscription successful",
+                            });
+                            this.setState({
+                                networkProvider: "",
+                                dataPlan: "",
+                                reciever: "",
+                                waiting: false,
+                            });
+                        } else {
+                            swalt(
+                                "Data Subscription Failed",
+                                `${res.data.errorMsg}`,
+                                "warning"
+                            );
+                            this.setState({ waiting: false });
+                        }
+                    })
+                    .catch((err) => {
+                        swalt(
+                            "Data Subscription Failed",
+                            "Error  completing the transaction",
+                            "error"
+                        );
+                        this.setState({ waiting: false });
                     });
-                    this.setState({
-                        networkProvider: "",
-                        dataPlan: "",
-                        reciever: "",
-                        waiting: false,
-                    });
-                } else {
-                    swalt(
-                        "Data Subscription Failed",
-                        `${res.data.errorMsg}`,
-                        "warning"
-                    );
-                    this.setState({ waiting: false });
-                }
-            })
-            .catch((err) => {
-                swalt(
-                    "Data Subscription Failed",
-                    "Error  completing the transaction",
-                    "error"
-                );
-                this.setState({ waiting: false });
-            });
+            }
+        });
     };
 
     componentDidMount() {

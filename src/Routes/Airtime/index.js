@@ -70,7 +70,7 @@ class index extends Component {
             text: "You won't be able to revert this!",
             html: `<div><p style="display:flex;">Amount:-- <b>₦${
                 this.state.amount
-            }</b></p><p style="display:flex;">Network Provider:-- <b>${this.state.networkProvider.toUpperCase()}</b></p> <p style="display:flex;">Phone Number:-- <b>${
+            }</b></p><p style="display:flex;">Network Provider:-- <b>${this.state.networkProvider.toUpperCase()}</b></p> <p style="display:flex;">Number:-- <b>${
                 this.state.reciever
             }</b></p></div>`,
             icon: "question",

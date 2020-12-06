@@ -117,7 +117,7 @@ class Index extends Component {
                 <div className={styles.FormContainer}>
                     <h2 className={styles.title}>
                         <Link to="/">
-                            TOP <span className="yellow">ME</span> UP
+                            TOP <span className="yellow">UP</span> LAB
                         </Link>
                     </h2>
                     <span>LOGIN USER</span>

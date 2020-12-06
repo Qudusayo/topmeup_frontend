@@ -28,7 +28,6 @@ class index extends Component {
     };
 
     onSubmit = (e) => {
-        this.setState({ waiting: true });
         e.preventDefault();
         const data = {
             discoName: this.state.discoName,
@@ -39,62 +38,96 @@ class index extends Component {
         const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/electricity`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
 
-        axios
-        .post(api, data, {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-        })
-        .then((res) => {
-            console.log(res.data);
-            if (!res.data.error) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener(
-                            "mouseenter",
-                            Swal.stopTimer
-                        );
-                        toast.addEventListener(
-                            "mouseleave",
-                            Swal.resumeTimer
-                        );
-                    },
-                });
-
-                Toast.fire({
-                    icon: "success",
-                    title: "Power Payment successful",
-                });
-                this.setState({
-                    discoName: "",
-                    meterType: "",
-                    meterNumber: "",
-                    amount: "",
-                    waiting: false,
-                });
-                this.props.history.push("/dashboard");
-            } else {
-                swalt(
-                    "Power Payment Failed",
-                    `${res.data.errorMsg}`,
-                    "warning"
-                );
-                this.setState({ waiting: false });
-            }
-        })
-        .catch((err) => {
-            swalt(
-                "Power Payment Failed",
-                "Error  completing the transaction",
+        if (
+            !["ibedc", "ekedc", "phed", "ikedc", "jed", "kedco"].includes(
+                data.discoName.toLowerCase()
+            )
+        ) {
+            return swalt("Bill Payment Failed", "Invalid disco name", "error");
+        } else if (
+            !["prepaid", "postpaid"].includes(data.meterType.toLowerCase())
+        ) {
+            return swalt("Bill Payment Failed", "Invalid meter type", "error");
+        } else if (data.amount < 1000) {
+            return swalt(
+                "Bill Payment Failed",
+                "Amount Should be greater or equal to 1000",
                 "error"
             );
-            this.setState({ waiting: false });
+        }
+
+        Swal.fire({
+            title: "Verify Purchase",
+            text: "You won't be able to revert this!",
+            html: `<div><p style="display:flex;">Amount:-- <b>₦${
+                data.amount
+            }</b></p><p style="display:flex;">Disco Name:-- <b>${data.discoName.toUpperCase()}</b></p> <p style="display:flex;">Metre Type:-- <b>${data.meterType.toUpperCase()}</b></p><p style="display:flex;">Metre Number:-- <b>${data.meterNumber}</b></p></div`,
+            icon: "question",
+            backdrop: "#00000090",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Purchase Power",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.setState({ waiting: true });
+                axios
+                    .post(api, data, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    })
+                    .then((res) => {
+                        if (!res.data.error) {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener(
+                                        "mouseenter",
+                                        Swal.stopTimer
+                                    );
+                                    toast.addEventListener(
+                                        "mouseleave",
+                                        Swal.resumeTimer
+                                    );
+                                },
+                            });
+
+                            Toast.fire({
+                                icon: "success",
+                                title: "Power Payment successful",
+                            });
+                            this.setState({
+                                discoName: "",
+                                meterType: "",
+                                meterNumber: "",
+                                amount: "",
+                                waiting: false,
+                            });
+                            this.props.history.push("/dashboard");
+                        } else {
+                            swalt(
+                                "Power Payment Failed",
+                                `${res.data.errorMsg}`,
+                                "warning"
+                            );
+                            this.setState({ waiting: false });
+                        }
+                    })
+                    .catch((err) => {
+                        swalt(
+                            "Power Payment Failed",
+                            "Error  completing the transaction",
+                            "error"
+                        );
+                        this.setState({ waiting: false });
+                    });
+            }
         });
     };
 

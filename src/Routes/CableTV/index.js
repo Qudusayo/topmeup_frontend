@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import swalt from "@sweetalert/with-react";
+import Swal from "sweetalert2";
 import Wrapper from "./../../Components/Container";
 
 import spinner from "./../../assets/images/logos/loading.png";
@@ -28,6 +30,104 @@ class index extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+
+        const data = {
+            networkProvider: this.state.networkProvider,
+            tvPlan: this.state.tvPlan,
+            cardNumber: this.state.cardNumber,
+        };
+        const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/cableTV`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+
+        if (
+            !["gotv", "dstv", "startimes"].includes(
+                data.networkProvider.toLowerCase()
+            )
+        ) {
+            return swalt("TV Payment Failed", "Invalid disco name", "error");
+        } else if (!data.cardNumber) {
+            return swalt(
+                "Bill Payment Failed",
+                "Card number required",
+                "error"
+            );
+        } else if (!data.tvPlan) {
+            return swalt("TV Payment Failed", "Kindly select a plan", "error");
+        }
+
+        Swal.fire({
+            title: "Verify Purchase",
+            text: "You won't be able to revert this!",
+            html: `<div><p style="display:flex;">Amount:-- <b>₦${
+                data.cardNumber
+            }</b></p><p style="display:flex;">Disco Name:-- <b>${data.networkProvider.toUpperCase()}</b></p> <p style="display:flex;">Plan Amount:-- <b>${data.tvPlan.toUpperCase()}</b></p></div>`,
+            icon: "question",
+            backdrop: "#00000090",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Purchase Power",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.setState({ waiting: true });
+                axios
+                    .post(api, data, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    })
+                    .then((res) => {
+                        if (!res.data.error) {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener(
+                                        "mouseenter",
+                                        Swal.stopTimer
+                                    );
+                                    toast.addEventListener(
+                                        "mouseleave",
+                                        Swal.resumeTimer
+                                    );
+                                },
+                            });
+
+                            Toast.fire({
+                                icon: "success",
+                                title: "Power Payment successful",
+                            });
+                            this.setState({
+                                discoName: "",
+                                meterType: "",
+                                meterNumber: "",
+                                amount: "",
+                                waiting: false,
+                            });
+                            this.props.history.push("/dashboard");
+                        } else {
+                            swalt(
+                                "Power Payment Failed",
+                                `${res.data.errorMsg}`,
+                                "warning"
+                            );
+                            this.setState({ waiting: false });
+                        }
+                    })
+                    .catch((err) => {
+                        swalt(
+                            "Power Payment Failed",
+                            "Error  completing the transaction",
+                            "error"
+                        );
+                        this.setState({ waiting: false });
+                    });
+            }
+        });
     }
 
     componentDidMount() {
@@ -37,7 +137,9 @@ class index extends Component {
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
         axios
             .get(api, { headers: { Authorization: `Bearer ${token}` } })
-            .then((response) => this.setState({ tvSubscriptions: response.data }));
+            .then((response) =>
+                this.setState({ tvSubscriptions: response.data })
+            );
     }
 
     render() {

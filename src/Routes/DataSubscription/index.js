@@ -26,7 +26,6 @@ class index extends Component {
 
     onChange = (e) => {
         this.setState({ [e.target.id]: e.target.value });
-        console.log(this.state.dataSubscription[this.state.networkProvider]);
     };
 
     onSubmit = (e) => {
@@ -86,7 +85,6 @@ class index extends Component {
                         },
                     })
                     .then((res) => {
-                        console.log(res.data);
                         if (!res.data.error) {
                             const Toast = Swal.mixin({
                                 toast: true,

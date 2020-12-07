@@ -43,7 +43,6 @@ class index extends Component {
                 },
             })
             .then((res) => {
-                console.log(res.data);
                 if (!res.data.error) {
                     const Toast = Swal.mixin({
                         toast: true,

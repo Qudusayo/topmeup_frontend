@@ -44,7 +44,7 @@ class index extends Component {
                                   key={index}
                               >
                                   <div className={[styles.infos].join(" ")}>
-                                      <h4>{trans.type}</h4>
+                                      <h4>{trans.type} {trans.id ? <small>( {trans.id} )</small> :  null}</h4>
                                       <p>{trans.date}</p>
                                   </div>
                                   <h2>₦{parseFloat(trans.amount)}</h2>

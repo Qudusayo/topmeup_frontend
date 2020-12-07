@@ -44,7 +44,6 @@ class index extends Component {
                 },
             })
             .then((res) => {
-                console.log(res.data);
                 if (!res.data.error) {
                     swal(
                         "Request Sent",

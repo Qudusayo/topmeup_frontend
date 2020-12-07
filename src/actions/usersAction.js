@@ -21,7 +21,6 @@ export const getUserInfo = () => (dispatch) => {
     axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {
-            console.log(res.data);
             dispatch({
                 type: GET_USER_INFO,
                 payload: res.data,

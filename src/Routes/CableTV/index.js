@@ -59,14 +59,16 @@ class index extends Component {
             title: "Verify Purchase",
             text: "You won't be able to revert this!",
             html: `<div><p style="display:flex;">Amount:-- <b>₦${
+                data.tvPlan
+            }</b></p><p style="display:flex;">Disco Name:-- <b>${data.networkProvider.toUpperCase()}</b></p> <p style="display:flex;">Card Number:-- <b>${
                 data.cardNumber
-            }</b></p><p style="display:flex;">Disco Name:-- <b>${data.networkProvider.toUpperCase()}</b></p> <p style="display:flex;">Plan Amount:-- <b>${data.tvPlan.toUpperCase()}</b></p></div>`,
+            }</b></p></div>`,
             icon: "question",
             backdrop: "#00000090",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Purchase Power",
+            confirmButtonText: "Purchase TV",
         }).then((result) => {
             if (result.isConfirmed) {
                 this.setState({ waiting: true });
@@ -99,19 +101,17 @@ class index extends Component {
 
                             Toast.fire({
                                 icon: "success",
-                                title: "Power Payment successful",
+                                title: "TV Payment successful",
                             });
                             this.setState({
-                                discoName: "",
-                                meterType: "",
-                                meterNumber: "",
-                                amount: "",
+                                networkProvider: "",
+                                tvPlan: "",
+                                cardNumber: "",
                                 waiting: false,
                             });
-                            this.props.history.push("/dashboard");
                         } else {
                             swalt(
-                                "Power Payment Failed",
+                                "TV Payment Failed",
                                 `${res.data.errorMsg}`,
                                 "warning"
                             );
@@ -120,7 +120,7 @@ class index extends Component {
                     })
                     .catch((err) => {
                         swalt(
-                            "Power Payment Failed",
+                            "TV Payment Failed",
                             "Error  completing the transaction",
                             "error"
                         );

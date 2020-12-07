@@ -161,7 +161,7 @@ class index extends Component {
                         min="1"
                         max="5"
                     />
-                    <button type="submit" disabled={this.state.waiting}>
+                    {/* <button type="submit" disabled={this.state.waiting}>
                         {this.state.waiting ? (
                             <img
                                 className={styles.spinner}
@@ -171,7 +171,7 @@ class index extends Component {
                         ) : (
                             "REQUEST PIN"
                         )}
-                    </button>
+                    </button> */}
                 </form>
             </Wrapper>
         );

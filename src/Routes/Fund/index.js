@@ -55,7 +55,7 @@ class index extends Component {
                         amount: "",
                         waiting: false,
                     });
-                    this.props.history.push("/dashboard")
+                    this.props.history.push("/dashboard");
                 } else {
                     swal(
                         "Error Sending Info",
@@ -94,7 +94,7 @@ class index extends Component {
                 <form className={styles.Form}>
                     <h1>MAKE PAYMENT</h1>
                     <h3>
-                        Payment can be done by using any of the options below:{" "}
+                        Payment can be done by using any of the options below:
                     </h3>
                     <label>Payment Method</label>
                     <select
@@ -138,11 +138,35 @@ class index extends Component {
                                 </p>
                             </div>
                             <div className={styles.bankInfo}>
-                                <p>
-                                    Kindly Fill the form below if transferred
-                                </p>
+                                <p><b>Kindly Fill the form below if transferred</b></p>
+                                <p><b>Note: AIf you've filled the form nd your wallet is not credited after 15 minutes, Kindly contact the <a style={{textDecoration: "none", color: "#127EB1"}} href="https://wa.me/message/YCC5HDYHVI4HA1" target="_blank" rel="noreferrer">ADMIN Here</a></b></p>
                             </div>
                         </>
+                    ) : null}
+                    {this.state.payment === "abPayment" ||
+                    this.state.payment === "onlinePayment" ? (
+                        <div className={styles.bankInfo}>
+                            <h1>Online Payment</h1>
+                            <h3>Payment type not available yet</h3>
+                            <p>
+                                We're working hard to get you the best payment
+                                method. Kindly use the Bank Payment (Bank
+                                Transfer) Method as of now. We will inform you
+                                when this payment type is active. Kindly bear
+                                with us. Thanks for using our service
+                            </p>
+                        </div>
+                    ) : null}
+                    {this.state.payment === "airtimePayment" ? (
+                        <div className={styles.bankInfo}>
+                            <h1>Airtime Payment</h1>
+                            <h3>Payment not automated</h3>
+                            <p>
+                                We're working hard to get you the best payment
+                                method. Kindly contact the admin on how to make payment with this. Note that charges may apply with this type of payment. Kindly bear
+                                with us. Thanks for using our service
+                            </p>
+                        </div>
                     ) : null}
                 </form>
                 {this.state.payment === "bankPayment" ? (

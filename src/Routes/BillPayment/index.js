@@ -3,11 +3,15 @@ import Wrapper from "./../../Components/Container";
 import axios from "axios";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+import { getTransactionHistory } from "./../../actions/usersAction";
 import spinner from "./../../assets/images/logos/loading.png";
 
 import styles from "./../Transfer/style.module.scss";
 
-class index extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
 
@@ -61,7 +65,9 @@ class index extends Component {
             text: "You won't be able to revert this!",
             html: `<div><p style="display:flex;">Amount:-- <b>₦${
                 data.amount
-            }</b></p><p style="display:flex;">Disco Name:-- <b>${data.discoName.toUpperCase()}</b></p> <p style="display:flex;">Metre Type:-- <b>${data.meterType.toUpperCase()}</b></p><p style="display:flex;">Metre Number:-- <b>${data.meterNumber}</b></p></div`,
+            }</b></p><p style="display:flex;">Disco Name:-- <b>${data.discoName.toUpperCase()}</b></p> <p style="display:flex;">Metre Type:-- <b>${data.meterType.toUpperCase()}</b></p><p style="display:flex;">Metre Number:-- <b>${
+                data.meterNumber
+            }</b></p></div`,
             icon: "question",
             backdrop: "#00000090",
             showCancelButton: true,
@@ -109,6 +115,7 @@ class index extends Component {
                                 amount: "",
                                 waiting: false,
                             });
+                            this.props.getTransactionHistory();
                             this.props.history.push("/dashboard");
                         } else {
                             swalt(
@@ -216,4 +223,8 @@ class index extends Component {
     }
 }
 
-export default index;
+Index.propsTypes = {
+    getTransactionHistory: PropTypes.func.isRequired,
+};
+
+export default connect("", { getTransactionHistory })(Index);

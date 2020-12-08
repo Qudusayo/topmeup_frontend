@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import swal from "@sweetalert/with-react";
 import axios from "axios";
-
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import Wrapper from "./../../Components/Container";
 
+import { getTransactionHistory } from "./../../actions/usersAction";
 import spinner from "./../../assets/images/logos/loading.png";
 
 import styles from "./../Transfer/style.module.scss";
 
-class index extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
 
@@ -55,6 +57,7 @@ class index extends Component {
                         amount: "",
                         waiting: false,
                     });
+                    this.props.getTransactionHistory();
                     this.props.history.push("/dashboard");
                 } else {
                     swal(
@@ -138,8 +141,30 @@ class index extends Component {
                                 </p>
                             </div>
                             <div className={styles.bankInfo}>
-                                <p><b>Kindly Fill the form below if transferred</b></p>
-                                <p><b>Note: AIf you've filled the form nd your wallet is not credited after 15 minutes, Kindly contact the <a style={{textDecoration: "none", color: "#127EB1"}} href="https://wa.me/message/YCC5HDYHVI4HA1" target="_blank" rel="noreferrer">ADMIN Here</a></b></p>
+                                <p>
+                                    <b>
+                                        Kindly Fill the form below if
+                                        transferred
+                                    </b>
+                                </p>
+                                <p>
+                                    <b>
+                                        Note: AIf you've filled the form nd your
+                                        wallet is not credited after 15 minutes,
+                                        Kindly contact the{" "}
+                                        <a
+                                            style={{
+                                                textDecoration: "none",
+                                                color: "#127EB1",
+                                            }}
+                                            href="https://wa.me/message/YCC5HDYHVI4HA1"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            ADMIN Here
+                                        </a>
+                                    </b>
+                                </p>
                             </div>
                         </>
                     ) : null}
@@ -163,8 +188,10 @@ class index extends Component {
                             <h3>Payment not automated</h3>
                             <p>
                                 We're working hard to get you the best payment
-                                method. Kindly contact the admin on how to make payment with this. Note that charges may apply with this type of payment. Kindly bear
-                                with us. Thanks for using our service
+                                method. Kindly contact the admin on how to make
+                                payment with this. Note that charges may apply
+                                with this type of payment. Kindly bear with us.
+                                Thanks for using our service
                             </p>
                         </div>
                     ) : null}
@@ -216,4 +243,8 @@ class index extends Component {
     }
 }
 
-export default index;
+Index.propsTypes = {
+    getTransactionHistory: PropTypes.func.isRequired,
+};
+
+export default connect("", { getTransactionHistory })(Index);

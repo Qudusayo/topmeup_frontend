@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import axios from "axios";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+import { getTransactionHistory } from "./../../actions/usersAction";
 import Wrapper from "./../../Components/Container";
 
 import spinner from "./../../assets/images/logos/loading.png";
 
 import styles from "./style.module.scss";
 
-class index extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
 
@@ -93,6 +97,7 @@ class index extends Component {
                                 amount: "",
                                 reciever: "",
                             });
+                            this.props.getTransactionHistory();
                             this.props.history.push("/dashboard");
                         } else {
                             Swal.fire({
@@ -180,4 +185,8 @@ class index extends Component {
     }
 }
 
-export default index;
+Index.propsTypes = {
+    getTransactionHistory: PropTypes.func.isRequired,
+};
+
+export default connect("", { getTransactionHistory })(Index);

@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
 import axios from "axios";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+import { getTransactionHistory } from "./../../actions/usersAction";
 
 import Wrapper from "./../../Components/Container";
 import spinner from "./../../assets/images/logos/loading.png";
 
 import styles from "./../Transfer/style.module.scss";
 
-class index extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
 
@@ -114,6 +118,7 @@ class index extends Component {
                                 reciever: "",
                                 waiting: false,
                             });
+                            this.props.getTransactionHistory();
                         } else {
                             swalt(
                                 "Data Subscription Failed",
@@ -223,4 +228,8 @@ class index extends Component {
     }
 }
 
-export default index;
+Index.propsTypes = {
+    getTransactionHistory: PropTypes.func.isRequired,
+};
+
+export default connect("", { getTransactionHistory })(Index);

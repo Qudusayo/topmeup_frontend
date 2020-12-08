@@ -1,30 +1,19 @@
 import React, { Component } from "react";
 import Wrapper from "./../../Components/Container";
-import axios from "axios";
-// import spinner from "./../../assets/images/logos/loading.png";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 import styles from "./../Transfer/style.module.scss";
 
-class index extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            history: [],
             success: 'rgb(0, 255, 106)',
             pending: '#FEE440',
             failed: '#EF233C',
         };
-    }
-
-    componentDidMount() {
-        if (!sessionStorage.getItem("topuplab"))
-            return this.props.history.push("/login");
-        const api = `${process.env.REACT_APP_BACKEND_URI}/getHistory`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
-        axios
-            .get(api, { headers: { Authorization: `Bearer ${token}` } })
-            .then((response) => this.setState({ history: response.data }));
     }
 
     render() {
@@ -34,8 +23,8 @@ class index extends Component {
                     <h1>Transactions</h1>
                     <h3>Your Previous Transactions</h3>
                 </form>
-                {this.state.history
-                    ? this.state.history.reverse().map((trans, index) => {
+                {this.props.history
+                    ? this.props.history.reverse().map((trans, index) => {
                           return (
                               <div
                                   className={[styles.card, styles.loose].join(
@@ -61,4 +50,14 @@ class index extends Component {
     }
 }
 
-export default index;
+
+Index.propTypes = {
+    history: PropTypes.array.isRequired
+};
+
+const mapStateToProps = (state) => ({
+    auth: state.user.auth,
+    history: state.user.history,
+});
+
+export default connect(mapStateToProps, {})(Index);

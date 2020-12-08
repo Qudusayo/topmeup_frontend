@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { authUser, getUserInfo } from "./../../../actions/usersAction";
+import {
+    authUser,
+    getUserInfo,
+    getTransactionHistory,
+} from "./../../../actions/usersAction";
 import Navbar from "./../../../Components/Navbar";
 
 import spinner from "./../../../assets/images/logos/loading.png";
@@ -67,6 +71,7 @@ class Index extends Component {
                         );
                         this.props.authUser();
                         this.props.getUserInfo();
+                        this.props.getTransactionHistory();
 
                         Toast.fire({
                             icon: "success",
@@ -178,6 +183,9 @@ class Index extends Component {
 Index.propsTypes = {
     authUser: PropTypes.func.isRequired,
     getUserInfo: PropTypes.func.isRequired,
+    getTransactionHistory: PropTypes.func.isRequired,
 };
 
-export default connect("", { authUser, getUserInfo })(Index);
+export default connect("", { authUser, getUserInfo, getTransactionHistory })(
+    Index
+);

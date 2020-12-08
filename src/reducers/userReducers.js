@@ -1,4 +1,4 @@
-import { SET_AUTH, REMOVE_AUTH, GET_USER_INFO } from "../actions/types";
+import { SET_AUTH, REMOVE_AUTH, GET_USER_INFO, GET_TRANSACTION_HISTORY } from "../actions/types";
 
 const initialState = {
     auth: false,
@@ -9,6 +9,7 @@ const initialState = {
         phoneNumber: "",
         email: "",
     },
+    history: []
 };
 
 export default function (state = initialState, action) {
@@ -27,6 +28,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 userInfo: action.payload,
+            };
+        case GET_TRANSACTION_HISTORY:
+            return {
+                ...state,
+                history: action.payload,
             };
         default:
             return state;

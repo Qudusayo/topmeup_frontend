@@ -21,7 +21,6 @@ class Index extends Component {
             dataPlan: "",
             reciever: "",
             waiting: false,
-            dataSubscription: {},
         };
 
         this.onChange = this.onChange.bind(this);
@@ -140,18 +139,6 @@ class Index extends Component {
         });
     };
 
-    componentDidMount() {
-        if (!sessionStorage.getItem("topuplab"))
-            return this.props.history.push("/login");
-        const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/dataSubscriptions`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
-        axios
-            .get(api, { headers: { Authorization: `Bearer ${token}` } })
-            .then((response) =>
-                this.setState({ dataSubscription: response.data })
-            );
-    }
-
     render() {
         return (
             <Wrapper>
@@ -187,8 +174,8 @@ class Index extends Component {
                         <option value="" hidden>
                             Data Plan
                         </option>
-                        {this.state.dataSubscription[this.state.networkProvider]
-                            ? this.state.dataSubscription[
+                        {this.props.dataSubscription[this.state.networkProvider]
+                            ? this.props.dataSubscription[
                                   this.state.networkProvider
                               ].map((network, index) => {
                                   return (
@@ -230,6 +217,11 @@ class Index extends Component {
 
 Index.propsTypes = {
     getTransactionHistory: PropTypes.func.isRequired,
+    dataSubscription: PropTypes.object.isRequired
 };
 
-export default connect("", { getTransactionHistory })(Index);
+const mapStateToProps = (state) => ({
+    dataSubscription: state.user.dataSubscription,
+});
+
+export default connect(mapStateToProps, { getTransactionHistory })(Index);

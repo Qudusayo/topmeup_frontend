@@ -9,6 +9,8 @@ import {
     authUser,
     getUserInfo,
     getTransactionHistory,
+    getDataSubscription,
+    getTvSubscription
 } from "./../../../actions/usersAction";
 import Navbar from "./../../../Components/Navbar";
 
@@ -71,6 +73,8 @@ class Index extends Component {
                         );
                         this.props.authUser();
                         this.props.getUserInfo();
+                        this.props.getTvSubscription();
+                        this.props.getDataSubscription();
                         this.props.getTransactionHistory();
 
                         Toast.fire({
@@ -184,8 +188,10 @@ Index.propsTypes = {
     authUser: PropTypes.func.isRequired,
     getUserInfo: PropTypes.func.isRequired,
     getTransactionHistory: PropTypes.func.isRequired,
+    getDataSubscription: PropTypes.func.isRequired,
+    getTvSubscription: PropTypes.func.isRequired,
 };
 
-export default connect("", { authUser, getUserInfo, getTransactionHistory })(
+export default connect("", { authUser, getUserInfo, getTransactionHistory, getDataSubscription, getTvSubscription })(
     Index
 );

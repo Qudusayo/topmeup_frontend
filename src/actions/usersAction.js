@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SET_AUTH, REMOVE_AUTH, GET_USER_INFO, GET_TRANSACTION_HISTORY } from "./types";
+import { SET_AUTH, REMOVE_AUTH, GET_USER_INFO, GET_TRANSACTION_HISTORY, GET_DATA_SUBSCRIPTION, GET_TV_SUBSCRIPTION } from "./types";
 
 export const authUser = (data) => (dispatch) => {
     dispatch({
@@ -40,3 +40,30 @@ export const getTransactionHistory = () => (dispatch) => {
             });
         });
 };
+
+export const getDataSubscription = () => (dispatch) => {
+    const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/dataSubscriptions`;
+    const token = JSON.parse(sessionStorage.getItem('topuplab')).token
+    axios
+        .get(api, { headers: { Authorization: `Bearer ${token}` } })
+        .then((res) => {
+            dispatch({
+                type: GET_DATA_SUBSCRIPTION,
+                payload: res.data,
+            });
+        });
+};
+
+export const getTvSubscription = () => (dispatch) => {
+    const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/tvSubscriptions`;
+    const token = JSON.parse(sessionStorage.getItem('topuplab')).token
+    axios
+        .get(api, { headers: { Authorization: `Bearer ${token}` } })
+        .then((res) => {
+            dispatch({
+                type: GET_TV_SUBSCRIPTION,
+                payload: res.data,
+            });
+        });
+};
+

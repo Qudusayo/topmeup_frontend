@@ -21,7 +21,6 @@ class Index extends Component {
             tvPlan: "",
             cardNumber: "",
             waiting: false,
-            tvSubscriptions: [],
         };
 
         this.onChange = this.onChange.bind(this);
@@ -135,18 +134,6 @@ class Index extends Component {
         });
     }
 
-    componentDidMount() {
-        if (!sessionStorage.getItem("topuplab"))
-            return this.props.history.push("/login");
-        const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/tvSubscriptions`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
-        axios
-            .get(api, { headers: { Authorization: `Bearer ${token}` } })
-            .then((response) =>
-                this.setState({ tvSubscriptions: response.data })
-            );
-    }
-
     render() {
         return (
             <Wrapper>
@@ -179,8 +166,8 @@ class Index extends Component {
                         <option value="" hidden>
                             TV Plan
                         </option>
-                        {this.state.tvSubscriptions[this.state.networkProvider]
-                            ? this.state.tvSubscriptions[
+                        {this.props.tvSubscription[this.state.networkProvider]
+                            ? this.props.tvSubscription[
                                   this.state.networkProvider
                               ].map((network, index) => {
                                   return (
@@ -229,8 +216,14 @@ class Index extends Component {
     }
 }
 
+
 Index.propsTypes = {
     getTransactionHistory: PropTypes.func.isRequired,
+    tvSubscription: PropTypes.object.isRequired
 };
 
-export default connect("", { getTransactionHistory })(Index);
+const mapStateToProps = (state) => ({
+    tvSubscription: state.user.tvSubscription,
+});
+
+export default connect(mapStateToProps, { getTransactionHistory })(Index);

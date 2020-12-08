@@ -1,4 +1,11 @@
-import { SET_AUTH, REMOVE_AUTH, GET_USER_INFO, GET_TRANSACTION_HISTORY } from "../actions/types";
+import {
+    SET_AUTH,
+    REMOVE_AUTH,
+    GET_USER_INFO,
+    GET_TRANSACTION_HISTORY,
+    GET_DATA_SUBSCRIPTION,
+    GET_TV_SUBSCRIPTION,
+} from "../actions/types";
 
 const initialState = {
     auth: false,
@@ -9,7 +16,9 @@ const initialState = {
         phoneNumber: "",
         email: "",
     },
-    history: []
+    history: [],
+    dataSubscription: {},
+    tvSubscription: {},
 };
 
 export default function (state = initialState, action) {
@@ -33,6 +42,16 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 history: action.payload,
+            };
+        case GET_DATA_SUBSCRIPTION:
+            return {
+                ...state,
+                dataSubscription: action.payload,
+            };
+        case GET_TV_SUBSCRIPTION:
+            return {
+                ...state,
+                tvSubscription: action.payload,
             };
         default:
             return state;

@@ -138,9 +138,6 @@ class Index extends Component {
                         >
                             <li>TRANSACTION HISTORY</li>
                         </NavLink>
-                        <NavLink to="/" exact activeClassName={styles.active}>
-                            <li>SETTINGS</li>
-                        </NavLink>
                         <NavLink
                             to="/login"
                             exact

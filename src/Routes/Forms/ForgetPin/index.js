@@ -44,7 +44,7 @@ class index extends Component {
         });
 
         if (!data.email) {
-            return this.error("email fields are required");
+            return this.error("Email field is required!");
         } else {
             this.setState({ waiting: true });
             axios

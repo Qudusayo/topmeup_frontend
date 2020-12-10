@@ -17,6 +17,7 @@ class Index extends Component {
         super(props);
         this.state = {
             firstName: "",
+            price: 1500,
             lastName: "",
             userName: "",
             email: "",
@@ -24,7 +25,8 @@ class Index extends Component {
             oldPassword: "",
             newPassword: "",
             confirmPassword: "",
-            updatingProfile: false,
+            upgradingUser: false,
+            updatingPassword: false,
             updatingPassword: false,
         };
 
@@ -118,6 +120,49 @@ class Index extends Component {
             });
     };
 
+    onTriggerUpgrade = (e) => {
+        this.setState({ upgradingUser: true });
+        e.preventDefault();
+        const data = {
+            username: this.props.userInfo.userName,
+            price: this.state.price,
+        };
+        if (!data.username || data.price < 1500)
+            return swal("Error", "Invalid Transaction Details", "warning");
+
+        // const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/updatePassword`;
+        // const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        // axios
+        //     .post(api, data, {
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //             Authorization: `Bearer ${token}`,
+        //         },
+        //     })
+        //     .then((res) => {
+        //         if (!res.data.error) {
+        //             swal(
+        //                 "Completed",
+        //                 "Password updated successfully",
+        //                 "success"
+        //             );
+        //             this.setState({
+        //                 oldPassword: "",
+        //                 newPassword: "",
+        //                 confirmPassword: "",
+        //                 updatingPassword: false,
+        //             });
+        //         } else {
+        //             swal("Oops", "Incorrect Password", "warning");
+        //             this.setState({ updatingPassword: false });
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         swal("Oops", "Error updating password", "warning");
+        //         this.setState({ updatingPassword: false });
+        // });
+    };
+
     componentDidMount() {
         this.setState({
             firstName: this.props.userInfo.firstName,
@@ -142,6 +187,53 @@ class Index extends Component {
                         <p>{this.props.userInfo.email}</p>
                     </div>
                 </div>
+                <form className={styles.Form} onSubmit={this.upgradeUser}>
+                    <h3 style={{ marginBottom: "0" }}>UPGRADE TO PREMIUM</h3>
+                    <span
+                        style={{
+                            textAlign: "center",
+                            display: "block",
+                            fontSize: ".8em",
+                        }}
+                    >
+                        One-time Payment of <b>₦1500</b>
+                    </span>
+                    <label>First Name</label>
+                    <input
+                        onChange={this.onChange}
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        autoComplete="off"
+                        placeholder="First Name"
+                        value={this.props.userInfo.userName.toUpperCase()}
+                        required={true}
+                        disabled={true}
+                    />
+                    <label>Last Name</label>
+                    <input
+                        onChange={this.onChange}
+                        type="text"
+                        name="lastName"
+                        id="lastName"
+                        autoComplete="off"
+                        placeholder="Last Name"
+                        value={this.state.price}
+                        required={true}
+                        disabled={true}
+                    />
+                    <button type="submit" disabled={this.state.upgradingUser}>
+                        {this.state.upgradingUser ? (
+                            <img
+                                className={styles.spinner}
+                                src={spinner}
+                                alt="spinner"
+                            />
+                        ) : (
+                            "UPGRADE TO PREMIUM"
+                        )}
+                    </button>
+                </form>
                 <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h3>UPDATE PROFILE</h3>
                     <label>First Name</label>

@@ -14,12 +14,12 @@ function index() {
                     "animate__fadeInUp",
                 ].join(" ")}
             >
-                TOP ME UP
+                TOP UP LAB
             </h1>
             <div className={styles.content}>
                 <small>We are to top you up</small>
                 <h1 className="animate__animated animate__bounce">
-                    TOP<span className="yellow">ME</span>UP anytime anywhere
+                    TOP<span className="yellow">UP</span>LAB anytime anywhere
                 </h1>
                 <small>
                     Buy cheap and affordable plans easily and cable

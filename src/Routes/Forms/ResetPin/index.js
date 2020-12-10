@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import qs from "qs";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 import Navbar from "./../../../Components/Navbar";
 
@@ -9,19 +10,14 @@ import spinner from "./../../../assets/images/logos/loading.png";
 
 import styles from "./../style.module.scss";
 
-class index extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
-            email: "",
             username: "",
-            tel: "",
-            ref: "Qudusayo",
             password: "",
             confirmPassword: "",
-            errorMessages: "",
+            errorMessage: "",
             waiting: false,
         };
 
@@ -36,15 +32,14 @@ class index extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const data = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
             userName: this.state.username,
-            phoneNumber: this.state.tel,
-            referredBy: this.state.ref,
             password: this.state.password,
             confirmPassword: this.state.confirmPassword,
         };
+        const api = `${process.env.REACT_APP_BACKEND_URI}/resetPassword/updatePassword`;
+        const token = qs.parse(this.props.location.search, {
+            ignoreQueryPrefix: true,
+        }).__reset;
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -56,15 +51,8 @@ class index extends Component {
                 toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
         });
-        if (
-            !data.email &&
-            !data.firstName &&
-            !data.lastName &&
-            !data.userName &&
-            !data.phoneNumber &&
-            !data.password &&
-            !data.confirmPassword
-        ) {
+
+        if (!data.userName && !data.password && !data.confirmPassword) {
             return this.error("All fields are required");
         } else if (data.password !== data.confirmPassword) {
             return this.error("Password doesn't match");
@@ -73,45 +61,43 @@ class index extends Component {
         } else {
             this.setState({ waiting: true });
             axios
-                .post(
-                    `${process.env.REACT_APP_BACKEND_URI}/signup`,
-                    data
-                )
+                .post(api, data, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
                 .then((response) => {
-                    if (response.data.error) {
-                        this.setState({
-                            waiting: false,
-                        });
+                    if (response.data.errorMsg) {
+                        this.setState({ waiting: false });
                         return this.error(response.data.errorMsg);
                     } else {
-                        this.setState({
-                            firstName: "",
-                            lastName: "",
-                            email: "",
-                            username: "",
-                            tel: "",
-                            ref: "Qudusayo",
-                            password: "",
-                            confirmPassword: "",
-                            errorMessages: "",
-                            waiting: false,
-                        });
                         Toast.fire({
                             icon: "success",
-                            title: "Registration successfully",
+                            title: "Password Updated successfully",
                         });
-
                         return this.props.history.push("/login");
                     }
                 })
                 .catch((error) => {
                     this.setState({ waiting: false });
-                    return this.error(
-                        "Error registering user, Kindly try again"
-                    );
+                    return this.error("Error Updating, Kindly try again");
                 });
         }
     };
+
+    componentDidMount() {
+        let token = qs.parse(this.props.location.search, {
+            ignoreQueryPrefix: true,
+        }).__reset;
+        if (!token) return this.props.history.push("/login");
+        const api = `${process.env.REACT_APP_BACKEND_URI}/resetPassword/getUserName`;
+        axios
+            .get(api, { headers: { Authorization: `Bearer ${token}` } })
+            .then((res) => {
+                this.setState({ username: res.data.userName });
+            });
+    }
 
     error = (message) => {
         this.setState({ errorMessages: message });
@@ -149,79 +135,19 @@ class index extends Component {
                             TOP <span className="yellow">UP</span> LAB
                         </Link>
                     </h2>
-                    <span>CREATE ACCOUNT</span>
+                    <span>RESET PASSWORD</span>
                     <form onSubmit={this.onSubmit} className={styles.form}>
-                        <label>Referral</label>
-                        <input
-                            onChange={this.onChange}
-                            type="text"
-                            name="ref"
-                            id="ref"
-                            autoComplete="off"
-                            placeholder="Referral Username"
-                            value={this.state.ref}
-                            required={true}
-                            disabled={this.state.waiting}
-                        />
-                        <label>First Name</label>
-                        <input
-                            onChange={this.onChange}
-                            type="text"
-                            name="firstName"
-                            id="firstName"
-                            autoComplete="off"
-                            placeholder="FirstName"
-                            value={this.state.firstName}
-                            required={true}
-                            disabled={this.state.waiting}
-                        />
-                        <label>Last Name</label>
-                        <input
-                            onChange={this.onChange}
-                            type="text"
-                            name="lastName"
-                            id="lastName"
-                            autoComplete="off"
-                            placeholder="Last Name"
-                            value={this.state.lastName}
-                            required={true}
-                            disabled={this.state.waiting}
-                        />
-                        <label>Phone Number</label>
-                        <input
-                            onChange={this.onChange}
-                            type="tel"
-                            name="tel"
-                            id="tel"
-                            autoComplete="off"
-                            placeholder="Phone Number"
-                            value={this.state.tel}
-                            required={true}
-                            disabled={this.state.waiting}
-                        />
                         <label>Username</label>
                         <input
                             onChange={this.onChange}
                             type="text"
                             name="username"
                             id="username"
-                            autoComplete="off"
                             placeholder="Username"
-                            value={this.state.userame}
-                            required={true}
-                            disabled={this.state.waiting}
-                        />
-                        <label>Email</label>
-                        <input
-                            onChange={this.onChange}
-                            type="email"
-                            name="email"
-                            id="email"
                             autoComplete="off"
-                            placeholder="Email"
-                            value={this.state.email}
+                            value={this.state.username}
                             required={true}
-                            disabled={this.state.waiting}
+                            disabled={true}
                         />
                         <label>Password</label>
                         <input
@@ -229,7 +155,7 @@ class index extends Component {
                             type="password"
                             name="password"
                             id="password"
-                            placeholder="Password"
+                            placeholder="▪▪▪▪▪▪▪▪▪▪▪▪"
                             value={this.state.password}
                             required={true}
                             disabled={this.state.waiting}
@@ -240,7 +166,7 @@ class index extends Component {
                             type="password"
                             name="confirmPassword"
                             id="confirmPassword"
-                            placeholder="Confirm Password"
+                            placeholder="▪▪▪▪▪▪▪▪▪▪▪▪"
                             value={this.state.confirmPassword}
                             required={true}
                             disabled={this.state.waiting}
@@ -253,14 +179,13 @@ class index extends Component {
                                     alt="spinner"
                                 />
                             ) : (
-                                "CREATE ACCOUNT"
+                                "UPDATE PASSWORD"
                             )}
                         </button>
                     </form>
-
                     <div className={styles.info}>
-                        <span className={styles.forget}>
-                            Already a member ? <Link to="/login">Login →</Link>
+                        <span className={styles.sign}>
+                            <Link to="/login">Login →</Link>
                         </span>
                     </div>
                     <p style={{ textAlign: "center", margin: "2em auto 2em" }}>
@@ -273,4 +198,4 @@ class index extends Component {
     }
 }
 
-export default index;
+export default Index;

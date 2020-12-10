@@ -7,6 +7,7 @@ import Home from "./Routes/Home";
 import Error from "./Routes/Error";
 import Login from "./Routes/Forms/Login";
 import SignUp from "./Routes/Forms/SignUp";
+import ResetPin from "./Routes/Forms/ResetPin";
 import ForgetPin from "./Routes/Forms/ForgetPin";
 
 import Dashboard from "./Routes/Dashboard";
@@ -32,6 +33,7 @@ function App(props) {
                 <Route path="/" component={Home} exact></Route>
                 <Route path="/login" component={Login} exact></Route>
                 <Route path="/register" component={SignUp} exact></Route>
+                <Route path="/reset-password" component={ResetPin} exact></Route>
                 <Route
                     path="/forget-password"
                     component={ForgetPin}

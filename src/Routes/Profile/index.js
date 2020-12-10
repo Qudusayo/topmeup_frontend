@@ -26,7 +26,7 @@ class Index extends Component {
             newPassword: "",
             confirmPassword: "",
             upgradingUser: false,
-            updatingPassword: false,
+            updatingProfile: false,
             updatingPassword: false,
         };
 

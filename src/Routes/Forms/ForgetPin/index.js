@@ -59,7 +59,7 @@ class index extends Component {
                     } else {
                         Toast.fire({
                             icon: "success",
-                            title: "Kindly your Email to continue",
+                            title: "Kindly check your Email (and Spam) to continue",
                         });
                         return this.props.history.push("/login");
                     }

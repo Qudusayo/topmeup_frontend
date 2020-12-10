@@ -187,7 +187,7 @@ class Index extends Component {
                         <p>{this.props.userInfo.email}</p>
                     </div>
                 </div>
-                <form className={styles.Form} onSubmit={this.upgradeUser}>
+                <form className={styles.Form} onSubmit={this.onTriggerUpgrade}>
                     <h3 style={{ marginBottom: "0" }}>UPGRADE TO PREMIUM</h3>
                     <span
                         style={{

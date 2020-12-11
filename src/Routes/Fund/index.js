@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import swal from "@sweetalert/with-react";
+import Swal from "sweetalert2";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -7,6 +8,8 @@ import Wrapper from "./../../Components/Container";
 
 import { getTransactionHistory } from "./../../actions/usersAction";
 import spinner from "./../../assets/images/logos/loading.png";
+
+import Online from "./Online";
 
 import styles from "./../Transfer/style.module.scss";
 
@@ -17,12 +20,16 @@ class Index extends Component {
         this.state = {
             payment: "",
             depositorsName: "",
+            depositorsEmail: "",
             amount: "",
+            onlineAmount: "",
+            onlinePayment: false,
             waiting: false,
         };
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.makeOnlinePayment = this.makeOnlinePayment.bind(this);
     }
 
     onChange = (e) => {
@@ -78,6 +85,42 @@ class Index extends Component {
             });
     };
 
+    componentDidMount() {
+        this.setState({ depositorsEmail: this.props.userInfo.email });
+    }
+
+    makeOnlinePayment(e) {
+        e.preventDefault();
+
+        if (this.state.depositorsEmail !== this.props.userInfo.email) {
+            return swal("Transaction Failed", "Invalid email address", "error");
+        } else if (this.state.onlineAmount < 500 || !this.state.onlineAmount) {
+            return swal(
+                "Data Purchase Failed",
+                "Invalid Phone Number",
+                "error"
+            );
+        }
+
+        if (!this.state.onlinePayment) {
+            Swal.fire({
+                title: "Verify Payment",
+                text: "You won't be able to revert this!",
+                html: `<div><p style="display:flex;">Amount:-- <b>₦${this.state.onlineAmount}</b></p><p style="display:flex;">Email:-- <b>${this.state.depositorsEmail}</b></p></div>`,
+                icon: "question",
+                backdrop: "#00000090",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Continue",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.setState({ onlinePayment: true });
+                }
+            });
+        }
+    }
+
     render() {
         return (
             <Wrapper>
@@ -115,7 +158,7 @@ class Index extends Component {
                             Bank Payment (Min ₦1000, 0% Fee)
                         </option>
                         <option value="onlinePayment">
-                            Online Payment (Min ₦100, 1.5% Fee)
+                            Online Payment (Min ₦500, 1.5% Fee)
                         </option>
                         <option value="airtimePayment">
                             Airtime Payment (Min ₦120, 20% Fee)
@@ -168,8 +211,7 @@ class Index extends Component {
                             </div>
                         </>
                     ) : null}
-                    {this.state.payment === "abPayment" ||
-                    this.state.payment === "onlinePayment" ? (
+                    {this.state.payment === "abPayment" ? (
                         <div className={styles.bankInfo}>
                             <h1>Online Payment</h1>
                             <h3>Payment type not available yet</h3>
@@ -196,6 +238,63 @@ class Index extends Component {
                         </div>
                     ) : null}
                 </form>
+                {this.state.payment === "onlinePayment" ? (
+                    <form
+                        className={styles.Form}
+                        onSubmit={this.makeOnlinePayment}
+                    >
+                        <h1>ONLINE PAYMENT</h1>
+                        <h3>SUBMIT A REQUEST</h3>
+                        <label>Depositors Email</label>
+                        <input
+                            onChange={this.onChange}
+                            type="text"
+                            name="depositorsEmail"
+                            id="depositorsEmail"
+                            autoComplete="off"
+                            placeholder="Depositors Email"
+                            value={this.state.depositorsEmail}
+                            required={true}
+                            disabled={true}
+                        />
+                        <label>Amount</label>
+                        <input
+                            onChange={this.onChange}
+                            type="number"
+                            name="onlineAmount"
+                            id="onlineAmount"
+                            autoComplete="off"
+                            placeholder="Amount"
+                            value={this.state.onlineAmount}
+                            min="500"
+                            required={true}
+                            disabled={this.state.onlinePayment}
+                        />
+                        {!this.state.onlinePayment ? (
+                            <button type="submit" disabled={this.state.waiting}>
+                                {this.state.waiting ? (
+                                    <img
+                                        className={styles.spinner}
+                                        src={spinner}
+                                        alt="spinner"
+                                    />
+                                ) : (
+                                    "PROCEED"
+                                )}
+                            </button>
+                        ) : (
+                            <Online
+                                email={this.state.depositorsEmail}
+                                amount={
+                                    (parseInt(this.state.onlineAmount) +
+                                        (1.5 / 100) *
+                                            parseInt(this.state.onlineAmount)) *
+                                    100
+                                }
+                            />
+                        )}
+                    </form>
+                ) : null}
                 {this.state.payment === "bankPayment" ? (
                     <form className={styles.Form} onSubmit={this.onSubmit}>
                         <h1>BANK PAYMENT</h1>
@@ -244,7 +343,13 @@ class Index extends Component {
 }
 
 Index.propsTypes = {
+    userInfo: PropTypes.object.isRequired,
     getTransactionHistory: PropTypes.func.isRequired,
 };
 
-export default connect("", { getTransactionHistory })(Index);
+const mapStateToProps = (state) => ({
+    auth: state.user.auth,
+    userInfo: state.user.userInfo,
+});
+
+export default connect(mapStateToProps, { getTransactionHistory })(Index);

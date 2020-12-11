@@ -1,0 +1,42 @@
+@import "./../../../styles/variables.scss";
+
+.payButton {
+    display: block;
+    width: 82%;
+    margin: auto;
+    height: 50px;
+    border-radius: 7px;
+    font-size: 1em;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: $fidalgo;
+    color: $white;
+    box-shadow: 0 4px 1px rgba($black, 0.4);
+    transition: box-shadow 0.2s linear;
+
+    &.danger {
+        background-color: $imperialred;
+    }
+
+    &:hover {
+        box-shadow: 0 4px 1px rgba($black, 0.7);
+    }
+
+    &:disabled {
+        &:hover {
+            transform: translateY(0);
+            cursor: not-allowed;
+        }
+    }
+
+    .spinner {
+        width: 2em;
+        height: 2em;
+        animation: rotate 1s linear infinite;
+    }
+
+    @media screen and (max-width: 490px) {
+        width: 85%;
+    }
+}

@@ -202,10 +202,10 @@ class Index extends Component {
                     <input
                         onChange={this.onChange}
                         type="text"
-                        name="firstName"
-                        id="firstName"
+                        name="username"
+                        id="username"
                         autoComplete="off"
-                        placeholder="First Name"
+                        placeholder="Username"
                         value={this.props.userInfo.userName.toUpperCase()}
                         required={true}
                         disabled={true}
@@ -213,11 +213,11 @@ class Index extends Component {
                     <label>Last Name</label>
                     <input
                         onChange={this.onChange}
-                        type="text"
-                        name="lastName"
-                        id="lastName"
+                        type="number"
+                        name="price"
+                        id="price"
                         autoComplete="off"
-                        placeholder="Last Name"
+                        placeholder="Price"
                         value={this.state.price}
                         required={true}
                         disabled={true}

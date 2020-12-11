@@ -4,7 +4,7 @@ import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
 import Wrapper from "./../../Components/Container";
 
-import spinner from "./../../assets/images/logos/loading.png";
+// import spinner from "./../../assets/images/logos/loading.png";
 
 import styles from "./../Transfer/style.module.scss";
 

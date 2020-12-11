@@ -10,7 +10,7 @@ function Index(props) {
         reference: new Date().getTime(),
         email: props.email,
         amount: props.amount,
-        publicKey: process.env.REACT_PAYMENT_SECRET,
+        publicKey: process.env.REACT_APP_PAYMENT_SECRET,
     };
 
     const handlePaystackSuccessAction = (reference) => {

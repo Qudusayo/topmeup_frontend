@@ -63,7 +63,6 @@ class Index extends Component {
             axios
                 .post(`${process.env.REACT_APP_BACKEND_URI}/login`, data)
                 .then((response) => {
-                    console.log(response)
                     if (response.data.errorMsg) {
                         this.setState({ waiting: false });
                         return this.error("Invalid username or password");

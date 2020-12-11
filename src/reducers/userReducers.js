@@ -21,7 +21,7 @@ const initialState = {
     tvSubscription: {},
 };
 
-export default function (state = initialState, action) {
+export default function base(state = initialState, action) {
     switch (action.type) {
         case SET_AUTH:
             return {

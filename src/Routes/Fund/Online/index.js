@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom"
+import { withRouter } from "react-router-dom";
 import styles from "./style.module.scss";
 import swal from "@sweetalert/with-react";
 import axios from "axios";
@@ -29,13 +29,9 @@ function Index(props) {
                 },
             })
             .then((res) => {
-                if (res.data.error===false) {
+                if (res.data.error === false) {
                     props.history.push("/dashboard");
-                    return swal(
-                        "Success !!!",
-                        "Wallet topped up",
-                        "success"
-                        );
+                    return swal("Success !!!", "Wallet topped up", "success");
                 } else {
                     props.history.push("/dashboard");
                     return swal(
@@ -46,8 +42,7 @@ function Index(props) {
                 }
             })
             .catch((err) => {
-                console.log("Loops Here")
-                console.log(err)
+                props.history.push("/dashboard");
                 return swal(
                     "Error",
                     `Kindly Contact the admin for funding`,
@@ -60,6 +55,11 @@ function Index(props) {
     const handlePaystackCloseAction = () => {
         // implementation for  whatever you want to do when the Paystack dialog closed.
         console.log("closed");
+        return swal(
+            "Opps",
+            `Payment Canceled`,
+            "warning"
+        );
     };
 
     const componentProps = {

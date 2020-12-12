@@ -47,6 +47,7 @@ export const getDataSubscription = () => (dispatch) => {
     axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {
+            console.log(res.data)
             dispatch({
                 type: GET_DATA_SUBSCRIPTION,
                 payload: res.data,

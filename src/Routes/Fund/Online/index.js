@@ -19,7 +19,7 @@ function Index(props) {
             amount: props.amount / 100,
             email: props.email,
         };
-        const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/onlinePayment`;
+        const api = `${process.env.REACT_APP_BACKEND_URI}/payment/onlinePayment`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
         axios
             .post(api, data, {

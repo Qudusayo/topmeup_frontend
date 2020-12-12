@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Helmet} from "react-helmet";
 import swal from "@sweetalert/with-react";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -189,6 +190,9 @@ class Index extends Component {
     render() {
         return (
             <Wrapper>
+            <Helmet>
+                <title>TOP UP LAB | {this.state.userName ? this.state.userName.toUpperCase() : "MY PROFILE"} </title>
+            </Helmet>
                 <div className={styles.card}>
                     <img src={avatar} alt="avatar" />
                     <div>

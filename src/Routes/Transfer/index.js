@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Helmet} from "react-helmet";
 import axios from "axios";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
@@ -126,6 +127,9 @@ class Index extends Component {
     render() {
         return (
             <Wrapper>
+            <Helmet>
+                <title>TOP UP LAB | TRANSFER FUND</title>
+            </Helmet>
                 <div className={styles.card}>
                     <h4>Hello</h4>
                     <p>

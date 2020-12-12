@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Helmet} from "react-helmet";
 import Wrapper from "./../../Components/Container";
 
 import spinner from "./../../assets/images/logos/loading.png";
@@ -27,6 +28,9 @@ class index extends Component {
     render() {
         return (
             <Wrapper>
+            <Helmet>
+                <title>TOP UP LAB | WITHDRAW FUND</title>
+            </Helmet>
                 <form className={styles.Form}>
                     <h1>WITHDRAW FUND</h1>
                     <h3>WITH ₦ 100 CHARGES</h3>
@@ -97,7 +101,7 @@ class index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
-                    <button type="submit" disabled={this.state.waiting}>
+                    <button type="submit" disabled={true}>
                         {this.state.waiting ? (
                             <img
                                 className={styles.spinner}

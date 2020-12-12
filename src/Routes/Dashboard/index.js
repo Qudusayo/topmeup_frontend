@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Helmet} from "react-helmet";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Wrapper from "./../../Components/Container";
@@ -26,6 +27,9 @@ class index extends Component {
     render() {
         return (
             <Wrapper>
+            <Helmet>
+                <title>TOP UP LAB | DASHBOARD </title>
+            </Helmet>
                 <div className={styles.card}>
                     <Link to="/fund-wallet">
                         <button>+</button>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Helmet} from "react-helmet";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
 import Wrapper from "./../../Components/Container";
@@ -72,6 +73,9 @@ class index extends Component {
     render() {
         return (
             <Wrapper>
+            <Helmet>
+                <title>TOP UP LAB | AIRTIME TO CASH </title>
+            </Helmet>
                 <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h1>CONVERT AIRTIME</h1>
                     <h3>TO CASH</h3>

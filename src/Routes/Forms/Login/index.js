@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
@@ -10,7 +11,7 @@ import {
     getUserInfo,
     getTransactionHistory,
     getDataSubscription,
-    getTvSubscription
+    getTvSubscription,
 } from "./../../../actions/usersAction";
 import Navbar from "./../../../Components/Navbar";
 
@@ -122,6 +123,9 @@ class Index extends Component {
     render() {
         return (
             <>
+                <Helmet>
+                    <title>TOP UP LAB | LOGIN</title>
+                </Helmet>
                 <Navbar />
                 <div className={styles.FormContainer}>
                     <h2 className={styles.title}>
@@ -192,6 +196,10 @@ Index.propsTypes = {
     getTvSubscription: PropTypes.func.isRequired,
 };
 
-export default connect("", { authUser, getUserInfo, getTransactionHistory, getDataSubscription, getTvSubscription })(
-    Index
-);
+export default connect("", {
+    authUser,
+    getUserInfo,
+    getTransactionHistory,
+    getDataSubscription,
+    getTvSubscription,
+})(Index);

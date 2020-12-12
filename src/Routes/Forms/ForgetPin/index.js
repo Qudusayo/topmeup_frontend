@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -14,7 +15,7 @@ class index extends Component {
         super(props);
         this.state = {
             email: "",
-            waiting: false
+            waiting: false,
         };
 
         this.onChange = this.onChange.bind(this);
@@ -59,7 +60,8 @@ class index extends Component {
                     } else {
                         Toast.fire({
                             icon: "success",
-                            title: "Kindly check your Email (and Spam) to continue",
+                            title:
+                                "Kindly check your Email (and Spam) to continue",
                         });
                         return this.props.history.push("/login");
                     }
@@ -100,6 +102,9 @@ class index extends Component {
     render() {
         return (
             <>
+                <Helmet>
+                    <title>TOP UP LAB | FORGET PASSWORD</title>
+                </Helmet>
                 <Navbar />
                 <div className={styles.FormContainer}>
                     <h2 className={styles.title}>

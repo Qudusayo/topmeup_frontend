@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -73,10 +74,7 @@ class index extends Component {
         } else {
             this.setState({ waiting: true });
             axios
-                .post(
-                    `${process.env.REACT_APP_BACKEND_URI}/signup`,
-                    data
-                )
+                .post(`${process.env.REACT_APP_BACKEND_URI}/signup`, data)
                 .then((response) => {
                     if (response.data.error) {
                         this.setState({
@@ -142,6 +140,9 @@ class index extends Component {
     render() {
         return (
             <>
+                <Helmet>
+                    <title>TOP UP LAB | REGISTER</title>
+                </Helmet>
                 <Navbar />
                 <div className={styles.FormContainer}>
                     <h2 className={styles.title}>

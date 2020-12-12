@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import qs from "qs";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -128,6 +129,9 @@ class Index extends Component {
     render() {
         return (
             <>
+                <Helmet>
+                    <title>TOP UP LAB | FORGET PASSWORD</title>
+                </Helmet>
                 <Navbar />
                 <div className={styles.FormContainer}>
                     <h2 className={styles.title}>

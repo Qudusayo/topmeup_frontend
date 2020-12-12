@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Helmet} from "react-helmet";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -142,6 +143,9 @@ class Index extends Component {
     render() {
         return (
             <Wrapper>
+            <Helmet>
+                <title>TOP UP LAB | PURCHASE DATA </title>
+            </Helmet>
                 <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h1>DATA BUNDLE</h1>
                     <h3>PURCHASE DATA</h3>

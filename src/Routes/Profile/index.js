@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import swal from "@sweetalert/with-react";
+import Swal from "sweetalert2";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -121,46 +122,58 @@ class Index extends Component {
     };
 
     onTriggerUpgrade = (e) => {
-        this.setState({ upgradingUser: true });
         e.preventDefault();
         const data = {
-            username: this.props.userInfo.userName,
+            userName: this.props.userInfo.userName,
             price: this.state.price,
         };
-        if (!data.username || data.price < 1500)
+        const api = `${process.env.REACT_APP_BACKEND_URI}/payment/upgrade`;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+
+        if (!data.userName || data.price < 1500)
             return swal("Error", "Invalid Transaction Details", "warning");
 
-        // const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/updatePassword`;
-        // const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
-        // axios
-        //     .post(api, data, {
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             Authorization: `Bearer ${token}`,
-        //         },
-        //     })
-        //     .then((res) => {
-        //         if (!res.data.error) {
-        //             swal(
-        //                 "Completed",
-        //                 "Password updated successfully",
-        //                 "success"
-        //             );
-        //             this.setState({
-        //                 oldPassword: "",
-        //                 newPassword: "",
-        //                 confirmPassword: "",
-        //                 updatingPassword: false,
-        //             });
-        //         } else {
-        //             swal("Oops", "Incorrect Password", "warning");
-        //             this.setState({ updatingPassword: false });
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         swal("Oops", "Error updating password", "warning");
-        //         this.setState({ updatingPassword: false });
-        // });
+        Swal.fire({
+            title: "Upgrade User",
+            text: "You won't be able to revert this!",
+            html: `<div><p style="display:flex;">Amount:-- <b>₦${
+                this.state.price
+            }</b></p><p style="display:flex;">User:-- <b>${data.userName.toUpperCase()}</b></p></div>`,
+            icon: "question",
+            backdrop: "#00000090",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Upgrade User",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.setState({ upgradingUser: true });
+                axios
+                    .post(api, data, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    })
+                    .then((res) => {
+                        if (!res.data.error) {
+                            swal(
+                                "Upgraded",
+                                "User upgraded successfully",
+                                "success"
+                            );
+                            this.props.history.push("/dashboard");
+                        } else {
+                            swal("Oops", "Error Upgrading user", "error");
+                            this.setState({ upgradingUser: false });
+                        }
+                    })
+                    .catch((err) => {
+                        swal("Oops", "Error Upgrading password", "error");
+                        this.setState({ upgradingUser: false });
+                    });
+            }
+        });
     };
 
     componentDidMount() {
@@ -187,53 +200,63 @@ class Index extends Component {
                         <p>{this.props.userInfo.email}</p>
                     </div>
                 </div>
-                <form className={styles.Form} onSubmit={this.onTriggerUpgrade}>
-                    <h3 style={{ marginBottom: "0" }}>UPGRADE TO PREMIUM</h3>
-                    <span
-                        style={{
-                            textAlign: "center",
-                            display: "block",
-                            fontSize: ".8em",
-                        }}
+                {this.props.userInfo.accountType === "free" ? (
+                    <form
+                        className={styles.Form}
+                        onSubmit={this.onTriggerUpgrade}
                     >
-                        One-time Payment of <b>₦1500</b>
-                    </span>
-                    <label>First Name</label>
-                    <input
-                        onChange={this.onChange}
-                        type="text"
-                        name="username"
-                        id="username"
-                        autoComplete="off"
-                        placeholder="Username"
-                        value={this.props.userInfo.userName.toUpperCase()}
-                        required={true}
-                        disabled={true}
-                    />
-                    <label>Last Name</label>
-                    <input
-                        onChange={this.onChange}
-                        type="number"
-                        name="price"
-                        id="price"
-                        autoComplete="off"
-                        placeholder="Price"
-                        value={this.state.price}
-                        required={true}
-                        disabled={true}
-                    />
-                    <button type="submit" disabled={this.state.upgradingUser}>
-                        {this.state.upgradingUser ? (
-                            <img
-                                className={styles.spinner}
-                                src={spinner}
-                                alt="spinner"
-                            />
-                        ) : (
-                            "UPGRADE TO PREMIUM"
-                        )}
-                    </button>
-                </form>
+                        <h3 style={{ marginBottom: "0" }}>
+                            UPGRADE TO PREMIUM
+                        </h3>
+                        <span
+                            style={{
+                                textAlign: "center",
+                                display: "block",
+                                fontSize: ".8em",
+                            }}
+                        >
+                            One-time Payment of <b>₦1500</b>
+                        </span>
+                        <label>First Name</label>
+                        <input
+                            onChange={this.onChange}
+                            type="text"
+                            name="username"
+                            id="username"
+                            autoComplete="off"
+                            placeholder="Username"
+                            value={this.props.userInfo.userName.toUpperCase()}
+                            required={true}
+                            disabled={true}
+                        />
+                        <label>Price</label>
+                        <input
+                            onChange={this.onChange}
+                            type="number"
+                            name="price"
+                            id="price"
+                            autoComplete="off"
+                            placeholder="Price"
+                            value={this.state.price}
+                            required={true}
+                            disabled={true}
+                        />
+                        <button
+                            type="submit"
+                            disabled={this.state.upgradingUser}
+                        >
+                            {this.state.upgradingUser ? (
+                                <img
+                                    className={styles.spinner}
+                                    src={spinner}
+                                    alt="spinner"
+                                />
+                            ) : (
+                                "UPGRADE TO PREMIUM"
+                            )}
+                        </button>
+                    </form>
+                ) : null}
                 <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h3>UPDATE PROFILE</h3>
                     <label>First Name</label>

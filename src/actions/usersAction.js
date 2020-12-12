@@ -1,5 +1,12 @@
 import axios from "axios";
-import { SET_AUTH, REMOVE_AUTH, GET_USER_INFO, GET_TRANSACTION_HISTORY, GET_DATA_SUBSCRIPTION, GET_TV_SUBSCRIPTION } from "./types";
+import {
+    SET_AUTH,
+    REMOVE_AUTH,
+    GET_USER_INFO,
+    GET_TRANSACTION_HISTORY,
+    GET_DATA_SUBSCRIPTION,
+    GET_TV_SUBSCRIPTION,
+} from "./types";
 
 export const authUser = (data) => (dispatch) => {
     dispatch({
@@ -17,11 +24,10 @@ export const revokeUser = (data) => (dispatch) => {
 
 export const getUserInfo = () => (dispatch) => {
     const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo`;
-    const token = JSON.parse(sessionStorage.getItem('topuplab')).token
+    const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
     axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {
-            console.log(res.data)
             dispatch({
                 type: GET_USER_INFO,
                 payload: res.data,
@@ -31,7 +37,7 @@ export const getUserInfo = () => (dispatch) => {
 
 export const getTransactionHistory = () => (dispatch) => {
     const api = `${process.env.REACT_APP_BACKEND_URI}/getHistory`;
-    const token = JSON.parse(sessionStorage.getItem('topuplab')).token
+    const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
     axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {
@@ -44,29 +50,26 @@ export const getTransactionHistory = () => (dispatch) => {
 
 export const getDataSubscription = () => (dispatch) => {
     const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/dataSubscriptions`;
-    const token = JSON.parse(sessionStorage.getItem('topuplab')).token
+    const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
     axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {
-            console.log(res.data)
             dispatch({
                 type: GET_DATA_SUBSCRIPTION,
                 payload: res.data,
             });
         });
-    };
+};
 
-    export const getTvSubscription = () => (dispatch) => {
-        const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/tvSubscriptions`;
-        const token = JSON.parse(sessionStorage.getItem('topuplab')).token
-        axios
+export const getTvSubscription = () => (dispatch) => {
+    const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/tvSubscriptions`;
+    const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+    axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {
-            console.log(res.data)
             dispatch({
                 type: GET_TV_SUBSCRIPTION,
                 payload: res.data,
             });
         });
 };
-

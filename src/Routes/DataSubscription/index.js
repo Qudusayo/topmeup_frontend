@@ -174,8 +174,7 @@ class Index extends Component {
                         <option value="" hidden>
                             Data Plan
                         </option>
-                        {   console.log(this.props.dataSubscription)
-                            /* this.props.dataSubscription[this.state.networkProvider]
+                        {this.props.dataSubscription[this.state.networkProvider]
                             ? this.props.dataSubscription[
                                   this.state.networkProvider
                               ].map((network, index) => {
@@ -185,8 +184,7 @@ class Index extends Component {
                                       </option>
                                   );
                               })
-                            : null */
-                            }
+                            : null}
                     </select>
                     <label>Recievers Number</label>
                     <input

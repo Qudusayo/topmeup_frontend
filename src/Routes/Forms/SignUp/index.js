@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
+import qs from "qs";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";

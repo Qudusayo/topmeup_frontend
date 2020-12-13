@@ -6,16 +6,9 @@ import styles from "./../Home/style.module.scss";
 import logo1 from "./../../assets/images/logos/fast-dlivery.svg";
 import logo2 from "./../../assets/images/logos/safe-payment.svg";
 import logo3 from "./../../assets/images/logos/certified-adviser.svg";
-import logo4 from "./../../assets/images/logos/internet.svg";
-import logo5 from "./../../assets/images/logos/mobile.svg";
-import logo6 from "./../../assets/images/logos/television.svg";
-import logo7 from "./../../assets/images/logos/cash.svg";
-import logo8 from "./../../assets/images/logos/electricity-bill.svg";
-import logo9 from "./../../assets/images/logos/messages.svg";
 
 import Navbar from "./../../Components/Navbar";
 import Footer from "./../../Components/Footer";
-import Banner from "./../Home/Banner";
 import Card from "./../Home/Card";
 import Testimonial from "./../Home/Testimonial";
 import Contact from "./../Home/Contact";
@@ -120,37 +113,6 @@ function index() {
                 <Contact />
             </div>
             <Footer />
-        </>
-    );
-}
-
-function cardInfo(value) {
-    return (
-        <>
-            <p className={styles.line}>
-                <b>{value}</b>
-            </p>
-            <p className={styles.line}>
-                <b>1 Months Validity</b>
-            </p>
-            <p className={styles.line}>
-                <b>4G LTE Support</b>
-            </p>
-            <p className={styles.line}>
-                <b>Hotspot Sharing Support</b>
-            </p>
-            <p className={styles.line}>
-                <b>Laptop Usage Support</b>
-            </p>
-            <p className={styles.line}>
-                <b>iphones Usage Support</b>
-            </p>
-            <p className={styles.line}>
-                <b>Multiple Devices Support</b>
-            </p>
-            <Link to="/dashboard">
-                <button className={styles.button}>PURCHASE NOW</button>
-            </Link>
         </>
     );
 }

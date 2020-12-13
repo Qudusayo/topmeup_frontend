@@ -114,21 +114,21 @@ function Index() {
                 </div>
             </div>
             <div>
-                <a target="_blank" href="https://facebook.com/topuplab">
+                <a target="_blank" rel="noreferrer" href="https://facebook.com/topuplab">
                     <img
                         src={facebook}
                         className={styles.logo}
                         alt="facebook-logo"
                     />
                 </a>
-                <a target="_blank" href="https://twitter.com/topuplab">
+                <a target="_blank" rel="noreferrer" href="https://twitter.com/topuplab">
                     <img
                         src={twitter}
                         className={styles.logo}
                         alt="twitter-logo"
                     />
                 </a>
-                <a target="_blank" href="https://instagram.com/topuplab">
+                <a target="_blank" rel="noreferrer" href="https://instagram.com/topuplab">
                     <img
                         src={instagram}
                         className={styles.logo}

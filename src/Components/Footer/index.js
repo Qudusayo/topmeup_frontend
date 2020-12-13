@@ -22,30 +22,34 @@ function Index() {
                 <div className={styles.table}>
                     <h2>Opening Hours</h2>
                     <table>
-                        <tbody>
+                        <tbody style={{ fontSize: ".78em" }}>
                             <tr>
                                 <td className={styles.disabled}>Mo: </td>
-                                <td> 08:00 - 05:00</td>
+                                <td> 06:30AM - 10:30PM</td>
                             </tr>
                             <tr>
                                 <td className={styles.disabled}>Tu: </td>
-                                <td> 08:00 - 05:00</td>
+                                <td> 06:30AM - 10:30PM</td>
                             </tr>
                             <tr>
                                 <td className={styles.disabled}>We: </td>
-                                <td> 08:00 - 05:00</td>
+                                <td> 06:30AM - 10:30PM</td>
                             </tr>
                             <tr>
                                 <td className={styles.disabled}>Th: </td>
-                                <td> 08:00 - 05:00</td>
+                                <td> 06:30AM - 10:30PM</td>
                             </tr>
                             <tr>
                                 <td className={styles.disabled}>Fr: </td>
-                                <td> 08:00 - 05:00</td>
+                                <td> 07:30AM - 10:30PM</td>
                             </tr>
                             <tr>
                                 <td className={styles.disabled}>Sa: </td>
-                                <td> 09:00 - 03:00</td>
+                                <td> 08:30AM - 10:30PM</td>
+                            </tr>
+                            <tr>
+                                <td className={styles.disabled}>Sa: </td>
+                                <td> 01:30PM - 09:00PM</td>
                             </tr>
                         </tbody>
                     </table>
@@ -101,7 +105,8 @@ function Index() {
                     <div className={styles.par}>
                         <h2>Ibadan</h2>
                         <p>
-                            No. 4 Ibunkunoluwa Street, Opposite Community primary school, Tose, Moniya, Ibadan
+                            No. 4 Ibunkunoluwa Street, Opposite Community
+                            primary school, Tose, Moniya, Ibadan
                             <br />
                             Oyo State, Nigeria.
                         </p>
@@ -109,17 +114,27 @@ function Index() {
                 </div>
             </div>
             <div>
-                <img
-                    src={facebook}
-                    className={styles.logo}
-                    alt="facebook-logo"
-                />
-                <img src={twitter} className={styles.logo} alt="twitter-logo" />
-                <img
-                    src={instagram}
-                    className={styles.logo}
-                    alt="instagram-logo"
-                />
+                <a target="_blank" href="https://facebook.com/topuplab">
+                    <img
+                        src={facebook}
+                        className={styles.logo}
+                        alt="facebook-logo"
+                    />
+                </a>
+                <a target="_blank" href="https://twitter.com/topuplab">
+                    <img
+                        src={twitter}
+                        className={styles.logo}
+                        alt="twitter-logo"
+                    />
+                </a>
+                <a target="_blank" href="https://instagram.com/topuplab">
+                    <img
+                        src={instagram}
+                        className={styles.logo}
+                        alt="instagram-logo"
+                    />
+                </a>
                 <br />
                 <span className={styles.copyright}>
                     <small>© Copyright 2020. All rights reserved</small>

@@ -137,6 +137,13 @@ class index extends Component {
         });
     };
 
+    componentDidMount() {
+        let ref = qs.parse(this.props.location.search, {
+            ignoreQueryPrefix: true,
+        }).ref;
+        if (token) return this.setState({ ref })
+    }
+
     render() {
         return (
             <>

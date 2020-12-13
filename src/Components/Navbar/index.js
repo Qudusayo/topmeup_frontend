@@ -28,6 +28,11 @@ function Index(props) {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/quick-buy" activeClassName={styles.active}>
+                        Quick Buy
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/login" activeClassName={styles.active}>
                         Login
                     </NavLink>

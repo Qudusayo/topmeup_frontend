@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 
 import Home from "./Routes/Home";
 import Services from "./Routes/Services";
+import QuickBuy from "./Routes/QuickBuy";
 import About from "./Routes/About";
 import Error from "./Routes/Error";
 import Login from "./Routes/Forms/Login";
@@ -35,6 +36,7 @@ function App(props) {
                 <Route path="/" component={Home} exact></Route>
                 <Route path="/about" component={About} exact></Route>
                 <Route path="/services" component={Services} exact></Route>
+                <Route path="/quick-buy" component={QuickBuy} exact></Route>
                 <Route path="/login" component={Login} exact></Route>
                 <Route path="/register" component={SignUp} exact></Route>
                 <Route path="/reset-password" component={ResetPin} exact></Route>

@@ -142,7 +142,7 @@ class index extends Component {
         let ref = qs.parse(this.props.location.search, {
             ignoreQueryPrefix: true,
         }).ref;
-        if (token) return this.setState({ ref })
+        if (ref) return this.setState({ ref })
     }
 
     render() {

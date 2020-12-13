@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import styles from "./style.module.scss";
+import styles from "./../../Fund/Online/style.module.scss";
 import swal from "@sweetalert/with-react";
 import axios from "axios";
 import { PaystackButton } from "react-paystack";

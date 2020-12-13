@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import styles from "./style.module.scss";
+import styles from "./../Home/style.module.scss";
 
-import logo1 from "./../../assets/images/logos/fast-dlivery.svg";
-import logo2 from "./../../assets/images/logos/safe-payment.svg";
-import logo3 from "./../../assets/images/logos/certified-adviser.svg";
 import logo4 from "./../../assets/images/logos/internet.svg";
 import logo5 from "./../../assets/images/logos/mobile.svg";
 import logo6 from "./../../assets/images/logos/television.svg";
@@ -15,50 +12,14 @@ import logo9 from "./../../assets/images/logos/messages.svg";
 
 import Navbar from "./../../Components/Navbar";
 import Footer from "./../../Components/Footer";
-import Banner from "./Banner";
-import Card from "./Card";
-import Testimonial from "./Testimonial";
-import Contact from "./Contact";
+import Card from "./../Home/Card";
 
 function index() {
     return (
         <>
             <Navbar />
-            <div className={styles.home}>
-                <Banner />
                 <div className={[styles.titles, "center"].join(" ")}>
-                    <h2>OUR FEATURES</h2>
-                    <span>The qualities that we have </span>
-                </div>
-                <div className={styles.cards}>
-                    <Card
-                        styles="card30"
-                        info="Our Data delivery and wallet funding is automated, Airtime topup and data purchase are automated and get delivered to you almost instantly.."
-                        src={logo1}
-                        title="We're Fast"
-                        anim="fade-up"
-                        delay="50"
-                    />
-                    <Card
-                        styles="card30"
-                        info="Your wallet is the safest means of transacting with your mobile airtime. Your funds in your wallet can be kept as long as you want and it’s secured."
-                        src={logo2}
-                        title="You're Safe"
-                        anim="fade-up"
-                        delay="450"
-                    />
-                    <Card
-                        styles="card30"
-                        info="With our several years of experience and engineers, we have learnt in the past years to be able to fully optimize our platform for reliability and dependability.."
-                        src={logo3}
-                        title="We're Reliable"
-                        anim="fade-up"
-                        delay="850"
-                    />
-                </div>
-
-                <div className={[styles.titles, "center"].join(" ")}>
-                    <h2>SERVICES WE RENDER</h2>
+                    <h2 style={{marginTop: "-2em"}}>SERVICES WE RENDER</h2>
                     <span>
                         We offer instant recharge of Airtime, Databundle,
                         CableTV (DStv, GOtv & Startimes), Electricity Bill
@@ -126,19 +87,39 @@ function index() {
                 </div>
 
                 <div className={styles.cards}>
-                    <Card styles="card25" network="mtn" anim="fade-up" delay="50">
+                    <Card
+                        styles="card25"
+                        network="mtn"
+                        anim="fade-up"
+                        delay="50"
+                    >
                         <h1>MTN</h1>
                         {cardInfo("₦300 1GB")}
                     </Card>
-                    <Card styles="card25" network="airtel" anim="fade-up" delay="450">
+                    <Card
+                        styles="card25"
+                        network="airtel"
+                        anim="fade-up"
+                        delay="450"
+                    >
                         <h1>AIRTEL</h1>
                         {cardInfo("₦920 1GB")}
                     </Card>
-                    <Card styles="card25" network="glo" anim="fade-up" delay="850">
+                    <Card
+                        styles="card25"
+                        network="glo"
+                        anim="fade-up"
+                        delay="850"
+                    >
                         <h1>GLO</h1>
                         {cardInfo("₦450 1GB")}
                     </Card>
-                    <Card styles="card25" network="nmobile" anim="fade-up" delay="1250">
+                    <Card
+                        styles="card25"
+                        network="nmobile"
+                        anim="fade-up"
+                        delay="1250"
+                    >
                         <h1>9MOBILE</h1>
                         {cardInfo("₦700 1.5GB")}
                     </Card>
@@ -154,19 +135,6 @@ function index() {
                     </div>
                     <h1>+234 701 641 2041</h1>
                 </div>
-
-                <div className={[styles.titles, "center"].join(" ")}>
-                    <h2>TESTIMONIAL</h2>
-                    <span>See what our Customers are saying about us:</span>
-                </div>
-                <Testimonial />
-
-                <div className={[styles.titles, "center"].join(" ")}>
-                    <h2>CONTACT US</h2>
-                    <span>Have enquiries ? Please contact us.</span>
-                </div>
-                <Contact />
-            </div>
             <Footer />
         </>
     );

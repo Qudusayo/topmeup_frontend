@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
 import Home from "./Routes/Home";
+import Services from "./Routes/Services";
 import Error from "./Routes/Error";
 import Login from "./Routes/Forms/Login";
 import SignUp from "./Routes/Forms/SignUp";
@@ -31,6 +32,7 @@ function App(props) {
         <Provider store={store}>
             <Switch>
                 <Route path="/" component={Home} exact></Route>
+                <Route path="/services" component={Services} exact></Route>
                 <Route path="/login" component={Login} exact></Route>
                 <Route path="/register" component={SignUp} exact></Route>
                 <Route path="/reset-password" component={ResetPin} exact></Route>

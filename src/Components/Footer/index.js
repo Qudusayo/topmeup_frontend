@@ -16,7 +16,7 @@ function Index() {
                         TOP<span className="yellow">UP</span>LAB
                     </h2>
                     We offer instant recharge of Airtime, Databundle, CableTV
-                    (DStv, GOtv & Startimes), Electricity Bill Payemnt and so
+                    (DStv, GOtv & Startimes), Electricity Bill Payment and so
                     much more.
                 </div>
                 <div className={styles.table}>

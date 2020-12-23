@@ -122,7 +122,7 @@ class Index extends Component {
                         } else {
                             swalt(
                                 "Data Subscription Failed",
-                                `${res.data.errorMsg}`,
+                                 res.data.errorMsg ? `${res.data.errorMsg}` :"Error Completing Transaction" ,
                                 "warning"
                             );
                             this.setState({ waiting: false });

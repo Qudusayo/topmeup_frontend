@@ -110,7 +110,7 @@ class index extends Component {
                         } else {
                             swalt(
                                 "PIN Purchase Failed",
-                                `${res.data.errorMsg}`,
+                                 res.data.errorMsg ? `${res.data.errorMsg}` :"Error Completing Transaction" ,
                                 "warning"
                             );
                             this.setState({ waiting: false });

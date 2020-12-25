@@ -41,14 +41,14 @@ class index extends Component {
                     </div>
                 </div>
                 <div className={styles.cards}>
-                    <div>DATA BUNDLE</div>
-                    <div>AIRTIME TOPUP</div>
-                    <div>UTILITY BILLS</div>
+                    <Link to="/data-subscription"><div>DATA BUNDLE</div></Link>
+                    <Link to="/airtime-topup"><div>AIRTIME TOPUP</div></Link>
+                    <Link to="/bill-payment"><div>UTILITY BILLS</div></Link>
                 </div>
                 <div className={styles.cards}>
-                    <div>TV SUBSCRIPTION</div>
-                    <div>SCRATCH CARD</div>
-                    <div>TRANSFER MONEY</div>
+                    <Link to="/cable-TV"><div>TV SUBSCRIPTION</div></Link>
+                    <Link to="/buy-scratch-card"><div>SCRATCH CARD</div></Link>
+                    <Link to="/transfer-fund"><div>TRANSFER MONEY</div></Link>
                 </div>
             </Wrapper>
         );

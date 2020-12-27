@@ -15,7 +15,7 @@ import {
 } from "./../../../actions/usersAction";
 import Navbar from "./../../../Components/Navbar";
 
-import spinner from "./../../../assets/images/logos/loading.png";
+import Spinner from "./../../../Components/Spinner";
 
 import styles from "./../style.module.scss";
 
@@ -159,15 +159,7 @@ class Index extends Component {
                             disabled={this.state.waiting}
                         />
                         <button type="submit" disabled={this.state.waiting}>
-                            {this.state.waiting ? (
-                                <img
-                                    className={styles.spinner}
-                                    src={spinner}
-                                    alt="spinner"
-                                />
-                            ) : (
-                                "LOGIN"
-                            )}
+                            {this.state.waiting ? <Spinner /> : "LOGIN"}
                         </button>
                     </form>
                     <div className={styles.info}>

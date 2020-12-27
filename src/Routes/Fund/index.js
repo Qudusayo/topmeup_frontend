@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import Wrapper from "./../../Components/Container";
 
 import { getTransactionHistory } from "./../../actions/usersAction";
-import spinner from "./../../assets/images/logos/loading.png";
+import Spinner from "./../../Components/Spinner";
 
 import Online from "./Online";
 
@@ -277,11 +277,7 @@ class Index extends Component {
                         {!this.state.onlinePayment ? (
                             <button type="submit" disabled={this.state.waiting}>
                                 {this.state.waiting ? (
-                                    <img
-                                        className={styles.spinner}
-                                        src={spinner}
-                                        alt="spinner"
-                                    />
+                                    <Spinner />
                                 ) : (
                                     "PROCEED"
                                 )}
@@ -330,11 +326,7 @@ class Index extends Component {
                         />
                         <button type="submit" disabled={this.state.waiting}>
                             {this.state.waiting ? (
-                                <img
-                                    className={styles.spinner}
-                                    src={spinner}
-                                    alt="spinner"
-                                />
+                                <Spinner />
                             ) : (
                                 "SUBMIT"
                             )}

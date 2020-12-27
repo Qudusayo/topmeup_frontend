@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import axios from "axios";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
 import Wrapper from "./../../Components/Container";
 
-import spinner from "./../../assets/images/logos/loading.png";
+import Spinner from "./../../Components/Spinner";
 
 import styles from "./style.module.scss";
 
@@ -72,7 +72,7 @@ class index extends Component {
                         amount: "",
                         waiting: false,
                     });
-                    this.props.history.push("/dashboard")
+                    this.props.history.push("/dashboard");
                 } else {
                     swalt(
                         "Error Sending Info",
@@ -95,9 +95,9 @@ class index extends Component {
     render() {
         return (
             <Wrapper>
-            <Helmet>
-                <title>TOP UP LAB | MESSAGE ADMIN </title>
-            </Helmet>
+                <Helmet>
+                    <title>TOP UP LAB | MESSAGE ADMIN </title>
+                </Helmet>
                 <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h1>CONTACT FORM</h1>
                     <h3>DROP A MESSAGE</h3>
@@ -135,15 +135,7 @@ class index extends Component {
                         type="submit"
                         disabled={this.state.waiting}
                     >
-                        {this.state.waiting ? (
-                            <img
-                                className={styles.spinner}
-                                src={spinner}
-                                alt="spinner"
-                            />
-                        ) : (
-                            "SEND MESSAGE"
-                        )}
+                        {this.state.waiting ? <Spinner /> : "SEND MESSAGE"}
                     </button>
                 </form>
             </Wrapper>

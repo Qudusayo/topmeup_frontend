@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { getTransactionHistory } from "./../../actions/usersAction";
-import spinner from "./../../assets/images/logos/loading.png";
+import Spinner from "./../../Components/Spinner";
 
 import styles from "./../Transfer/style.module.scss";
 
@@ -121,7 +121,9 @@ class Index extends Component {
                         } else {
                             swalt(
                                 "Power Payment Failed",
-                                 res.data.errorMsg ? `${res.data.errorMsg}` :"Error Completing Transaction" ,
+                                res.data.errorMsg
+                                    ? `${res.data.errorMsg}`
+                                    : "Error Completing Transaction",
                                 "warning"
                             );
                             this.setState({ waiting: false });
@@ -211,15 +213,7 @@ class Index extends Component {
                         disabled={this.state.waiting}
                     />
                     <button type="submit" disabled={this.state.waiting}>
-                        {this.state.waiting ? (
-                            <img
-                                className={styles.spinner}
-                                src={spinner}
-                                alt="spinner"
-                            />
-                        ) : (
-                            "PURCHASE POWER"
-                        )}
+                        {this.state.waiting ? <Spinner /> : "PURCHASE POWER"}
                     </button>
                 </form>
             </Wrapper>

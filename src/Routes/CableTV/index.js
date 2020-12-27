@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import axios from "axios";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { getTransactionHistory } from "./../../actions/usersAction";
 import Wrapper from "./../../Components/Container";
 
-import spinner from "./../../assets/images/logos/loading.png";
+import Spinner from "./../../Components/Spinner";
 
 import styles from "./../Transfer/style.module.scss";
 
@@ -117,7 +117,9 @@ class Index extends Component {
                         } else {
                             swalt(
                                 "TV Payment Failed",
-                                 res.data.errorMsg ? `${res.data.errorMsg}` :"Error Completing Transaction" ,
+                                res.data.errorMsg
+                                    ? `${res.data.errorMsg}`
+                                    : "Error Completing Transaction",
                                 "warning"
                             );
                             this.setState({ waiting: false });
@@ -138,9 +140,9 @@ class Index extends Component {
     render() {
         return (
             <Wrapper>
-            <Helmet>
-                <title>TOP UP LAB | TV PLAN PURCHASE </title>
-            </Helmet>
+                <Helmet>
+                    <title>TOP UP LAB | TV PLAN PURCHASE </title>
+                </Helmet>
                 <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h1>TV SUBSCRIPTION</h1>
                     <h3>PURCHASE DATA</h3>
@@ -195,15 +197,7 @@ class Index extends Component {
                         disabled={this.state.waiting}
                     />
                     <button type="submit" disabled={this.state.waiting}>
-                        {this.state.waiting ? (
-                            <img
-                                className={styles.spinner}
-                                src={spinner}
-                                alt="spinner"
-                            />
-                        ) : (
-                            "VALIDATE"
-                        )}
+                        {this.state.waiting ? <Spinner /> : "VALIDATE"}
                     </button>
                 </form>
                 <div className={styles.card}>
@@ -220,10 +214,9 @@ class Index extends Component {
     }
 }
 
-
 Index.propsTypes = {
     getTransactionHistory: PropTypes.func.isRequired,
-    tvSubscription: PropTypes.object.isRequired
+    tvSubscription: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

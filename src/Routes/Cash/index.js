@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
 import Wrapper from "./../../Components/Container";
 
-import spinner from "./../../assets/images/logos/loading.png";
+import Spinner from "./../../Components/Spinner";
 
 import styles from "./../Transfer/style.module.scss";
 
@@ -64,18 +64,21 @@ class index extends Component {
         }).then((result) => {
             if (result.isConfirmed) {
                 this.setState({ waiting: true });
-                window.open(`https://api.whatsapp.com/send?phone=2347016412041&text=Hi%20Admin%20TopUpLab.%0AI%20want%20to%20make%20a%20sale%20of%20*₦${this.state.amount}%20${this.state.networkProvider}%20airtime*%20.%20Will%20look%20forward%20to%20your%20response%20as%20quick%20as%20%20possible`, '_blank');
+                window.open(
+                    `https://api.whatsapp.com/send?phone=2347016412041&text=Hi%20Admin%20TopUpLab.%0AI%20want%20to%20make%20a%20sale%20of%20*₦${this.state.amount}%20${this.state.networkProvider}%20airtime*%20.%20Will%20look%20forward%20to%20your%20response%20as%20quick%20as%20%20possible`,
+                    "_blank"
+                );
                 this.setState({ waiting: false });
             }
         });
-    }
+    };
 
     render() {
         return (
             <Wrapper>
-            <Helmet>
-                <title>TOP UP LAB | AIRTIME TO CASH </title>
-            </Helmet>
+                <Helmet>
+                    <title>TOP UP LAB | AIRTIME TO CASH </title>
+                </Helmet>
                 <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h1>CONVERT AIRTIME</h1>
                     <h3>TO CASH</h3>
@@ -91,18 +94,10 @@ class index extends Component {
                         <option value="" hidden>
                             Network Provider
                         </option>
-                        <option value="9mobile">
-                            9MOBLIE
-                        </option>
-                        <option value="airtel">
-                            AIRTEL
-                        </option>
-                        <option value="globacom">
-                            GLOBACOM
-                        </option>
-                        <option value="mtn">
-                            MTN
-                        </option>
+                        <option value="9mobile">9MOBLIE</option>
+                        <option value="airtel">AIRTEL</option>
+                        <option value="globacom">GLOBACOM</option>
+                        <option value="mtn">MTN</option>
                     </select>
                     <label>Amount</label>
                     <input
@@ -118,15 +113,7 @@ class index extends Component {
                         required={true}
                     />
                     <button type="submit" disabled={this.state.waiting}>
-                        {this.state.waiting ? (
-                            <img
-                                className={styles.spinner}
-                                src={spinner}
-                                alt="spinner"
-                            />
-                        ) : (
-                            "PLACE A SALE"
-                        )}
+                        {this.state.waiting ? <Spinner /> : "PLACE A SALE"}
                     </button>
                 </form>
             </Wrapper>

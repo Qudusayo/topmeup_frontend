@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import axios from "axios";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { getTransactionHistory } from "./../../actions/usersAction";
 import Wrapper from "./../../Components/Container";
 
-import spinner from "./../../assets/images/logos/loading.png";
+import Spinner from "./../../Components/Spinner";
 
 import styles from "./style.module.scss";
 
@@ -127,9 +127,9 @@ class Index extends Component {
     render() {
         return (
             <Wrapper>
-            <Helmet>
-                <title>TOP UP LAB | TRANSFER FUND</title>
-            </Helmet>
+                <Helmet>
+                    <title>TOP UP LAB | TRANSFER FUND</title>
+                </Helmet>
                 <div className={styles.card}>
                     <h4>Hello</h4>
                     <p>
@@ -173,15 +173,7 @@ class Index extends Component {
                         disabled={this.state.waiting}
                     />
                     <button type="submit" disabled={this.state.waiting}>
-                        {this.state.waiting ? (
-                            <img
-                                className={styles.spinner}
-                                src={spinner}
-                                alt="spinner"
-                            />
-                        ) : (
-                            "SEND MONEY"
-                        )}
+                        {this.state.waiting ? <Spinner /> : "SEND MONEY"}
                     </button>
                 </form>
             </Wrapper>

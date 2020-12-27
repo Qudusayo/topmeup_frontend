@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import Navbar from "./../../../Components/Navbar";
 
-import spinner from "./../../../assets/images/logos/loading.png";
+import Spinner from "./../../../Components/Spinner";
 
 import styles from "./../style.module.scss";
 
@@ -177,11 +177,7 @@ class Index extends Component {
                         />
                         <button type="submit" disabled={this.state.waiting}>
                             {this.state.waiting ? (
-                                <img
-                                    className={styles.spinner}
-                                    src={spinner}
-                                    alt="spinner"
-                                />
+                                <Spinner />
                             ) : (
                                 "UPDATE PASSWORD"
                             )}

@@ -29,8 +29,8 @@ class Index extends Component {
             .get(api, { headers: { Authorization: `Bearer ${token}` } })
             .then((res) => {
                 this.setState({
-                    fullHistory: res.data,
-                    history: res.data.slice(
+                    fullHistory: res.data.reverse(),
+                    history: res.data.reverse().slice(
                         0,
                         res.data.length <= 10
                             ? res.data.length

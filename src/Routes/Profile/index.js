@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import swal from "@sweetalert/with-react";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { getUserInfo } from "./../../actions/usersAction";
 import Wrapper from "./../../Components/Container";
 
-import spinner from "./../../assets/images/logos/loading.png";
+import Spinner from "./../../Components/Spinner";
 import avatar from "./../../assets/images/avatar.png";
 
 import styles from "./style.module.scss";
@@ -190,9 +190,14 @@ class Index extends Component {
     render() {
         return (
             <Wrapper>
-            <Helmet>
-                <title>TOP UP LAB | {this.state.userName ? this.state.userName.toUpperCase() : "MY PROFILE"} </title>
-            </Helmet>
+                <Helmet>
+                    <title>
+                        TOP UP LAB |{" "}
+                        {this.state.userName
+                            ? this.state.userName.toUpperCase()
+                            : "MY PROFILE"}{" "}
+                    </title>
+                </Helmet>
                 <div className={styles.card}>
                     <img src={avatar} alt="avatar" />
                     <div>
@@ -250,11 +255,7 @@ class Index extends Component {
                             disabled={this.state.upgradingUser}
                         >
                             {this.state.upgradingUser ? (
-                                <img
-                                    className={styles.spinner}
-                                    src={spinner}
-                                    alt="spinner"
-                                />
+                                <Spinner />
                             ) : (
                                 "UPGRADE TO PREMIUM"
                             )}
@@ -301,11 +302,7 @@ class Index extends Component {
                     />
                     <button type="submit" disabled={this.state.updatingProfile}>
                         {this.state.updatingProfile ? (
-                            <img
-                                className={styles.spinner}
-                                src={spinner}
-                                alt="spinner"
-                            />
+                            <Spinner />
                         ) : (
                             "UPDATE PROFILE"
                         )}
@@ -354,11 +351,7 @@ class Index extends Component {
                         disabled={this.state.updatingPassword}
                     >
                         {this.state.updatingPassword ? (
-                            <img
-                                className={styles.spinner}
-                                src={spinner}
-                                alt="spinner"
-                            />
+                            <Spinner />
                         ) : (
                             "UPDATE PASSWORD"
                         )}

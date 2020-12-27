@@ -5,7 +5,7 @@ import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
 import Wrapper from "./../../Components/Container";
 
-// import spinner from "./../../assets/images/logos/loading.png";
+// import Spinner from "./../../Components/Spinner";
 
 import styles from "./../Transfer/style.module.scss";
 
@@ -110,7 +110,9 @@ class index extends Component {
                         } else {
                             swalt(
                                 "PIN Purchase Failed",
-                                 res.data.errorMsg ? `${res.data.errorMsg}` :"Error Completing Transaction" ,
+                                res.data.errorMsg
+                                    ? `${res.data.errorMsg}`
+                                    : "Error Completing Transaction",
                                 "warning"
                             );
                             this.setState({ waiting: false });
@@ -166,15 +168,7 @@ class index extends Component {
                         max="5"
                     />
                     {/* <button type="submit" disabled={this.state.waiting}>
-                        {this.state.waiting ? (
-                            <img
-                                className={styles.spinner}
-                                src={spinner}
-                                alt="spinner"
-                            />
-                        ) : (
-                            "REQUEST PIN"
-                        )}
+                        {this.state.waiting ? <Spinner /> : "REQUEST PIN"}
                     </button> */}
                 </form>
             </Wrapper>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-import spinner from "./../../../assets/images/logos/loading.png";
+import Spinner from "./../../../Components/Spinner";
 
 import Navbar from "./../../../Components/Navbar";
 
@@ -128,11 +128,7 @@ class index extends Component {
                         />
                         <button type="submit" disabled={this.state.waiting}>
                             {this.state.waiting ? (
-                                <img
-                                    className={styles.spinner}
-                                    src={spinner}
-                                    alt="spinner"
-                                />
+                                <Spinner />
                             ) : (
                                 "RESET PASSWORD"
                             )}

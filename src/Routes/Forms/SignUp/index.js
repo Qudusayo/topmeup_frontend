@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 import Navbar from "./../../../Components/Navbar";
 
-import spinner from "./../../../assets/images/logos/loading.png";
+import Spinner from "./../../../Components/Spinner";
 
 import styles from "./../style.module.scss";
 
@@ -256,11 +256,7 @@ class index extends Component {
                         />
                         <button type="submit" disabled={this.state.waiting}>
                             {this.state.waiting ? (
-                                <img
-                                    className={styles.spinner}
-                                    src={spinner}
-                                    alt="spinner"
-                                />
+                                <Spinner />
                             ) : (
                                 "CREATE ACCOUNT"
                             )}

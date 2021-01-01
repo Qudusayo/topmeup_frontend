@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Wrapper from "./../../Components/Container";
 
@@ -12,6 +13,7 @@ class index extends Component {
         this.state = {
             balance: 0,
             today: "",
+            refUrl: "http://topuplab.com.ng/register?ref=",
         };
     }
 
@@ -29,9 +31,34 @@ class index extends Component {
         axios
             .get(api, { headers: { Authorization: `Bearer ${token}` } })
             .then((res) => {
-                this.setState({ balance: res.data.balance, today });
+                const refUrl =
+                    this.state.refUrl +
+                    res.data.userName[0].toUpperCase() +
+                    res.data.userName.slice(1);
+                this.setState({ balance: res.data.balance, today, refUrl });
             });
     }
+
+    copyUrl = () => {
+        navigator.clipboard.writeText(this.state.refUrl);
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+        });
+
+        Toast.fire({
+            icon: "success",
+            title: "Link Copied Successfully",
+        });
+    };
+
     render() {
         return (
             <Wrapper>
@@ -40,7 +67,7 @@ class index extends Component {
                 </Helmet>
                 <div className={styles.card}>
                     <Link to="/fund-wallet">
-                        <button>+</button>
+                        <button className={styles.fund}>+</button>
                     </Link>
                     <div>
                         <h2>Balance</h2>
@@ -50,6 +77,10 @@ class index extends Component {
                             {this.state.today ? this.state.today : "11/11/2020"}{" "}
                         </p>
                     </div>
+                </div>
+                <div className={[styles.card, styles.refLink].join(" ")}>
+                    <input value={this.state.refUrl} disabled />
+                    <button onClick={this.copyUrl}>COPY</button>
                 </div>
                 <div className={styles.cards}>
                     <Link to="/data-subscription">

@@ -70,6 +70,10 @@ class index extends Component {
             return this.error("All fields are required");
         } else if (data.password !== data.confirmPassword) {
             return this.error("Password doesn't match");
+        } else if (data.userName.length < 3) {
+            return this.error("Username too short, min of 3 chars");
+        } else if (data.phoneNumber.length != 11) {
+            return this.error("Invalid Mobile Number");
         } else if (data.password.length < 6) {
             return this.error("Password too short, min of 6 chars");
         } else {
@@ -214,6 +218,7 @@ class index extends Component {
                             type="text"
                             name="username"
                             id="username"
+                            min="3"
                             autoComplete="off"
                             placeholder="Username"
                             value={this.state.userame}

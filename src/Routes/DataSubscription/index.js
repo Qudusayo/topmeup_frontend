@@ -165,7 +165,7 @@ class Index extends Component {
                         </option>
                         <option value="nmobile">9MOBLIE</option>
                         <option value="airtel">AIRTEL</option>
-                        <option value="glo">GLOBACOM</option>
+                        <option value="globacom">GLOBACOM</option>
                         <option value="mtn">MTN</option>
                     </select>
                     <label>Data Plan</label>

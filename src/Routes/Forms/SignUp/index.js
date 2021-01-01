@@ -70,6 +70,8 @@ class index extends Component {
             return this.error("All fields are required");
         } else if (data.password !== data.confirmPassword) {
             return this.error("Password doesn't match");
+        } else if (["qudusayo", "admin", "administrator", "topuplab", "manager"].includes(data.userName.toLowerCase())) {
+            return this.error("Username not allowed");
         } else if (data.userName.length < 3) {
             return this.error("Username too short, min of 3 chars");
         } else if (data.phoneNumber.length !== 11) {

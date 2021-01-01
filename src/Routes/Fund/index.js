@@ -212,6 +212,13 @@ class Index extends Component {
                                         </a>
                                     </b>
                                 </p>
+                                <p>
+                                    <b>
+                                        PLEASE DO NOT FILL THIS FORM IF YOU HAVE
+                                        NOT MAKE THE PAYMENT OR ELSE YOUR
+                                        ACCOUNT WILL BE LOCKED.
+                                    </b>
+                                </p>
                             </div>
                         </>
                     ) : null}
@@ -276,11 +283,7 @@ class Index extends Component {
                         />
                         {!this.state.onlinePayment ? (
                             <button type="submit" disabled={this.state.waiting}>
-                                {this.state.waiting ? (
-                                    <Spinner />
-                                ) : (
-                                    "PROCEED"
-                                )}
+                                {this.state.waiting ? <Spinner /> : "PROCEED"}
                             </button>
                         ) : (
                             <Online
@@ -325,11 +328,7 @@ class Index extends Component {
                             disabled={this.state.waiting}
                         />
                         <button type="submit" disabled={this.state.waiting}>
-                            {this.state.waiting ? (
-                                <Spinner />
-                            ) : (
-                                "SUBMIT"
-                            )}
+                            {this.state.waiting ? <Spinner /> : "SUBMIT"}
                         </button>
                     </form>
                 ) : null}

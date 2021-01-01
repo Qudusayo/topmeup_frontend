@@ -58,26 +58,47 @@ class index extends Component {
                 toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
         });
+
+        const nameValidator = /^[a-zA-Z]+$/;
+        const usernameValidator = /^[a-zA-Z1-9]+$/;
+        const phoneNumberValidator = /^[0-9]{11}$/;
+
         if (
-            !data.email &&
-            !data.firstName &&
-            !data.lastName &&
-            !data.userName &&
-            !data.phoneNumber &&
-            !data.password &&
+            !data.email ||
+            !data.firstName ||
+            !data.lastName ||
+            !data.userName ||
+            !data.phoneNumber ||
+            !data.password ||
             !data.confirmPassword
         ) {
             return this.error("All fields are required");
-        } else if (data.password !== data.confirmPassword) {
-            return this.error("Password doesn't match");
-        } else if (["qudusayo", "admin", "administrator", "topuplab", "manager"].includes(data.userName.toLowerCase())) {
+        } else if (!nameValidator.test(data.firstName)) {
+            return this.error("Invalid FirstName");
+        } else if (!nameValidator.test(data.lastName)) {
+            return this.error("Invalid LastName");
+        } else if (
+            !usernameValidator.test(data.userName.toLowerCase()) ||
+            [
+                "qudusayo",
+                "admin",
+                "administrator",
+                "topuplab",
+                "manager",
+            ].includes(data.userName.toLowerCase())
+        ) {
             return this.error("Username not allowed");
         } else if (data.userName.length < 3) {
             return this.error("Username too short, min of 3 chars");
-        } else if (data.phoneNumber.length !== 11) {
+        } else if (
+            !phoneNumberValidator.test(data.phoneNumber) ||
+            data.phoneNumber.length !== 11
+        ) {
             return this.error("Invalid Mobile Number");
         } else if (data.password.length < 6) {
             return this.error("Password too short, min of 6 chars");
+        } else if (data.password !== data.confirmPassword) {
+            return this.error("Password doesn't match");
         } else {
             this.setState({ waiting: true });
             axios
@@ -148,7 +169,7 @@ class index extends Component {
         let ref = qs.parse(this.props.location.search, {
             ignoreQueryPrefix: true,
         }).ref;
-        if (ref) return this.setState({ ref })
+        if (ref) return this.setState({ ref });
     }
 
     render() {
@@ -210,6 +231,7 @@ class index extends Component {
                             id="tel"
                             autoComplete="off"
                             placeholder="Phone Number"
+                            pattern="^0[7-9]{1}[01]{1}[0-9]{8}"
                             value={this.state.tel}
                             required={true}
                             disabled={this.state.waiting}

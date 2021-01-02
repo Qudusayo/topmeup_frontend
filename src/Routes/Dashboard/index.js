@@ -79,7 +79,7 @@ class index extends Component {
                     </div>
                 </div>
                 <div className={[styles.card, styles.refLink].join(" ")}>
-                    <input value={this.state.refUrl} disabled />
+                    <input value={this.state.refUrl} disabled onClick={this.copyUrl} />
                     <button onClick={this.copyUrl}>COPY</button>
                 </div>
                 <div className={styles.cards}>
@@ -103,6 +103,17 @@ class index extends Component {
                     <Link to="/transfer-fund">
                         <div>TRANSFER MONEY</div>
                     </Link>
+                </div>
+                <div className={styles.cards}>
+                    <a href="https://chat.whatsapp.com/D3d2oHlRoW16L5zdFqoAcA" target="_blank" rel="noreferrer" style={{ backgroundColor: "#00bfa5", color: "white" }}>
+                        <div>JOIN WHATSAPP</div>
+                    </a>
+                    <a href="https://t.me/TopUpLab" target="_blank" rel="noreferrer" style={{ backgroundColor: "#5682A3", color: "white" }}>
+                        <div>JOIN TELEGRAM</div>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=2347016412041&text=Hi%20Admin%20TopUpLab.Tell%20me%20more%20about%20your%20product%20" target="_blank" rel="noreferrer" style={{ backgroundColor: "#127EB1", color: "white" }}>
+                        <div>CHAT ADMIN</div>
+                    </a>
                 </div>
             </Wrapper>
         );

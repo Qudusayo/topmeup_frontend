@@ -70,6 +70,8 @@ class Index extends Component {
             );
         }
 
+        console.log(typeof this.state.amount);
+
         Swal.fire({
             title: "Verify Purchase",
             text: "You won't be able to revert this!",
@@ -148,6 +150,10 @@ class Index extends Component {
         });
     };
 
+    autoFill = (value) => {
+        this.setState({ amount: value });
+    };
+
     render() {
         return (
             <Wrapper>
@@ -202,6 +208,12 @@ class Index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
+                    <div className={styles.units}>
+                        <span onClick={() => this.autoFill("100")}>100</span>
+                        <span onClick={() => this.autoFill("200")}>200</span>
+                        <span onClick={() => this.autoFill("500")}>500</span>
+                        <span onClick={() => this.autoFill("1000")}>1000</span>
+                    </div>
                     <button type="submit" disabled={this.state.waiting}>
                         {this.state.waiting ? <Spinner /> : "PURCHASE AIRTIME"}
                     </button>

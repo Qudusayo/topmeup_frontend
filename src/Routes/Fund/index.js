@@ -122,6 +122,14 @@ class Index extends Component {
         }
     }
 
+    autoBankFill = (value) => {
+        this.setState({ amount: value });
+    }
+
+    autoOnlineFill = (value) => {
+        this.setState({ onlineAmount: value });
+    }
+
     render() {
         return (
             <Wrapper>
@@ -281,6 +289,20 @@ class Index extends Component {
                             required={true}
                             disabled={this.state.onlinePayment}
                         />
+                         <div className={styles.units}>
+                            <span onClick={() => this.autoOnlineFill("500")}>
+                                500
+                            </span>
+                            <span onClick={() => this.autoOnlineFill("1000")}>
+                                1000
+                            </span>
+                            <span onClick={() => this.autoOnlineFill("2000")}>
+                                2000
+                            </span>
+                            <span onClick={() => this.autoOnlineFill("5000")}>
+                                5000
+                            </span>
+                        </div>
                         {!this.state.onlinePayment ? (
                             <button type="submit" disabled={this.state.waiting}>
                                 {this.state.waiting ? <Spinner /> : "PROCEED"}
@@ -323,10 +345,24 @@ class Index extends Component {
                             autoComplete="off"
                             placeholder="Amount"
                             value={this.state.amount}
-                            min="500"
+                            min="1000"
                             required={true}
                             disabled={this.state.waiting}
                         />
+                        <div className={styles.units}>
+                            <span onClick={() => this.autoBankFill("1000")}>
+                                1000
+                            </span>
+                            <span onClick={() => this.autoBankFill("2000")}>
+                                2000
+                            </span>
+                            <span onClick={() => this.autoBankFill("4000")}>
+                                4000
+                            </span>
+                            <span onClick={() => this.autoBankFill("5000")}>
+                                5000
+                            </span>
+                        </div>
                         <button type="submit" disabled={this.state.waiting}>
                             {this.state.waiting ? <Spinner /> : "SUBMIT"}
                         </button>

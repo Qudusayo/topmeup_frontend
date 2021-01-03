@@ -170,7 +170,7 @@ class Index extends Component {
                             Bank Payment (Min ₦1000, 0% Fee)
                         </option>
                         <option value="onlinePayment">
-                            Online Payment (Min ₦500, 1.5% Fee)
+                            Online Payment (Min ₦500, 2% Fee)
                         </option>
                         <option value="airtimePayment">
                             Airtime Payment (Min ₦120, 20% Fee)
@@ -312,7 +312,7 @@ class Index extends Component {
                                 email={this.state.depositorsEmail}
                                 amount={
                                     (parseInt(this.state.onlineAmount) +
-                                        (1.5 / 100) *
+                                        (2 / 100) *
                                             parseInt(this.state.onlineAmount)) *
                                     100
                                 }

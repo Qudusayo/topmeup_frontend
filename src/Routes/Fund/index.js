@@ -124,11 +124,11 @@ class Index extends Component {
 
     autoBankFill = (value) => {
         this.setState({ amount: value });
-    }
+    };
 
     autoOnlineFill = (value) => {
         this.setState({ onlineAmount: value });
-    }
+    };
 
     render() {
         return (
@@ -277,19 +277,21 @@ class Index extends Component {
                             disabled={true}
                         />
                         <label>Amount</label>
-                        <input
-                            onChange={this.onChange}
-                            type="number"
-                            name="onlineAmount"
-                            id="onlineAmount"
-                            autoComplete="off"
-                            placeholder="Amount"
-                            value={this.state.onlineAmount}
-                            min="500"
-                            required={true}
-                            disabled={this.state.onlinePayment}
-                        />
-                         <div className={styles.units}>
+                        <span className={styles.inputHeavySymbolNaira}>
+                            <input
+                                onChange={this.onChange}
+                                type="number"
+                                name="onlineAmount"
+                                id="onlineAmount"
+                                autoComplete="off"
+                                placeholder="Amount"
+                                value={this.state.onlineAmount}
+                                min="500"
+                                required={true}
+                                disabled={this.state.onlinePayment}
+                            />
+                        </span>
+                        <div className={styles.units}>
                             <span onClick={() => this.autoOnlineFill("500")}>
                                 500
                             </span>
@@ -337,18 +339,20 @@ class Index extends Component {
                             disabled={this.state.waiting}
                         />
                         <label>Amount</label>
-                        <input
-                            onChange={this.onChange}
-                            type="number"
-                            name="amount"
-                            id="amount"
-                            autoComplete="off"
-                            placeholder="Amount"
-                            value={this.state.amount}
-                            min="1000"
-                            required={true}
-                            disabled={this.state.waiting}
-                        />
+                        <span className={styles.inputHeavySymbolNaira}>
+                            <input
+                                onChange={this.onChange}
+                                type="number"
+                                name="amount"
+                                id="amount"
+                                autoComplete="off"
+                                placeholder="Amount"
+                                value={this.state.amount}
+                                min="1000"
+                                required={true}
+                                disabled={this.state.waiting}
+                            />
+                        </span>
                         <div className={styles.units}>
                             <span onClick={() => this.autoBankFill("1000")}>
                                 1000

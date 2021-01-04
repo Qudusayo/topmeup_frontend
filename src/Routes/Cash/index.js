@@ -104,23 +104,27 @@ class index extends Component {
                         <option value="mtn">MTN</option>
                     </select>
                     <label>Amount</label>
-                    <input
-                        onChange={this.onChange}
-                        type="number"
-                        name="amount"
-                        id="amount"
-                        autoComplete="off"
-                        placeholder="Amount"
-                        min="500"
-                        value={this.state.amount}
-                        disabled={this.state.waiting}
-                        required={true}
-                    />
+                    <span className={styles.inputHeavySymbolNaira}>
+                        <input
+                            onChange={this.onChange}
+                            type="number"
+                            name="amount"
+                            id="amount"
+                            autoComplete="off"
+                            placeholder="Amount"
+                            min="500"
+                            value={this.state.amount}
+                            disabled={this.state.waiting}
+                            required={true}
+                        />
+                    </span>
                     <div className={styles.units}>
                         <span onClick={() => this.autoFill("1000")}>1000</span>
                         <span onClick={() => this.autoFill("2000")}>2000</span>
                         <span onClick={() => this.autoFill("5000")}>5000</span>
-                        <span onClick={() => this.autoFill("10000")}>10000</span>
+                        <span onClick={() => this.autoFill("10000")}>
+                            10000
+                        </span>
                     </div>
                     <button type="submit" disabled={this.state.waiting}>
                         {this.state.waiting ? <Spinner /> : "PLACE A SALE"}

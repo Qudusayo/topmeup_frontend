@@ -126,7 +126,7 @@ class Index extends Component {
 
     autoFill = (value) => {
         this.setState({ amount: value });
-    }
+    };
 
     render() {
         return (
@@ -165,22 +165,26 @@ class Index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
-                    <input
-                        onChange={this.onChange}
-                        type="number"
-                        name="amount"
-                        id="amount"
-                        autoComplete="off"
-                        placeholder="Amount"
-                        value={this.state.amount}
-                        required={true}
-                        disabled={this.state.waiting}
-                    />
+                    <span className={styles.inputSymbolNaira}>
+                        <input
+                            onChange={this.onChange}
+                            type="number"
+                            name="amount"
+                            id="amount"
+                            autoComplete="off"
+                            placeholder="Amount"
+                            value={this.state.amount}
+                            required={true}
+                            disabled={this.state.waiting}
+                        />
+                    </span>
                     <div className={styles.units}>
-                        <span onClick={ () => this.autoFill("1000") }>1000</span>
-                        <span onClick={ () => this.autoFill("2000") }>2000</span>
-                        <span onClick={ () => this.autoFill("5000") }>5000</span>
-                        <span onClick={ () => this.autoFill("10000") }>10000</span>
+                        <span onClick={() => this.autoFill("1000")}>1000</span>
+                        <span onClick={() => this.autoFill("2000")}>2000</span>
+                        <span onClick={() => this.autoFill("5000")}>5000</span>
+                        <span onClick={() => this.autoFill("10000")}>
+                            10000
+                        </span>
                     </div>
                     <button type="submit" disabled={this.state.waiting}>
                         {this.state.waiting ? <Spinner /> : "SEND MONEY"}

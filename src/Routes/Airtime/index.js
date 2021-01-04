@@ -198,19 +198,21 @@ class Index extends Component {
                         disabled={this.state.waiting}
                     />
                     <label>Amount</label>
-                    <input
-                        onChange={this.onChange}
-                        type="number"
-                        name="amount"
-                        id="amount"
-                        autoComplete="off"
-                        min="50"
-                        max="50000"
-                        placeholder="Amount"
-                        value={this.state.amount}
-                        required={true}
-                        disabled={this.state.waiting}
-                    />
+                    <span className={styles.inputHeavySymbolNaira}>
+                        <input
+                            onChange={this.onChange}
+                            type="number"
+                            name="amount"
+                            id="amount"
+                            autoComplete="off"
+                            min="50"
+                            max="50000"
+                            placeholder="Amount"
+                            value={this.state.amount}
+                            required={true}
+                            disabled={this.state.waiting}
+                        />
+                    </span>
                     <div className={styles.units}>
                         <span onClick={() => this.autoFill("100")}>100</span>
                         <span onClick={() => this.autoFill("200")}>200</span>

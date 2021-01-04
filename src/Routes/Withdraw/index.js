@@ -90,17 +90,19 @@ class index extends Component {
                         disabled={this.state.waiting}
                     />
                     <label>Amount</label>
-                    <input
-                        onChange={this.onChange}
-                        type="number"
-                        name="amount"
-                        id="amount"
-                        autoComplete="off"
-                        placeholder="Amount"
-                        value={this.state.amount}
-                        required={true}
-                        disabled={this.state.waiting}
-                    />
+                    <span className={styles.inputHeavySymbolNaira}>
+                        <input
+                            onChange={this.onChange}
+                            type="number"
+                            name="amount"
+                            id="amount"
+                            autoComplete="off"
+                            placeholder="Amount"
+                            value={this.state.amount}
+                            required={true}
+                            disabled={this.state.waiting}
+                        />
+                    </span>
                     <button type="submit" disabled={true}>
                         {this.state.waiting ? <Spinner /> : "PROCEED"}
                     </button>

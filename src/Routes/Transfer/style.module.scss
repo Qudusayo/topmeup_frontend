@@ -13,38 +13,37 @@
         padding: 2em 1.5em;
     }
 
-    .infos{
+    .infos {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        @media screen and (max-width: 768px){
+        @media screen and (max-width: 768px) {
             display: block;
         }
 
-        
-
-        p, h4{
+        p,
+        h4 {
             margin: 0;
         }
 
-        p.success{
+        p.success {
             background-color: rgb(0, 255, 106);
             width: fit-content;
-            padding: .1em 1em;
+            padding: 0.1em 1em;
             border-radius: 12px;
             color: $white;
         }
     }
 
-    h2{
+    h2 {
         text-align: center;
-        margin: .5em;
+        margin: 0.5em;
     }
 }
 
-.loose{
-    margin: .5em auto;
+.loose {
+    margin: 0.5em auto;
 }
 
 .Form {
@@ -55,7 +54,7 @@
     border-radius: 5px;
     width: 85%;
 
-    h1{
+    h1 {
         margin-bottom: 0;
         text-align: center;
     }
@@ -65,11 +64,11 @@
         margin-top: 0;
     }
 
-    h4{
+    h4 {
         margin: 0;
     }
 
-    .bankInfo{
+    .bankInfo {
         border: 1px solid $black;
         border-radius: 7px;
         padding: 1em 4%;
@@ -81,15 +80,15 @@
         display: block;
         width: 100%;
         margin: auto;
-        font-size: .9em;
+        font-size: 0.9em;
         color: $richblack;
 
-        &:nth-of-type(1){
+        &:nth-of-type(1) {
             margin-top: 2em;
         }
     }
 
-    select.networkProvider{
+    select.networkProvider {
         height: 3.5em;
         width: 100%;
         padding-left: 1em;
@@ -106,7 +105,7 @@
         border-radius: 5px;
         outline: none;
         display: block;
-        margin: .3em auto 2em;
+        margin: 0.3em auto 2em;
         padding: 1rem;
         padding-left: 2em;
 
@@ -122,7 +121,7 @@
         height: 45px;
         border-radius: 7px;
         font-size: 1em;
-        margin: .3em auto 1em;
+        margin: 0.3em auto 1em;
         outline: none;
         border: 1px solid $silver;
 
@@ -139,17 +138,42 @@
         }
     }
 
-    .units{
+    .inputSymbolNaira,
+    .inputHeavySymbolNaira {
+        position: relative;
+
+        input {
+            padding-left: 18px;
+        }
+
+        &:before {
+            position: absolute;
+            top: 13.5px;
+            font-size: 1em;
+            z-index: 10;
+            content: "₦";
+            left: 10px;
+            font-weight: bolder;
+        }
+    }
+
+    .inputHeavySymbolNaira {
+        &:before {
+            top: 18px;
+        }
+    }
+
+    .units {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 2em;
 
-        span{
+        span {
             display: block;
             background-color: $fidalgo;
             color: $white;
-            padding: .5em .3em;
+            padding: 0.5em 0.3em;
             border-radius: 7px;
             width: 16%;
             text-align: center;

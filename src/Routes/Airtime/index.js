@@ -41,6 +41,7 @@ class Index extends Component {
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/airtime`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const phoneNumberValidator = /^[0-9]{11}$/;
 
         if (
             !["mtn", "nmobile", "globacom", "airtel"].includes(
@@ -52,6 +53,11 @@ class Index extends Component {
                 "Invalid transaction details",
                 "error"
             );
+        } else if (
+            !phoneNumberValidator.test(data.reciever) ||
+            data.reciever.length !== 11
+        ) {
+            return this.error("Invalid Mobile Number");
         } else if (data.amount < 50) {
             return swalt(
                 "Airtime Purchase Failed",
@@ -69,8 +75,6 @@ class Index extends Component {
                 "error"
             );
         }
-
-        console.log(typeof this.state.amount);
 
         Swal.fire({
             title: "Verify Purchase",
@@ -188,8 +192,7 @@ class Index extends Component {
                         id="reciever"
                         autoComplete="off"
                         placeholder="Phone Number"
-                        minLength="11"
-                        maxLength="11"
+                        pattern="^0[7-9]{1}[01]{1}[0-9]{8}"
                         value={this.state.reciever}
                         required={true}
                         disabled={this.state.waiting}

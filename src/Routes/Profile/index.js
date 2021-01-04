@@ -294,6 +294,7 @@ class Index extends Component {
                         type="tel"
                         name="phoneNumber"
                         id="phoneNumber"
+                        pattern="^0[7-9]{1}[01]{1}[0-9]{8}"
                         autoComplete="off"
                         placeholder="Phone Number"
                         value={this.state.phoneNumber}

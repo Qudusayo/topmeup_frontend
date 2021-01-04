@@ -55,8 +55,12 @@ class Index extends Component {
             },
         });
 
+        const usernameValidator = /^[a-zA-Z1-9]+$/;
+
         if (!data.userName) {
             return this.error("Username is required");
+        } else if (!usernameValidator.test(data.userName.toLowerCase())) {
+            return this.error("Invalid Username");
         } else if (!data.password) {
             return this.error("Password is required");
         } else {

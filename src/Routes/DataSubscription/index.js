@@ -41,6 +41,7 @@ class Index extends Component {
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/data`;
         const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const phoneNumberValidator = /^[0-9]{11}$/;
 
         if (
             !["mtn", "nmobile", "globacom", "airtel"].includes(
@@ -53,9 +54,8 @@ class Index extends Component {
                 "error"
             );
         } else if (
-            data.reciever.length < 11 ||
-            data.reciever.length > 11 ||
-            data.reciever[0] !== "0"
+            !phoneNumberValidator.test(data.reciever) ||
+            data.reciever.length !== 11
         ) {
             return swalt(
                 "Data Purchase Failed",
@@ -89,7 +89,7 @@ class Index extends Component {
                         },
                     })
                     .then((res) => {
-                        console.log(res)
+                        console.log(res);
                         if (!res.data.error) {
                             const Toast = Swal.mixin({
                                 toast: true,
@@ -199,6 +199,7 @@ class Index extends Component {
                         type="tel"
                         name="reciever"
                         id="reciever"
+                        pattern="^0[7-9]{1}[01]{1}[0-9]{8}"
                         autoComplete="off"
                         placeholder="Phone Number"
                         value={this.state.reciever}

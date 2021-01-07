@@ -204,7 +204,7 @@ class Index extends Component {
                                 </p>
                                 <p>
                                     <b>
-                                        Note: AIf you've filled the form nd your
+                                        Note: If you've filled the form and your
                                         wallet is not credited after 15 minutes,
                                         Kindly contact the{" "}
                                         <a

@@ -89,7 +89,7 @@ class Index extends Component {
                         },
                     })
                     .then((res) => {
-                        console.log(res);
+                        // console.log(res);
                         if (!res.data.error) {
                             const Toast = Swal.mixin({
                                 toast: true,
@@ -210,6 +210,15 @@ class Index extends Component {
                         {this.state.waiting ? <Spinner /> : "PURCHASE DATA"}
                     </button>
                 </form>
+                <div className={styles.Form}>
+                    <h3>Codes for Data Balance:</h3>
+                    <ul>
+                        <li><b>MTN</b> : *461*4#</li>
+                        <li><b>AIRTEL</b> : *140#</li>
+                        <li><b>9MOBILE</b> : *228#</li>
+                        <li><b>GLOBACOM</b> : *127*0#.</li>
+                    </ul>
+                </div>
             </Wrapper>
         );
     }

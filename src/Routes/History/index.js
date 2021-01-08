@@ -73,7 +73,7 @@ class Index extends Component {
                 {this.state.loading ? (
                     <Loader />
                 ) : this.state.history.length ? (
-                    this.state.history.reverse().map((trans, index) => {
+                    this.state.history.map((trans, index) => {
                         return (
                             <div
                                 className={[styles.card, styles.loose].join(

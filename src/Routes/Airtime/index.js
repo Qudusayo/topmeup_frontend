@@ -158,24 +158,24 @@ class Index extends Component {
         this.setState({ amount: value });
     };
 
-    componentDidMount(){
-        Swal.fire({
-            title: "Great News",
-            text: "You won't be able to revert this!",
-            html: `<div><ul>
-                <li>You can now get <b> MTN airtime at 3% off </b> </li>
-                <li>You can now get <b> GLO airtime at 5% off </b></li>
-                <li><b>Airtel network is not available apparently</b></li>
-                <li>We're working greatly on others too</li>
-                <li>Thanks for using our service.</li>
-            </ul></div>`,
-            backdrop: "#00000090",
-            showCancelButton: false,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Okay",
-        })
-    }
+    // componentDidMount(){
+    //     Swal.fire({
+    //         title: "Great News",
+    //         text: "You won't be able to revert this!",
+    //         html: `<div><ul>
+    //             <li>You can now get <b> MTN airtime at 3% off </b> </li>
+    //             <li>You can now get <b> GLO airtime at 5% off </b></li>
+    //             <li><b>Airtel network is not available apparently</b></li>
+    //             <li>We're working greatly on others too</li>
+    //             <li>Thanks for using our service.</li>
+    //         </ul></div>`,
+    //         backdrop: "#00000090",
+    //         showCancelButton: false,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Okay",
+    //     })
+    // }
 
     render() {
         return (
@@ -199,7 +199,7 @@ class Index extends Component {
                             Network Provider
                         </option>
                         <option value="nmobile">9MOBLIE</option>
-                        {/* <option value="airtel">AIRTEL</option> */}
+                        <option value="airtel">AIRTEL</option>
                         <option value="globacom">GLOBACOM</option>
                         <option value="mtn">MTN</option>
                     </select>

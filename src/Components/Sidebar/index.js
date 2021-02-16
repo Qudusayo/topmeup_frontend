@@ -8,6 +8,21 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styles from "./style.module.scss";
 
+import dashboard from "./../../assets/icons/dashboard.svg";
+import account from "./../../assets/icons/user.svg";
+import cash from "./../../assets/icons/cash.svg";
+import phone from "./../../assets/icons/phone.svg";
+import contact from "./../../assets/icons/contact.svg";
+import tv from "./../../assets/icons/tv.svg";
+import result from "./../../assets/icons/result.svg";
+import electricity from "./../../assets/icons/electricity.svg";
+import internet from "./../../assets/icons/internet.svg";
+import transfer from "./../../assets/icons/transfer.svg";
+import atm from "./../../assets/icons/atm.svg";
+import card from "./../../assets/icons/card.svg";
+import transaction from "./../../assets/icons/transaction.svg";
+import logout from "./../../assets/icons/logout.svg";
+
 class Index extends Component {
     logout() {
         sessionStorage.removeItem("topuplab");
@@ -51,21 +66,30 @@ class Index extends Component {
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>USER PROFILE</li>
+                            <li>
+                                <img src={account} alt="zero" width="30" />
+                                USER PROFILE
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/dashboard"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>DASHBOARD</li>
+                            <li>
+                                <img src={dashboard} alt="zero" width="30" />
+                                DASHBOARD
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/fund-wallet"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>FUND WALLET</li>
+                            <li>
+                                <img src={card} alt="zero" width="30" />
+                                FUND WALLET
+                            </li>
                         </NavLink>
 
                         <NavLink
@@ -73,70 +97,100 @@ class Index extends Component {
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>AIRTIME TOP-UP</li>
+                            <li>
+                                <img src={phone} alt="zero" width="30" />
+                                AIRTIME TOP-UP
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/data-subscription"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>BUY DATA BUNDLE</li>
+                            <li>
+                                <img src={internet} alt="zero" width="30" />
+                                BUY DATA BUNDLE
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/buy-scratch-card"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>EXAM CARD</li>
+                            <li>
+                                <img src={result} alt="zero" width="30" />
+                                EXAM CARD
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/bill-payment"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>ELECTRICITY BILL</li>
+                            <li>
+                                <img src={electricity} alt="zero" width="30" />
+                                ELECTRICITY BILL
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/cable-TV"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>TV/CABLE PAYMENT</li>
+                            <li>
+                                <img src={tv} alt="zero" width="30" />
+                                TV/CABLE PAYMENT
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/airtime-converter"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>AIRTIME TO CASH</li>
+                            <li>
+                                <img src={cash} alt="zero" width="30" />
+                                AIRTIME TO CASH
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/transfer-fund"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>TRANSFER FUND</li>
+                            <li>
+                                <img src={transfer} alt="zero" width="30" />
+                                TRANSFER FUND
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/withdraw"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>WITHDRAW FUND</li>
+                            <li>
+                                <img src={atm} alt="zero" width="30" />
+                                WITHDRAW FUND
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/contact-form"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>CONTACT FORM</li>
+                            <li>
+                                <img src={contact} alt="zero" width="30" />
+                                CONTACT FORM
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/history"
                             exact
                             activeClassName={styles.active}
                         >
-                            <li>TRANSACTION HISTORY</li>
+                            <li>
+                                <img src={transaction} alt="zero" width="30" />
+                                TRANSACTIONS
+                            </li>
                         </NavLink>
                         <NavLink
                             to="/login"
@@ -144,7 +198,10 @@ class Index extends Component {
                             activeClassName={styles.active}
                             onClick={this.logout}
                         >
-                            <li>LOGOUT</li>
+                            <li>
+                                <img src={logout} alt="zero" width="30" />
+                                LOGOUT
+                            </li>
                         </NavLink>
                     </ul>
                 </nav>

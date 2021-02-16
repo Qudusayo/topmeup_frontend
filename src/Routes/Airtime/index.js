@@ -101,6 +101,7 @@ class Index extends Component {
                         },
                     })
                     .then((res) => {
+                        console.log(res)
                         if (!res.data.error) {
                             const Toast = Swal.mixin({
                                 toast: true,
@@ -143,6 +144,7 @@ class Index extends Component {
                         }
                     })
                     .catch((err) => {
+                        console.log(err)
                         swalt(
                             "Airtime Purchase Failed",
                             "Error  completing the transaction",

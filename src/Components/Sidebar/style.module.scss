@@ -20,6 +20,12 @@
                 font-weight: 600;
                 // color: $white;
                 transition: background-color 0.2s linear;
+                align-items: center;
+                display: flex;
+
+                img{
+                    margin-right: 1em;
+                }
 
                 &:hover {
                     background-color: $white;
@@ -84,6 +90,7 @@
         ul {
             li {
                 text-align: center;
+                justify-content: space-between;
             }
         }
 

@@ -65,21 +65,22 @@ class index extends Component {
                 <Helmet>
                     <title>TOP UP LAB | DASHBOARD </title>
                 </Helmet>
-                <div className={styles.card}>
-                    <Link to="/fund-wallet">
-                        <button className={styles.fund}>+</button>
-                    </Link>
+                <div className={styles.balances}>
+                    <div>
+                        <h2>Bonus</h2>
+                        <h1>₦ 30</h1>
+                    </div>
                     <div>
                         <h2>Balance</h2>
                         <h1>₦ {this.state.balance}</h1>
-                        <p>
-                            As at{" "}
-                            {this.state.today ? this.state.today : "11/11/2020"}{" "}
-                        </p>
                     </div>
                 </div>
                 <div className={[styles.card, styles.refLink].join(" ")}>
-                    <input value={this.state.refUrl} disabled onClick={this.copyUrl} />
+                    <input
+                        value={this.state.refUrl}
+                        disabled
+                        onClick={this.copyUrl}
+                    />
                     <button onClick={this.copyUrl}>COPY</button>
                 </div>
                 <div className={styles.cards}>
@@ -105,13 +106,28 @@ class index extends Component {
                     </Link>
                 </div>
                 <div className={styles.cards}>
-                    <a href="https://chat.whatsapp.com/D3d2oHlRoW16L5zdFqoAcA" target="_blank" rel="noreferrer" style={{ backgroundColor: "#00bfa5", color: "white" }}>
+                    <a
+                        href="https://chat.whatsapp.com/D3d2oHlRoW16L5zdFqoAcA"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ backgroundColor: "#00bfa5", color: "white" }}
+                    >
                         <div>JOIN WHATSAPP</div>
                     </a>
-                    <a href="https://t.me/TopUpLab" target="_blank" rel="noreferrer" style={{ backgroundColor: "#5682A3", color: "white" }}>
+                    <a
+                        href="https://t.me/TopUpLab"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ backgroundColor: "#5682A3", color: "white" }}
+                    >
                         <div>JOIN TELEGRAM</div>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=2347016412041&text=Hi%20Admin%20TopUpLab.Tell%20me%20more%20about%20your%20product%20" target="_blank" rel="noreferrer" style={{ backgroundColor: "#127EB1", color: "white" }}>
+                    <a
+                        href="https://api.whatsapp.com/send?phone=2347016412041&text=Hi%20Admin%20TopUpLab.Tell%20me%20more%20about%20your%20product%20"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ backgroundColor: "#127EB1", color: "white" }}
+                    >
                         <div>CHAT ADMIN</div>
                     </a>
                 </div>

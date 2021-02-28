@@ -234,3 +234,20 @@
         padding: 1.5em;
     }
 }
+
+.buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button{
+        width: 48%;
+        margin: 0;
+    }
+    
+    .cancel{
+        margin-right: auto;
+        background-color: red;
+    }
+}

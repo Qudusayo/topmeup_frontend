@@ -22,6 +22,8 @@ class Index extends Component {
             dataPlan: "",
             reciever: "",
             waiting: false,
+            verifying: false,
+            verifiedNetwork: false,
         };
 
         this.onChange = this.onChange.bind(this);
@@ -30,6 +32,82 @@ class Index extends Component {
 
     onChange = (e) => {
         this.setState({ [e.target.id]: e.target.value });
+    };
+
+    verifyNetwork = () => {
+        const phoneNumberValidator = /^0[7-9]{1}[01]{1}[0-9]{8}/;
+        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const api = `${process.env.REACT_APP_BACKEND_URI}/verifyNetwork`;
+        const data = {
+            phone: this.state.reciever,
+        };
+
+        if (
+            !phoneNumberValidator.test(data.phone) ||
+            data.phone.length !== 11
+        ) {
+            return swalt(
+                "Verification Failed",
+                "Invalid Phone Number",
+                "error"
+            );
+        }
+
+        this.setState({ verifying: true });
+
+        axios
+            .post(api, data, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((res) => {
+                const { carrier, phone } = res.data;
+                if (carrier === "9mobile") {
+                    this.setState({ networkProvider: "nmobile" });
+                } else if (
+                    !["airtel", "glo", "mtn", "9mobile"].includes(
+                        carrier.toLowerCase()
+                    )
+                ) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        text: "Invalid mobile number",
+                        showConfirmButton: false,
+                        timer: 3000,
+                    });
+                    return this.setState({ verifying: false });
+                } else {
+                    this.setState({ networkProvider: carrier.toLowerCase() });
+                }
+                return this.setState({
+                    verifying: false,
+                    verifiedNetwork: true,
+                });
+            })
+            .catch((err) => {
+                return this.setState({ verifying: false });
+            });
+    };
+
+    cancel = () => {
+        Swal.fire({
+            title: "Cancel Purchase",
+            text: "Sure you want to cancel the purchase",
+            icon: "warning",
+            backdrop: "#00000090",
+            showCancelButton: true,
+            confirmButtonColor: "#FF0000",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.setState({ verifying: false, verifiedNetwork: false });
+            }
+        });
     };
 
     onSubmit = (e) => {
@@ -152,47 +230,6 @@ class Index extends Component {
                 <form className={styles.Form} onSubmit={this.onSubmit}>
                     <h1>DATA BUNDLE</h1>
                     <h3>PURCHASE DATA</h3>
-                    <label>Network Provider</label>
-                    <select
-                        name="networkProvider"
-                        id="networkProvider"
-                        onChange={this.onChange}
-                        value={this.state.networkProvider}
-                        className={styles.networkProvider}
-                        required
-                    >
-                        <option value="" hidden>
-                            Network Provider
-                        </option>
-                        <option value="nmobile">9MOBLIE</option>
-                        <option value="airtel">AIRTEL</option>
-                        <option value="globacom">GLOBACOM</option>
-                        <option value="mtn">MTN</option>
-                    </select>
-                    <label>Data Plan</label>
-                    <select
-                        name="dataPlan"
-                        id="dataPlan"
-                        className={styles.networkProvider}
-                        onChange={this.onChange}
-                        value={this.state.dataPlan}
-                        required
-                    >
-                        <option value="" hidden>
-                            Data Plan
-                        </option>
-                        {this.props.dataSubscription[this.state.networkProvider]
-                            ? this.props.dataSubscription[
-                                  this.state.networkProvider
-                              ].map((network, index) => {
-                                  return (
-                                      <option value={network.price} key={index}>
-                                          {network.name} --- ₦{network.price}
-                                      </option>
-                                  );
-                              })
-                            : null}
-                    </select>
                     <label>Recievers Number</label>
                     <input
                         onChange={this.onChange}
@@ -206,17 +243,96 @@ class Index extends Component {
                         required={true}
                         disabled={this.state.waiting}
                     />
-                    <button type="submit" disabled={this.state.waiting}>
-                        {this.state.waiting ? <Spinner /> : "PURCHASE DATA"}
-                    </button>
+                    {this.state.verifiedNetwork ? null : (
+                        <button
+                            type="button"
+                            disabled={this.state.verifying}
+                            onClick={this.verifyNetwork}
+                        >
+                            {this.state.verifying ? (
+                                <Spinner />
+                            ) : (
+                                "Verify Network"
+                            )}
+                        </button>
+                    )}
+                    {this.state.verifiedNetwork ? (
+                        <>
+                            <label>
+                                Data Plan ({" "}
+                                <b>
+                                    {this.state.networkProvider.toUpperCase()}
+                                </b>{" "}
+                                )
+                            </label>
+                            <select
+                                name="dataPlan"
+                                id="dataPlan"
+                                className={styles.networkProvider}
+                                onChange={this.onChange}
+                                value={this.state.dataPlan}
+                                required
+                            >
+                                <option value="" hidden>
+                                    {this.state.networkProvider.toUpperCase()}
+                                    Data Plan
+                                </option>
+                                {this.props.dataSubscription[
+                                    this.state.networkProvider
+                                ]
+                                    ? this.props.dataSubscription[
+                                          this.state.networkProvider
+                                      ].map((network, index) => {
+                                          return (
+                                              <option
+                                                  value={network.price}
+                                                  key={index}
+                                              >
+                                                  {network.name} --- ₦
+                                                  {network.price}
+                                              </option>
+                                          );
+                                      })
+                                    : null}
+                            </select>
+                            <div className={styles.buttons}>
+                                <button
+                                    type="button"
+                                    onClick={this.cancel}
+                                    disabled={this.state.waiting}
+                                    className={styles.cancel}
+                                >
+                                    CANCEL
+                                </button>
+                                <button
+                                    type="submit"
+                                    disabled={this.state.waiting}
+                                >
+                                    {this.state.waiting ? (
+                                        <Spinner />
+                                    ) : (
+                                        "PURCHASE"
+                                    )}
+                                </button>
+                            </div>
+                        </>
+                    ) : null}
                 </form>
                 <div className={styles.Form}>
                     <h3>Codes for Data Balance:</h3>
                     <ul>
-                        <li><b>MTN</b> : *461*4#</li>
-                        <li><b>AIRTEL</b> : *140#</li>
-                        <li><b>9MOBILE</b> : *228#</li>
-                        <li><b>GLOBACOM</b> : *127*0#.</li>
+                        <li>
+                            <b>MTN</b> : *131*4#
+                        </li>
+                        <li>
+                            <b>AIRTEL</b> : *140#
+                        </li>
+                        <li>
+                            <b>9MOBILE</b> : *228#
+                        </li>
+                        <li>
+                            <b>GLOBACOM</b> : *127*0#.
+                        </li>
                     </ul>
                 </div>
             </Wrapper>

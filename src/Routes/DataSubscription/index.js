@@ -241,7 +241,9 @@ class Index extends Component {
                         placeholder="Phone Number"
                         value={this.state.reciever}
                         required={true}
-                        disabled={this.state.waiting}
+                        disabled={
+                            this.state.waiting || this.state.verifiedNetwork
+                        }
                     />
                     {this.state.verifiedNetwork ? null : (
                         <button

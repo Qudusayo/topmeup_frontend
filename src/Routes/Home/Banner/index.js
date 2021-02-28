@@ -7,7 +7,7 @@ import styles from "./style.module.scss";
 function index() {
     return (
         <div className={styles.banner}>
-            <h1
+            {/* <h1
                 className={[
                     styles.bg,
                     "animate__animated",
@@ -15,7 +15,7 @@ function index() {
                 ].join(" ")}
             >
                 TOP UP LAB
-            </h1>
+            </h1> */}
             <div className={styles.content}>
                 <small>We are to top you up</small>
                 <h1 className="animate__animated animate__bounce">

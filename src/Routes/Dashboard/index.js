@@ -12,7 +12,9 @@ class index extends Component {
         super(props);
         this.state = {
             balance: 0,
+            accountNumber: "0000000000",
             today: "",
+            username: "",
             refUrl: "http://topuplab.com.ng/register?ref=",
         };
     }
@@ -35,7 +37,12 @@ class index extends Component {
                     this.state.refUrl +
                     res.data.userName[0].toUpperCase() +
                     res.data.userName.slice(1);
-                this.setState({ balance: res.data.balance, today, refUrl });
+                this.setState({
+                    balance: res.data.balance,
+                    today,
+                    refUrl,
+                    username: res.data.userName,
+                });
             });
     }
 
@@ -59,16 +66,47 @@ class index extends Component {
         });
     };
 
+    copyDetails = () => {
+        navigator.clipboard.writeText(this.state.accountNumber);
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+        });
+
+        Toast.fire({
+            icon: "success",
+            title: "Account Number Copied Successfully",
+        });
+    };
+
     render() {
         return (
             <Wrapper>
                 <Helmet>
                     <title>TOP UP LAB | DASHBOARD </title>
                 </Helmet>
+                <div className={[styles.card, styles.atm].join(" ")}  onClick={this.copyDetails}>
+                    <h3>Sterling Bank PLC.</h3>
+                    <h2 className={styles.number}>{this.state.accountNumber}</h2>
+                    <h3>
+                        TOPUPLAB UNIT{" "}
+                        {this.state.username
+                            ? this.state.username.toUpperCase().slice(0, 8)
+                            : "USERNAME"}
+                    </h3>
+                    <span>AUTOMATED BANK TRANSFER</span>
+                </div>
                 <div className={styles.balances}>
                     <div>
                         <h2>Bonus</h2>
-                        <h1>₦ 30</h1>
+                        <h1>₦ 50</h1>
                     </div>
                     <div>
                         <h2>Balance</h2>

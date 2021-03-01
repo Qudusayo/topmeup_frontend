@@ -196,6 +196,7 @@ class Index extends Component {
                                 dataPlan: "",
                                 reciever: "",
                                 waiting: false,
+                                verifiedNetwork: false,
                             });
                             this.props.getTransactionHistory();
                         } else {

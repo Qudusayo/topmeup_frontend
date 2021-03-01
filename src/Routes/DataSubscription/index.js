@@ -66,7 +66,9 @@ class Index extends Component {
                 const { carrier, phone } = res.data;
                 if (carrier === "9mobile") {
                     this.setState({ networkProvider: "nmobile" });
-                } else if (
+                } else if (carrier === "glo") {
+                    this.setState({ networkProvider: "globacom" });
+                } else if(
                     !["airtel", "glo", "mtn", "9mobile"].includes(
                         carrier.toLowerCase()
                     )

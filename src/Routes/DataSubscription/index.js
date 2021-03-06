@@ -66,9 +66,9 @@ class Index extends Component {
                 const { carrier, phone } = res.data;
                 if (carrier === "9mobile") {
                     this.setState({ networkProvider: "nmobile" });
-                } else if (carrier === "glo") {
+                } else if (carrier.toLowerCase() === "glo") {
                     this.setState({ networkProvider: "globacom" });
-                } else if(
+                } else if (
                     !["airtel", "glo", "mtn", "9mobile"].includes(
                         carrier.toLowerCase()
                     )
@@ -279,7 +279,7 @@ class Index extends Component {
                                 required
                             >
                                 <option value="" hidden>
-                                    {this.state.networkProvider.toUpperCase()}
+                                    {this.state.networkProvider.toUpperCase()}{" "}
                                     Data Plan
                                 </option>
                                 {this.props.dataSubscription[

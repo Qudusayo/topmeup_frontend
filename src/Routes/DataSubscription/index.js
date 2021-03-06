@@ -63,7 +63,7 @@ class Index extends Component {
                 },
             })
             .then((res) => {
-                const { carrier, phone } = res.data;
+                const { carrier } = res.data;
                 if (carrier === "9mobile") {
                     this.setState({ networkProvider: "nmobile" });
                 } else if (carrier.toLowerCase() === "glo") {

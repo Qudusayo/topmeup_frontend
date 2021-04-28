@@ -224,10 +224,6 @@ class Index extends Component {
         });
     };
 
-    componentDidMount(){
-        Swal.fire('Please a little fault is here, your data is successfully delivered, Kindly neglect the error. Proceed with your data purchase. Qudusayo is working hard to fix this error')
-    }
-
     render() {
         return (
             <Wrapper>

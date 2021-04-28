@@ -92,7 +92,7 @@ class index extends Component {
                 <Helmet>
                     <title>TOP UP LAB | DASHBOARD </title>
                 </Helmet>
-                <div className={[styles.card, styles.atm].join(" ")}  onClick={this.copyDetails}>
+                {/* <div className={[styles.card, styles.atm].join(" ")}  onClick={this.copyDetails}>
                     <h3>Sterling Bank PLC.</h3>
                     <h2 className={styles.number}>{this.state.accountNumber}</h2>
                     <h3>
@@ -102,7 +102,7 @@ class index extends Component {
                             : "USERNAME"}
                     </h3>
                     <span>AUTOMATED BANK TRANSFER</span>
-                </div>
+                </div> */}
                 <div className={styles.balances}>
                     <div>
                         <h2>Bonus</h2>

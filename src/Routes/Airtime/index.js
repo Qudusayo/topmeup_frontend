@@ -18,7 +18,6 @@ class Index extends Component {
     super(props);
 
     this.state = {
-      networkProvider: "",
       reciever: "",
       amount: "",
       waiting: false,
@@ -36,7 +35,6 @@ class Index extends Component {
     e.preventDefault();
     const data = {
       amount: this.state.amount,
-      networkProvider: this.state.networkProvider,
       reciever: this.state.reciever,
     };
     const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/airtime`;
@@ -44,14 +42,6 @@ class Index extends Component {
     const phoneNumberValidator = /^[0-9]{11}$/;
 
     if (
-      !["mtn", "nmobile", "globacom", "airtel"].includes(data.networkProvider)
-    ) {
-      return swalt(
-        "Airtime Purchase Failed",
-        "Invalid transaction details",
-        "error"
-      );
-    } else if (
       !phoneNumberValidator.test(data.reciever) ||
       data.reciever.length !== 11
     ) {
@@ -69,11 +59,7 @@ class Index extends Component {
     Swal.fire({
       title: "Verify Purchase",
       text: "You won't be able to revert this!",
-      html: `<div><p style="display:flex;">Amount:-- <b>₦${
-        this.state.amount
-      }</b></p><p style="display:flex;">Network Provider:-- <b>${this.state.networkProvider.toUpperCase()}</b></p> <p style="display:flex;">Number:-- <b>${
-        this.state.reciever
-      }</b></p></div>`,
+      html: `<div><p style="display:flex;">Amount:-- <b>₦${this.state.amount}</b></p><p style="display:flex;">Number:-- <b>${this.state.reciever}</b></p></div>`,
       icon: "question",
       backdrop: "#00000090",
       showCancelButton: true,
@@ -115,7 +101,7 @@ class Index extends Component {
                 reciever: "",
               });
               this.props.getTransactionHistory();
-              this.props.history.push("/dashboard");
+              this.setState({ waiting: false });
             } else {
               swalt(
                 "Airtime Purchase Failed",
@@ -143,25 +129,6 @@ class Index extends Component {
   autoFill = (value) => {
     this.setState({ amount: value });
   };
-
-  // componentDidMount(){
-  //     Swal.fire({
-  //         title: "Great News",
-  //         text: "You won't be able to revert this!",
-  //         html: `<div><ul>
-  //             <li>You can now get <b> MTN airtime at 3% off </b> </li>
-  //             <li>You can now get <b> GLO airtime at 5% off </b></li>
-  //             <li><b>Airtel network is not available apparently</b></li>
-  //             <li>We're working greatly on others too</li>
-  //             <li>Thanks for using our service.</li>
-  //         </ul></div>`,
-  //         backdrop: "#00000090",
-  //         showCancelButton: false,
-  //         confirmButtonColor: "#3085d6",
-  //         cancelButtonColor: "#d33",
-  //         confirmButtonText: "Okay",
-  //     })
-  // }
 
   render() {
     return (
@@ -193,23 +160,6 @@ class Index extends Component {
         <form className={styles.Form} onSubmit={this.onSubmit}>
           <h1>QUICK TOPUP</h1>
           <h3>PURCHASE AIRTIME</h3>
-          <label>Network Provider</label>
-          <select
-            name="networkProvider"
-            id="networkProvider"
-            className={styles.networkProvider}
-            value={this.state.networkProvider}
-            onChange={this.onChange}
-            required
-          >
-            <option value="" hidden>
-              Network Provider
-            </option>
-            <option value="nmobile">9MOBLIE</option>
-            <option value="airtel">AIRTEL</option>
-            <option value="globacom">GLOBACOM</option>
-            <option value="mtn">MTN</option>
-          </select>
           <label>Phone Number</label>
           <input
             onChange={this.onChange}

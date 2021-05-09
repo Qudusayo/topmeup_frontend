@@ -105,8 +105,8 @@ class index extends Component {
                 </div> */}
                 <div className={styles.balances}>
                     <div>
-                        <h2>Bonus</h2>
-                        <h1>₦ 50</h1>
+                        <h2>Bonus (Fixing...)</h2>
+                        <h1>₦ 0</h1>
                     </div>
                     <div>
                         <h2>Balance</h2>

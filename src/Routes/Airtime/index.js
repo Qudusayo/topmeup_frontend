@@ -115,7 +115,7 @@ class Index extends Component {
                 reciever: "",
               });
               this.props.getTransactionHistory();
-              this.props.history.push("/dashboard");
+              this.setState({ waiting: false });
             } else {
               swalt(
                 "Airtime Purchase Failed",

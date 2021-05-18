@@ -46,13 +46,26 @@
     margin: 0.5em auto;
 }
 
+.line {
+    border-bottom: 1px solid;
+    border-color: rgba(199, 199, 199, 0.4);
+    padding: 12px 0;
+
+    &:nth-last-of-type(1) {
+        border-bottom: none;
+        margin-bottom: 2em;
+    }
+}
+
 .Form {
+    position: relative;
     background-color: $white;
     box-shadow: 0px 10px 30px -4px rgba($black, 0.15);
-    padding: 2em;
+    padding: 2em 2em 70px;
     margin: 2em auto;
     border-radius: 5px;
-    width: 85%;
+    width: 91%;
+    box-sizing: border-box;
 
     h1 {
         margin-bottom: 0;
@@ -184,9 +197,10 @@
     button {
         display: block;
         width: 100%;
-        margin: auto;
+        bottom: 20px;
+        position: absolute;
+        margin: auto -32px;
         height: 50px;
-        border-radius: 7px;
         font-size: 1em;
         cursor: pointer;
         outline: none;
@@ -231,7 +245,12 @@
     }
 
     .Form {
-        padding: 1.5em;
+        padding: 1.5em 1.5em 70px;
+        
+        button{
+            margin: auto -1.5em;
+            width: 100%;
+        }
     }
 }
 

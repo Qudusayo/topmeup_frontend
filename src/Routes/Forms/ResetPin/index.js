@@ -189,7 +189,7 @@ class Index extends Component {
                         </span>
                     </div>
                     <p style={{ textAlign: "center", margin: "2em auto 2em" }}>
-                        ©2020 Copyright TopUpLab Technologies. <br />
+                        ©2021 Copyright TopUpLab Technologies. <br />
                         All Rights Reserved.
                     </p>
                 </div>

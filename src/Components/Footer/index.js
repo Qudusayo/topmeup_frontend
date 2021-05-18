@@ -137,7 +137,7 @@ function Index() {
                 </a>
                 <br />
                 <span className={styles.copyright}>
-                    <small>© Copyright 2020. All rights reserved</small>
+                    <small>© Copyright 2021. All rights reserved</small>
                 </span>
             </div>
         </div>

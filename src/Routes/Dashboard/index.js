@@ -12,7 +12,7 @@ class index extends Component {
         super(props);
         this.state = {
             balance: 0,
-            accountNumber: "0000000000",
+            // accountNumber: "0000000000",
             today: "",
             username: "",
             refUrl: "http://topuplab.com.ng/register?ref=",
@@ -101,12 +101,12 @@ class index extends Component {
                             ? this.state.username.toUpperCase().slice(0, 8)
                             : "USERNAME"}
                     </h3>
-                    <span>AUTOMATED BANK TRANSFER</span>
+                    <span>BANK TRANSFER</span>
                 </div> */}
                 <div className={styles.balances}>
                     <div>
-                        <h2>Bonus</h2>
-                        <h1>₦ 50</h1>
+                        <h2>Bonus (Fixing...)</h2>
+                        <h1>₦ 0</h1>
                     </div>
                     <div>
                         <h2>Balance</h2>

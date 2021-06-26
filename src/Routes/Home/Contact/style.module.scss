@@ -1,7 +1,7 @@
 @import "./../../../styles/variables.scss";
 
 .Contacts {
-    font-family: $N;
+    font-family: $R;
 
     h1 {
         padding-left: 0.5em;
@@ -55,7 +55,7 @@
 
             p {
                 margin: auto;
-                font-family: $N;
+                font-family: $R;
                 font-size: 0.95em;
 
                 span {
@@ -93,11 +93,11 @@
         textarea,
         button {
             display: block;
-            font-family: $N;
+            font-family: $R;
         }
 
         label {
-            font-family: $N;
+            font-family: $R;
         }
 
         input,
@@ -116,7 +116,7 @@
             border: 1px solid $blue;
             color: $blue;
             cursor: pointer;
-            font-family: $N;
+            font-family: $R;
             font-size: 1.2em;
             border-radius: 25px;
             padding: 0.5em 2em;

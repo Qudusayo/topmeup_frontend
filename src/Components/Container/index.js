@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import { withRouter } from 'react-router-dom'
 
 import PropTypes from "prop-types";
@@ -21,7 +22,7 @@ class Index extends Component {
     componentDidMount() {
         // const data = JSON.parse(sessionStorage.getItem("topuplab"));
         // return setUserName(data.userName);
-        if (!this.props.auth) {
+        if (!Cookies.get('_lab__topup')) {
             this.props.history.push("/login");
         }
         this.setState({ userName: this.props.userInfo.userName })

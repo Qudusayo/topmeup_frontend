@@ -1,0 +1,159 @@
+@font-face {
+  src: url(./../assets/fonts/Rubik/Rubik-VariableFont_wght.ttf);
+  font-family: "Rubik";
+}
+
+* {
+  font-family: "Rubik", sans-serif;
+  font-display: swap;
+}
+
+.Contacts {
+  font-family: "Rubik", sans-serif;
+}
+
+.Contacts h1 {
+  padding-left: 0.5em;
+}
+
+.Contacts h1.or {
+  text-align: center;
+  font-size: 3em;
+  color: #cbe6ff;
+}
+
+.Contacts h1 span {
+  color: #329bff;
+}
+
+.Contacts .Cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 2em 0;
+}
+
+@media screen and (max-width: 768px) {
+  .Contacts .Cards {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.Contacts .Cards .Card {
+  min-height: 15em;
+  border: 1px solid #C0C0C0;
+  width: 30%;
+  text-align: center;
+  padding: 3em 0 2em;
+  border-radius: 7px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+@media screen and (max-width: 768px) {
+  .Contacts .Cards .Card {
+    width: 95%;
+    margin: 1em auto;
+  }
+}
+
+.Contacts .Cards .Card img {
+  cursor: pointer;
+}
+
+.Contacts .Cards .Card h2 {
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.Contacts .Cards .Card h2:hover {
+  color: #329bff;
+  cursor: pointer;
+}
+
+.Contacts .Cards .Card p {
+  margin: auto;
+  font-family: "Rubik", sans-serif;
+  font-size: 0.95em;
+}
+
+.Contacts .Cards .Card p span {
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.Contacts .Cards .Card p span:hover {
+  color: #329bff;
+  cursor: pointer;
+}
+
+.Contacts .Cards .Card img {
+  width: 5em;
+}
+
+.Contacts .Cards .Card:hover {
+  border: 1px solid #329bff;
+}
+
+.Contacts .Cards .Card:hover h2 {
+  color: #329bff;
+}
+
+.Contacts form {
+  width: 95%;
+  margin: 0 auto 3em;
+}
+
+.Contacts form h1 {
+  padding-left: 0;
+}
+
+.Contacts form input,
+.Contacts form textarea,
+.Contacts form button {
+  display: block;
+  font-family: "Rubik", sans-serif;
+}
+
+.Contacts form label {
+  font-family: "Rubik", sans-serif;
+}
+
+.Contacts form input,
+.Contacts form textarea {
+  width: 100%;
+  padding: 0.5em 0;
+  margin: 1em 0 2em;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #C0C0C0;
+}
+
+.Contacts form button {
+  width: 100%;
+  outline: none;
+  border: 1px solid #329bff;
+  color: #329bff;
+  cursor: pointer;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.2em;
+  border-radius: 25px;
+  padding: 0.5em 2em;
+  background-color: transparent;
+  -webkit-transition: background 0.1s linear;
+  transition: background 0.1s linear;
+}
+
+.Contacts form button:hover {
+  background-color: #329bff;
+  border: 1px solid #329bff;
+  color: #fff;
+}

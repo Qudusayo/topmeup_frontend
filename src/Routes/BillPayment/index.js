@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import { Helmet } from "react-helmet";
 import Wrapper from "./../../Components/Container";
 import axios from "axios";
@@ -41,7 +42,7 @@ class Index extends Component {
             amount: this.state.amount,
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/electricity`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
 
         if (
             !["ibedc", "ekedc", "phed", "ikedc", "jed", "kedco"].includes(

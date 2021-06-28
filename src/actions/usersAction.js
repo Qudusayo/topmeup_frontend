@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from 'js-cookie';
 import {
     SET_AUTH,
     REMOVE_AUTH,
@@ -24,7 +25,7 @@ export const revokeUser = (data) => (dispatch) => {
 
 export const getUserInfo = () => (dispatch) => {
     const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo`;
-    const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+    const token = Cookies.get('_lab__topup');
     axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {
@@ -37,7 +38,7 @@ export const getUserInfo = () => (dispatch) => {
 
 export const getTransactionHistory = () => (dispatch) => {
     const api = `${process.env.REACT_APP_BACKEND_URI}/getHistory`;
-    const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+    const token = Cookies.get('_lab__topup');
     axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {
@@ -50,7 +51,7 @@ export const getTransactionHistory = () => (dispatch) => {
 
 export const getDataSubscription = () => (dispatch) => {
     const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/dataSubscriptions`;
-    const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+    const token = Cookies.get('_lab__topup');
     axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {
@@ -63,7 +64,7 @@ export const getDataSubscription = () => (dispatch) => {
 
 export const getTvSubscription = () => (dispatch) => {
     const api = `${process.env.REACT_APP_BACKEND_URI}/getInfo/tvSubscriptions`;
-    const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+    const token = Cookies.get('_lab__topup');
     axios
         .get(api, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {

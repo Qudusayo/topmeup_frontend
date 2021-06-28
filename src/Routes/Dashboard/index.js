@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -26,10 +27,10 @@ class index extends Component {
         var yyyy = today.getFullYear();
         today = mm + "/" + dd + "/" + yyyy;
 
-        if (!sessionStorage.getItem("topuplab"))
+        if (!Cookies.get('_lab__topup'))
             return this.props.history.push("/login");
         const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/balance`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
         axios
             .get(api, { headers: { Authorization: `Bearer ${token}` } })
             .then((res) => {

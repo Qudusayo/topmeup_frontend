@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
@@ -24,7 +25,7 @@ class Index extends Component {
 
     componentDidMount() {
         const api = `${process.env.REACT_APP_BACKEND_URI}/getHistory`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
         axios
             .get(api, { headers: { Authorization: `Bearer ${token}` } })
             .then((res) => {

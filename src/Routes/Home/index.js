@@ -160,12 +160,6 @@ function index() {
                     <span>See what our Customers are saying about us:</span>
                 </div>
                 <Testimonial />
-
-                <div className={[styles.titles, "center"].join(" ")}>
-                    <h2>CONTACT US</h2>
-                    <span>Have enquiries ? Please contact us.</span>
-                </div>
-                <Contact />
             </div>
             <Footer />
         </>

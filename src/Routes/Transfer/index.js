@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import swalt from "@sweetalert/with-react";
@@ -36,7 +37,7 @@ class Index extends Component {
         if (!sessionStorage.getItem("topuplab"))
             return this.props.history.push("/login");
         const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/balance`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
         axios
             .get(api, { headers: { Authorization: `Bearer ${token}` } })
             .then((res) => {
@@ -52,7 +53,7 @@ class Index extends Component {
             type: "Transfer Fund",
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/sendMoney`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
 
         if (!data.amount || !data.reciever) {
             return swalt(

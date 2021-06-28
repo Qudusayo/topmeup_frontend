@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import { Helmet } from "react-helmet";
 import swal from "@sweetalert/with-react";
 import Swal from "sweetalert2";
@@ -50,7 +51,7 @@ class Index extends Component {
             phoneNumber: this.state.phoneNumber,
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/updateProfile`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
         axios
             .post(api, data, {
                 headers: {
@@ -90,7 +91,7 @@ class Index extends Component {
             return swal("Error", "New password mis-match", "warning");
 
         const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/updatePassword`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
         axios
             .post(api, data, {
                 headers: {
@@ -129,7 +130,7 @@ class Index extends Component {
             price: this.state.price,
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/payment/upgrade`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
 
         if (!data.userName || data.price < 1500)
             return swal("Error", "Invalid Transaction Details", "warning");

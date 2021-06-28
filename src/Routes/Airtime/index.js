@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import swalt from "@sweetalert/with-react";
@@ -40,7 +41,7 @@ class Index extends Component {
       reciever: this.state.reciever,
     };
     const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/airtime`;
-    const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+    const token = Cookies.get('_lab__topup');
     const phoneNumberValidator = /^[0-9]{11}$/;
 
     if (

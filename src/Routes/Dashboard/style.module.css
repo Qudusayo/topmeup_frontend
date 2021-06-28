@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
+@font-face {
+  src: url(./../assets/fonts/Rubik/Rubik-VariableFont_wght.ttf);
+  font-family: "Rubik";
+}
+
+* {
+  font-family: "Rubik", sans-serif;
+  font-display: swap;
+}
+
+.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #127EB1;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+  padding: 2em;
+  margin: 2em auto;
+  border-radius: 5px;
+  width: 85%;
+  text-align: right;
+}
+
+.card h1,
+.card h2,
+.card p {
+  margin: 0;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card button {
+  background-color: #127EB1;
+  outline: none;
+  border: none;
+  color: #FFFFFF;
+}
+
+.card button.fund {
+  font-size: 5em;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 70%;
+  }
+}
+
+.refLink {
+  position: relative;
+}
+
+.refLink input {
+  width: 100%;
+  height: 2.2em;
+  outline: none;
+  border: 1px solid #127EB1;
+  border-radius: 25px;
+  padding-left: 1em;
+}
+
+.refLink button {
+  height: 2.2em;
+  width: 6em;
+  position: absolute;
+  right: 2.5em;
+  border-radius: 0 25px 25px 0;
+}
+
+.cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 92%;
+  margin: 2em auto;
+}
+
+.cards a {
+  background-color: #FFFFFF;
+  color: #000000;
+  text-decoration: none;
+  -webkit-box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+  width: 30%;
+  text-align: center;
+  padding: 1em 0;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .cards {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 0.5em auto;
+  }
+  .cards a {
+    width: 100%;
+    margin: 0.5em auto;
+  }
+}
+
+.balances {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 92.5%;
+  margin: 2em auto;
+}
+
+.balances div {
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15);
+  width: 40.5%;
+  text-align: right;
+  padding: 2.5em 3.5%;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #127EB1;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+  position: relative;
+}
+
+.balances div h1,
+.balances div h2 {
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .balances {
+    width: 94%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 0.5em auto;
+  }
+  .balances div {
+    width: 86%;
+    padding: 1.5em 6.5%;
+    margin: 0.5em auto;
+  }
+}
+
+.atm {
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: copy;
+  -webkit-box-shadow: 4px 6px black;
+          box-shadow: 4px 6px black;
+  display: block;
+  background-color: #127EB1;
+  background-size: 20px 20px;
+  background-image: repeating-linear-gradient(45deg, rgba(0, 191, 255, 0.5), rgba(0, 191, 255, 0.5) 1px, transparent 1px, transparent 15px), repeating-linear-gradient(-45deg, rgba(255, 225, 225, 0.5), rgba(255, 225, 225, 0.5) 1px, transparent 1px, transparent 15px);
+}
+
+.atm h2, .atm h3 {
+  margin: 0;
+}
+
+.atm h2.number {
+  text-align: center;
+  color: #FFFFFF !important;
+  font-size: 3em;
+  font-family: "Dosis", sans-serif;
+  letter-spacing: 0.2em;
+}
+
+.atm h3 {
+  text-align: center;
+  color: #FFFFFF !important;
+  font-size: 1.4em;
+  font-family: "Dosis", sans-serif;
+  letter-spacing: 0.2em;
+}
+
+.atm h3:nth-of-type(1) {
+  padding-top: 1.3em;
+}
+
+.atm h3:nth-of-type(2) {
+  padding-bottom: 1.3em;
+}
+
+.atm span {
+  color: #fdfdfd;
+  position: absolute;
+  bottom: 2px;
+  right: 5px;
+  font-size: .5em;
+}
+
+@media screen and (max-width: 450px) {
+  .atm {
+    width: 75%;
+    padding: 2em 1.5em;
+  }
+  .atm h2.number {
+    font-size: 1.8em;
+    width: 100%;
+  }
+  .atm h3 {
+    font-size: .8em;
+  }
+}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import swalt from "@sweetalert/with-react";
@@ -35,7 +36,7 @@ class index extends Component {
             message: this.state.message,
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/sendInfo/message`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
         axios
             .post(api, data, {
                 headers: {

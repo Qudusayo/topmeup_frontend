@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 import avatar from "./../../assets/images/av2.png";
 import { withRouter } from "react-router-dom";
@@ -25,7 +26,7 @@ import logout from "./../../assets/icons/logout.svg";
 
 class Index extends Component {
   logout() {
-    sessionStorage.removeItem("topuplab");
+    Cookies.remove('_lab__topup');
   }
 
   render() {

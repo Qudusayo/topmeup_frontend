@@ -1,0 +1,114 @@
+@font-face {
+  src: url(./../assets/fonts/Rubik/Rubik-VariableFont_wght.ttf);
+  font-family: "Rubik";
+}
+
+* {
+  font-family: "Rubik", sans-serif;
+  font-display: swap;
+}
+
+.container {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.container .dashboard {
+  background-color: #f2f2f2;
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-y: auto;
+}
+
+.container .dashboard .hamburger {
+  position: relative;
+  display: none;
+  right: 20px;
+  z-index: 2000;
+}
+
+@media screen and (max-width: 880px) {
+  .container .dashboard .hamburger {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container .dashboard .hamburger {
+    right: 0;
+  }
+}
+
+.container .dashboard .hamburger label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .dashboard .hamburger_bars {
+  height: 5px;
+  width: 35px;
+  border-radius: 40px;
+  display: inline-block;
+  background-color: #000000;
+  margin: 2px 0;
+  cursor: pointer;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .dashboard .hamburger_check {
+  position: fixed;
+  margin: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-transform: translateX(99999px);
+          transform: translateX(99999px);
+}
+
+.container .dashboard .hamburger_check:checked + label .hamburger_bars:nth-of-type(1) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.container .dashboard .hamburger_check:checked + label .hamburger_bars:nth-of-type(2) {
+  opacity: 0;
+}
+
+.container .dashboard .hamburger_check:checked + label .hamburger_bars:nth-of-type(3) {
+  position: absolute;
+  top: 1px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.container .dashboard nav {
+  border-bottom: 1px solid grey;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1em;
+}
+
+.container .dashboard nav h2 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #127EB1;
+}

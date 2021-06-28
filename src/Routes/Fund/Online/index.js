@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from 'js-cookie';
 import { withRouter } from "react-router-dom";
 import styles from "./style.module.scss";
 import swal from "@sweetalert/with-react";
@@ -20,7 +21,7 @@ function Index(props) {
             email: props.email,
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/payment/onlinePayment`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
         axios
             .post(api, data, {
                 headers: {

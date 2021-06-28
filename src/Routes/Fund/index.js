@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import swal from "@sweetalert/with-react";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
@@ -45,7 +46,7 @@ class Index extends Component {
             amount: this.state.amount,
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/sendInfo/payment`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
         axios
             .post(api, data, {
                 headers: {

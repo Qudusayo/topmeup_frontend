@@ -31,7 +31,7 @@
 
         h1 {
             margin: 0.2em 0;
-            font-size: 2.7em;
+            font-size: 3.5em;
             line-height: 1em;
             color: $black;
             font-weight: 100;
@@ -61,6 +61,7 @@
             color: $white;
             border: 1px solid $fidalgo;
             transition: all 0.2s ease-in-out;
+            font-size: 2em;
 
             &:hover {
                 background-color: $white;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import swalt from "@sweetalert/with-react";
@@ -38,7 +39,7 @@ class index extends Component {
                     : 700 * this.state.quantity,
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/exam`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
 
         if (!["waec", "neco"].includes(data.type.toLowerCase())) {
             return swalt(

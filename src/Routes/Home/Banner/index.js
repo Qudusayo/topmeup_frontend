@@ -17,23 +17,13 @@ function index() {
                 TOP UP LAB
             </h1> */}
             <div className={styles.content}>
-                <small>We are to top you up</small>
                 <h1 className="animate__animated animate__bounce">
-                    TOP<span className="yellow">UP</span>LAB anytime anywhere
+                    TOP<span className="yellow">UP</span> anytime anywhere
                 </h1>
-                <small>
-                    Buy cheap and affordable plans easily and cable
-                    subscriptions
-                </small>
                 <div className={styles.flex}>
                     <Link to="/register">
                         <button className="animate__animated animate__bounceInUp">
-                            Register Now !
-                        </button>
-                    </Link>
-                    <Link to="/login" className={styles.left}>
-                        <button className="animate__animated animate__bounceInUp">
-                            Login
+                            Get Started
                         </button>
                     </Link>
                 </div>

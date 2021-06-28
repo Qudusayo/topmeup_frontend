@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cookies from 'js-cookie';
 import { Helmet } from "react-helmet";
 import swalt from "@sweetalert/with-react";
 import Swal from "sweetalert2";
@@ -36,7 +37,7 @@ class Index extends Component {
 
     verifyNetwork = () => {
         const phoneNumberValidator = /^0[7-9]{1}[01]{1}[0-9]{8}/;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
         const api = `${process.env.REACT_APP_BACKEND_URI}/verifyNetwork`;
         const data = {
             phone: this.state.reciever,
@@ -120,7 +121,7 @@ class Index extends Component {
             reciever: this.state.reciever,
         };
         const api = `${process.env.REACT_APP_BACKEND_URI}/transaction/data`;
-        const token = JSON.parse(sessionStorage.getItem("topuplab")).token;
+        const token = Cookies.get('_lab__topup');
         const phoneNumberValidator = /^[0-9]{11}$/;
 
         if (
@@ -167,6 +168,7 @@ class Index extends Component {
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         },
+                        withCredentials: true
                     })
                     .then((res) => {
                         console.log(res);

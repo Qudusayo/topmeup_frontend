@@ -1,10 +1,10 @@
 @import "./../../styles/variables.scss";
 
 .footer {
-    background: $richblack;
+    background: lighten($color: $richblack, $amount: 5);
     color: $white;
     font-family: $R;
-    padding: 3em 1em 1em;
+    padding: 4em 3em 2.5em;
 
     .flex {
         display: flex;

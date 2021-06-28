@@ -34,7 +34,7 @@ class Index extends Component {
     };
 
     componentDidMount() {
-        if (!sessionStorage.getItem("topuplab"))
+        if (!Cookies.get('_lab__topup'))
             return this.props.history.push("/login");
         const api = `${process.env.REACT_APP_BACKEND_URI}/getUserInfo/balance`;
         const token = Cookies.get('_lab__topup');

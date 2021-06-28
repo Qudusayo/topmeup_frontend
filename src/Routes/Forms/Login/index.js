@@ -73,7 +73,7 @@ class Index extends Component {
             this.setState({ waiting: false });
             return this.error("Invalid username or password");
           } else {
-            Cookies.set('_lab__topup', response.data.accessToken, { expires: 365 })
+            Cookies.set('_lab__topup', response.data.accessToken, { expires: 1/48 })
             this.props.authUser();
             this.props.getUserInfo();
             this.props.getTvSubscription();

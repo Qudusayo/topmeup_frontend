@@ -1,83 +1,95 @@
 @import "./../../styles/variables.scss";
 
 .container {
-    margin: 0;
-    display: flex;
-    height: 100vh;
-    overflow-y: hidden;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  overflow-y: hidden;
 
-    .dashboard {
-        background-color: darken($color: $white, $amount: 5%);
-        height: 100%;
-        flex: 1;
-        overflow-y: auto;
+  .dashboard {
+    background-color: darken($color: $white, $amount: 5%);
+    background-image: linear-gradient(
+      45deg,
+      #e8e8e8 1.92%,
+      #ffffff 1.92%,
+      #ffffff 50%,
+      #e8e8e8 50%,
+      #e8e8e8 51.92%,
+      #ffffff 51.92%,
+      #ffffff 100%
+    );
+    background-size: 36.77px 36.77px;
+    background-size: 36.77px 36.77px;
+    height: 100%;
+    flex: 1;
+    overflow-y: auto;
 
-        .hamburger {
-            position: relative;
-            display: none;
-            right: 20px;
-            z-index: 2000;
+    .hamburger {
+      position: relative;
+      display: none;
+      right: 20px;
+      z-index: 2000;
 
-            @media screen and (max-width: 880px) {
-                display: block;
-            }
+      @media screen and (max-width: 880px) {
+        display: block;
+      }
 
-            @media screen and (max-width: 768px) {
-                right: 0;
-            }
+      @media screen and (max-width: 768px) {
+        right: 0;
+      }
 
-            label {
-                display: flex;
-                flex-direction: column;
-            }
+      label {
+        display: flex;
+        flex-direction: column;
+      }
 
-            &_bars {
-                height: 5px;
-                width: 35px;
-                border-radius: 40px;
-                display: inline-block;
-                background-color: #000000;
-                margin: 2px 0;
-                cursor: pointer;
-                transition: all 0.3s linear;
-            }
+      &_bars {
+        height: 5px;
+        width: 35px;
+        border-radius: 40px;
+        display: inline-block;
+        background-color: #000000;
+        margin: 2px 0;
+        cursor: pointer;
+        transition: all 0.3s linear;
+      }
 
-            &_check {
-                position: fixed;
-                margin: 0;
-                top: 0;
-                left: 0;
-                z-index: -1;
-                transform: translateX(99999px);
+      &_check {
+        position: fixed;
+        margin: 0;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transform: translateX(99999px);
 
-                &:checked + label {
-                    & .hamburger_bars:nth-of-type(1) {
-                        transform: rotate(45deg);
-                    }
-                    & .hamburger_bars:nth-of-type(2) {
-                        opacity: 0;
-                    }
-                    & .hamburger_bars:nth-of-type(3) {
-                        position: absolute;
-                        top: 1px;
-                        transform: rotate(-45deg);
-                    }
-                }
-            }
+        &:checked + label {
+          & .hamburger_bars:nth-of-type(1) {
+            transform: rotate(45deg);
+          }
+          & .hamburger_bars:nth-of-type(2) {
+            opacity: 0;
+          }
+          & .hamburger_bars:nth-of-type(3) {
+            position: absolute;
+            top: 1px;
+            transform: rotate(-45deg);
+          }
         }
-
-        nav {
-            border-bottom: 1px solid grey;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1em;
-
-            h2 {
-                margin: 0;
-                font-size: 1.2em;
-                color: $fidalgo;
-            }
-        }
+      }
     }
+
+    nav {
+      border-bottom: 1px solid grey;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1em;
+
+      h2 {
+        margin: 0;
+        font-size: 1.2em;
+        color: $fidalgo;
+      }
+    }
+  }
 }

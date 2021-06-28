@@ -106,7 +106,7 @@ class index extends Component {
                 </div> */}
                 <div className={styles.balances}>
                     <div>
-                        <h2>Bonus (Fixing...)</h2>
+                        <h2>Bonus</h2>
                         <h1>₦ 0</h1>
                     </div>
                     <div>
@@ -145,14 +145,9 @@ class index extends Component {
                     </Link>
                 </div>
                 <div className={styles.cards}>
-                    <a
-                        href="https://chat.whatsapp.com/D3d2oHlRoW16L5zdFqoAcA"
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{ backgroundColor: "#00bfa5", color: "white" }}
-                    >
-                        <div>JOIN WHATSAPP</div>
-                    </a>
+                    <Link to="/fund-wallet">
+                        <div>FUND WALLET</div>
+                    </Link>
                     <a
                         href="https://t.me/TopUpLab"
                         target="_blank"
@@ -162,7 +157,7 @@ class index extends Component {
                         <div>JOIN TELEGRAM</div>
                     </a>
                     <a
-                        href="https://api.whatsapp.com/send?phone=2347016412041&text=Hi%20Admin%20TopUpLab.Tell%20me%20more%20about%20your%20product%20"
+                        href="https://api.whatsapp.com/send?phone=2347042467656&text=Hi%Support%20TopUpLab.Tell%20me%20more%20about%20your%20product%20"
                         target="_blank"
                         rel="noreferrer"
                         style={{ backgroundColor: "#127EB1", color: "white" }}

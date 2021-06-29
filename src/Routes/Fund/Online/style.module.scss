@@ -24,6 +24,8 @@
     }
 
     &:disabled {
+        background-color: $silver;
+            
         &:hover {
             transform: translateY(0);
             cursor: not-allowed;

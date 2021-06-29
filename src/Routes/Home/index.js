@@ -18,7 +18,7 @@ import Footer from "./../../Components/Footer";
 import Banner from "./Banner";
 import Card from "./Card";
 import Testimonial from "./Testimonial";
-import Contact from "./Contact";
+// import Contact from "./Contact";
 
 function index() {
     return (

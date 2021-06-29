@@ -171,7 +171,7 @@ class Index extends Component {
                         withCredentials: true
                     })
                     .then((res) => {
-                        console.log(res);
+                        // console.log(res);
                         if (!res.data.error) {
                             const Toast = Swal.mixin({
                                 toast: true,

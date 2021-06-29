@@ -39,11 +39,11 @@ function Index(props) {
                 </li>
                 <li className={styles.hidden}>
                     <NavLink to="/register" activeClassName={styles.active}>
-                        Register
+                        Get Started For Free
                     </NavLink>
                 </li>
             </ul>
-            <Link to="/register"><button>Join Us</button></Link>
+            <Link to="/register"><button>Get Started For Free</button></Link>
             <div className={styles.hamburger}>
                 <input
                     type="checkbox"

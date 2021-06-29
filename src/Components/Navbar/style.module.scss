@@ -1,170 +1,163 @@
 @import "./../../styles/variables.scss";
 
 .MainNav {
-    // backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5em 2em;
-    font-family: $R;
-    bottom: 0;
-    position: sticky;
-    z-index: 100;
-    background: rgba(255, 255, 255, 1);
-    top: 0;
-    box-shadow: 0 3px 4px rgba($color: #000000, $alpha: 0.1);
+  // backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 5em;
+  font-family: $R;
+  bottom: 0;
+  position: sticky;
+  z-index: 100;
+  background: rgba(255, 255, 255, 1);
+  top: 0;
+  box-shadow: 0 3px 4px rgba($color: #000000, $alpha: 0.1);
 
-    @media screen and(max-width: 768px) {
-        padding: 1em 0.5em;
-    }
+  @media screen and(max-width: 768px) {
+    padding: 1em 0.5em;
+  }
 
-    h2 {
-        margin: 0;
+  h2 {
+    margin: 0;
 
-        a {
-            text-decoration: none;
-            color: $black;
+    a {
+      text-decoration: none;
+      color: $black;
 
-            .yellow {
-                color: $fidalgo;
-            }
-        }
-    }
-
-    ul {
-        list-style-type: none;
-        padding-inline-start: 0;
-        margin: 0;
-        width: 50%;
-        display: flex;
-
-        @media screen and (max-width: 880px) {
-            position: fixed;
-            z-index: 1000;
-            top: 0em;
-            margin-top: 0em;
-            align-items: flex-start;
-            justify-content: center;
-            width: 100%;
-            padding-left: 2em;
-            background-color: $white;
-            flex-direction: column;
-            min-height: 100vh;
-            height: 100vh;
-            transition: all 0.3s linear;
-            padding-left: 0;
-
-            &.visibleNav {
-                left: 0;
-            }
-
-            &.inVisibleNav {
-                left: -150%;
-            }
-        }
-
-        li {
-            text-align: center;
-            width: 100%;
-            margin: 1em auto;
-
-            a {
-                color: $black;
-                font-weight: bold;
-                text-decoration: none;
-                transition: color 0.3s linear;
-
-                &.active,
-                &:hover {
-                    color: $fidalgo;
-                }
-            }
-
-            &.hidden {
-                display: none;
-
-                @media screen and (max-width: 880px) {
-                    display: block;
-                }
-            }
-        }
-    }
-
-    button {
-        outline: none;
-        border: 2px solid $fidalgo;
+      .yellow {
         color: $fidalgo;
-        font-weight: bold;
-        cursor: pointer;
-        font-family: $R;
-        font-size: 1.2em;
-        border-radius: 25px;
-        padding: 0.5em 2em;
-        background-color: transparent;
-        transition: background 0.3s linear;
+      }
+    }
+  }
 
-        @media screen and (max-width: 400px) {
-            display: none;
-        }
+  ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+    margin: 0;
+    width: 50%;
+    display: flex;
 
-        &:hover {
-            background-color: $fidalgo;
-            border: 2px solid $fidalgo;
-            color: #fff;
-        }
+    @media screen and (max-width: 880px) {
+      position: fixed;
+      z-index: 1000;
+      top: 0em;
+      margin-top: 0em;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      padding-left: 2em;
+      background-color: $white;
+      flex-direction: column;
+      min-height: 100vh;
+      height: 100vh;
+      transition: all 0.3s linear;
+      padding-left: 0;
+
+      &.visibleNav {
+        left: 0;
+      }
+
+      &.inVisibleNav {
+        left: -150%;
+      }
     }
 
-    .hamburger {
-        position: relative;
+    li {
+      text-align: center;
+      width: 100%;
+      margin: 1em auto;
+
+      a {
+        color: $black;
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.3s linear;
+
+        &.active,
+        &:hover {
+          color: $fidalgo;
+        }
+      }
+
+      &.hidden {
         display: none;
-        right: 20px;
-        z-index: 2000;
 
         @media screen and (max-width: 880px) {
-            display: block;
+          display: block;
         }
-
-        @media screen and (max-width: 768px) {
-            right: 0;
-        }
-
-        label {
-            display: flex;
-            flex-direction: column;
-        }
-
-        &_bars {
-            height: 5px;
-            width: 35px;
-            border-radius: 40px;
-            display: inline-block;
-            background-color: #000000;
-            margin: 2px 0;
-            cursor: pointer;
-            transition: all 0.3s linear;
-        }
-
-        &_check {
-            position: fixed;
-            margin: 0;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            transform: translateX(99999px);
-
-            &:checked + label {
-                & .hamburger_bars:nth-of-type(1) {
-                    transform: rotate(45deg);
-                }
-                & .hamburger_bars:nth-of-type(2) {
-                    opacity: 0;
-                }
-                & .hamburger_bars:nth-of-type(3) {
-                    position: absolute;
-                    top: 1px;
-                    transform: rotate(-45deg);
-                }
-            }
-        }
+      }
     }
+  }
+
+  button {
+    outline: none;
+    border: none;
+    background-color: $fidalgo;
+    color: $white;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: $R;
+    font-size: 1em;
+    border-radius: 25px;
+    padding: 0.5em 2em;
+
+    @media screen and (max-width: 400px) {
+      display: none;
+    }
+  }
+
+  .hamburger {
+    position: relative;
+    display: none;
+    right: 20px;
+    z-index: 2000;
+
+    @media screen and (max-width: 880px) {
+      display: block;
+    }
+
+    @media screen and (max-width: 768px) {
+      right: 0;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &_bars {
+      height: 5px;
+      width: 35px;
+      border-radius: 40px;
+      display: inline-block;
+      background-color: #000000;
+      margin: 2px 0;
+      cursor: pointer;
+      transition: all 0.3s linear;
+    }
+
+    &_check {
+      position: fixed;
+      margin: 0;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transform: translateX(99999px);
+
+      &:checked + label {
+        & .hamburger_bars:nth-of-type(1) {
+          transform: rotate(45deg);
+        }
+        & .hamburger_bars:nth-of-type(2) {
+          opacity: 0;
+        }
+        & .hamburger_bars:nth-of-type(3) {
+          position: absolute;
+          top: 1px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
 }

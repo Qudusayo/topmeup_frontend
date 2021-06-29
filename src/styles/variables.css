@@ -1,9 +1,0 @@
-@font-face {
-  src: url(./../assets/fonts/Rubik/Rubik-VariableFont_wght.ttf);
-  font-family: "Rubik";
-}
-
-* {
-  font-family: "Rubik", sans-serif;
-  font-display: swap;
-}

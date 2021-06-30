@@ -4,63 +4,77 @@ import { NavLink, Link } from "react-router-dom";
 import styles from "./style.module.scss";
 
 function Index(props) {
-    const [visible, setVisibility] = useState(false);
+  const [visible, setVisibility] = useState(false);
 
-    return (
-        <div className={styles.MainNav}>
-            <h2>
-                <Link to="/">TOP<span className={styles.yellow}>UP</span>LAB</Link>
-            </h2>
-            <ul className={visible ? styles.visibleNav : styles.inVisibleNav}>
-                <li>
-                    <NavLink to="/" exact activeClassName={styles.active}>
-                        Home
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/about" activeClassName={styles.active}>
-                        About
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/services" activeClassName={styles.active}>
-                        Services
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/quick-buy" activeClassName={styles.active}>
-                        Quick Buy
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/login" activeClassName={styles.active}>
-                        Login
-                    </NavLink>
-                </li>
-                <li className={styles.hidden}>
-                    <NavLink to="/register" activeClassName={styles.active}>
-                        Get Started For Free
-                    </NavLink>
-                </li>
-            </ul>
-            <Link to="/register"><button>Get Started For Free</button></Link>
-            <div className={styles.hamburger}>
-                <input
-                    type="checkbox"
-                    tabIndex="-1"
-                    id="checkbox"
-                    className={styles.hamburger_check}
-                    defaultChecked={visible}
-                    onChange={() => setVisibility(!visible)}
-                />
-                <label htmlFor="checkbox">
-                    <span className={styles.hamburger_bars}></span>
-                    <span className={styles.hamburger_bars}></span>
-                    <span className={styles.hamburger_bars}></span>
-                </label>
-            </div>
-        </div>
-    );
+  return (
+    <div className={styles.MainNav}>
+      <h2>
+        <Link to="/">
+          TOP<span className={styles.yellow}>UP</span>LAB
+        </Link>
+      </h2>
+      <ul className={visible ? styles.visibleNav : styles.inVisibleNav}>
+        <li>
+          <NavLink to="/" exact activeClassName={styles.active}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/about" activeClassName={styles.active}>
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/services" activeClassName={styles.active}>
+            Services
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/quick-buy" activeClassName={styles.active}>
+            Quick Buy
+          </NavLink>
+        </li>
+        <li>
+          <a
+            href="https://developers.topuplab.com.ng"
+            target="_blank"
+            rel="noreferrer"
+            activeClassName={styles.active}
+          >
+            Developer
+          </a>
+        </li>
+        <li>
+          <NavLink to="/login" activeClassName={styles.active}>
+            Login
+          </NavLink>
+        </li>
+        <li className={styles.hidden}>
+          <NavLink to="/register" activeClassName={styles.active}>
+            Register
+          </NavLink>
+        </li>
+      </ul>
+      <Link to="/register">
+        <button>Get Started For Free</button>
+      </Link>
+      <div className={styles.hamburger}>
+        <input
+          type="checkbox"
+          tabIndex="-1"
+          id="checkbox"
+          className={styles.hamburger_check}
+          defaultChecked={visible}
+          onChange={() => setVisibility(!visible)}
+        />
+        <label htmlFor="checkbox">
+          <span className={styles.hamburger_bars}></span>
+          <span className={styles.hamburger_bars}></span>
+          <span className={styles.hamburger_bars}></span>
+        </label>
+      </div>
+    </div>
+  );
 }
 
 export default Index;

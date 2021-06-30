@@ -10,7 +10,6 @@ import Navbar from "./../../Components/Navbar";
 import Footer from "./../../Components/Footer";
 import Card from "./../Home/Card";
 import Testimonial from "./../Home/Testimonial";
-import Contact from "./../Home/Contact";
 
 function index() {
     return (
@@ -109,7 +108,6 @@ function index() {
                     <h2>CONTACT US</h2>
                     <span>Have enquiries ? Please contact us.</span>
                 </div>
-                <Contact />
             </div>
             <Footer />
         </>

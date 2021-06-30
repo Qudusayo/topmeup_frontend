@@ -18,12 +18,15 @@ function index() {
             </h1> */}
             <div className={styles.content}>
                 <h1 className="animate__animated animate__bounce">
-                    TOP<span className="yellow">UP</span> anytime anywhere
+                    The automated way for VTU Services
                 </h1>
+                <small>
+                    Make VTU services quick with TopUpLab that is automated with instant delivery.
+                </small>
                 <div className={styles.flex}>
                     <Link to="/register">
                         <button className="animate__animated animate__bounceInUp">
-                            Get Started
+                            Sign In to account Now!
                         </button>
                     </Link>
                 </div>

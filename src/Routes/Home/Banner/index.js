@@ -24,7 +24,7 @@ function index() {
                     Make VTU services quick with TopUpLab that is automated with instant delivery.
                 </small>
                 <div className={styles.flex}>
-                    <Link to="/register">
+                    <Link to="/login">
                         <button className="animate__animated animate__bounceInUp">
                             Sign In to account Now!
                         </button>

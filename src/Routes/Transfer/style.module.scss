@@ -1,274 +1,348 @@
 @import "./../../styles/variables.scss";
 
 .card {
-    background-color: $white;
-    box-shadow: 0px 10px 30px -4px rgba($black, 0.15);
-    padding: 2em;
-    margin: 2em auto;
-    border-radius: 5px;
-    width: 85%;
-    text-align: left;
+  background-color: $white;
+  box-shadow: 0px 10px 30px -4px rgba($black, 0.15);
+  padding: 2em;
+  margin: 2em auto;
+  border-radius: 5px;
+  width: 85%;
+  text-align: left;
 
-    @media screen and (max-width: 490px) {
-        padding: 2em 1.5em;
+  @media screen and (max-width: 490px) {
+    padding: 2em 1.5em;
+  }
+
+  .infos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+      display: block;
     }
 
-    .infos {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        @media screen and (max-width: 768px) {
-            display: block;
-        }
-
-        p,
-        h4 {
-            margin: 0;
-        }
-
-        p.success {
-            background-color: rgb(0, 255, 106);
-            width: fit-content;
-            padding: 0.1em 1em;
-            border-radius: 12px;
-            color: $white;
-        }
+    p,
+    h4 {
+      margin: 0;
     }
 
-    h2 {
-        text-align: center;
-        margin: 0.5em;
+    p.success {
+      background-color: rgb(0, 255, 106);
+      width: fit-content;
+      padding: 0.1em 1em;
+      border-radius: 12px;
+      color: $white;
     }
+  }
+
+  h2 {
+    text-align: center;
+    margin: 0.5em;
+  }
 }
 
 .loose {
-    margin: 0.5em auto;
+  margin: 0.5em auto;
 }
 
 .line {
-    border-bottom: 1px solid;
-    border-color: rgba(199, 199, 199, 0.4);
-    padding: 12px 0;
+  border-bottom: 1px solid;
+  border-color: rgba(199, 199, 199, 0.4);
+  padding: 12px 0;
 
-    &:nth-last-of-type(1) {
-        border-bottom: none;
-        margin-bottom: 2em;
-    }
+  &:nth-last-of-type(1) {
+    border-bottom: none;
+    margin-bottom: 2em;
+  }
 }
 
 .Form {
-    position: relative;
-    background-color: $white;
-    box-shadow: 0px 10px 30px -4px rgba($black, 0.15);
-    padding: 2em 2em 70px;
-    margin: 2em auto;
+  position: relative;
+  background-color: $white;
+  box-shadow: 0px 10px 30px -4px rgba($black, 0.15);
+  padding: 2em 2em 70px;
+  margin: 2em auto;
+  border-radius: 5px;
+  width: 91%;
+  box-sizing: border-box;
+
+  h1 {
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+    margin-top: 0;
+  }
+
+  h4 {
+    margin: 0;
+  }
+
+  .bankInfo {
+    border: 1px solid $black;
+    border-radius: 7px;
+    padding: 1em 4%;
+    margin: 0 auto 1em;
+    width: 92%;
+  }
+
+  label {
+    display: block;
+    width: 100%;
+    margin: auto;
+    font-size: 0.9em;
+    color: $richblack;
+
+    &:nth-of-type(1) {
+      margin-top: 2em;
+    }
+  }
+
+  select.networkProvider {
+    height: 3.5em;
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 0.9em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='grey' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 12px;
+    border: 1px solid #b9b9b9b2;
     border-radius: 5px;
-    width: 91%;
-    box-sizing: border-box;
+    outline: none;
+    display: block;
+    margin: 0.3em auto 2em;
+    padding: 1rem;
+    padding-left: 2em;
 
-    h1 {
-        margin-bottom: 0;
-        text-align: center;
+    @media screen and (max-width: 491px) {
+      width: 94%;
+    }
+  }
+
+  input {
+    display: block;
+    width: 96%;
+    padding-left: 1em;
+    height: 45px;
+    border-radius: 7px;
+    font-size: 1em;
+    margin: 0.3em auto 1em;
+    outline: none;
+    border: 1px solid $silver;
+
+    &:disabled {
+      cursor: not-allowed;
     }
 
-    h3 {
-        text-align: center;
-        margin-top: 0;
+    &:focus {
+      border: 1px solid $fidalgo;
     }
 
-    h4 {
-        margin: 0;
+    @media screen and (max-width: 490px) {
+      width: 90%;
     }
+  }
 
-    .bankInfo {
-        border: 1px solid $black;
-        border-radius: 7px;
-        padding: 1em 4%;
-        margin: 0 auto 1em;
-        width: 92%;
-    }
-
-    label {
-        display: block;
-        width: 100%;
-        margin: auto;
-        font-size: 0.9em;
-        color: $richblack;
-
-        &:nth-of-type(1) {
-            margin-top: 2em;
-        }
-    }
-
-    select.networkProvider {
-        height: 3.5em;
-        width: 100%;
-        padding-left: 1em;
-        padding-right: 1em;
-        font-size: 0.9em;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        background: transparent;
-        background-image: url("data:image/svg+xml;utf8,<svg fill='grey' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-        background-repeat: no-repeat;
-        background-position-x: 90%;
-        background-position-y: 12px;
-        border: 1px solid #b9b9b9b2;
-        border-radius: 5px;
-        outline: none;
-        display: block;
-        margin: 0.3em auto 2em;
-        padding: 1rem;
-        padding-left: 2em;
-
-        @media screen and (max-width: 491px) {
-            width: 94%;
-        }
-    }
+  .inputSymbolNaira,
+  .inputHeavySymbolNaira {
+    position: relative;
 
     input {
-        display: block;
-        width: 96%;
-        padding-left: 1em;
-        height: 45px;
-        border-radius: 7px;
-        font-size: 1em;
-        margin: 0.3em auto 1em;
-        outline: none;
-        border: 1px solid $silver;
-
-        &:disabled {
-            cursor: not-allowed;
-        }
-
-        &:focus {
-            border: 1px solid $fidalgo;
-        }
-
-        @media screen and (max-width: 490px) {
-            width: 90%;
-        }
+      padding-left: 18px;
     }
 
-    .inputSymbolNaira,
-    .inputHeavySymbolNaira {
-        position: relative;
+    &:before {
+      position: absolute;
+      top: 13.5px;
+      font-size: 1em;
+      z-index: 10;
+      content: "₦";
+      left: 10px;
+      font-weight: bolder;
+    }
+  }
 
-        input {
-            padding-left: 18px;
-        }
+  .inputHeavySymbolNaira {
+    &:before {
+      top: 18px;
+    }
+  }
 
-        &:before {
-            position: absolute;
-            top: 13.5px;
-            font-size: 1em;
-            z-index: 10;
-            content: "₦";
-            left: 10px;
-            font-weight: bolder;
-        }
+  .units {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2em;
+
+    span {
+      display: block;
+      background-color: $fidalgo;
+      color: $white;
+      padding: 0.5em 0.3em;
+      border-radius: 7px;
+      width: 16%;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    bottom: 20px;
+    position: absolute;
+    margin: auto -32px;
+    height: 50px;
+    font-size: 1em;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: $fidalgo;
+    color: $white;
+    box-shadow: 0 4px 1px rgba($black, 0.4);
+    transition: box-shadow 0.2s linear;
+
+    &.danger {
+      background-color: $imperialred;
     }
 
-    .inputHeavySymbolNaira {
-        &:before {
-            top: 18px;
-        }
+    &:hover {
+      box-shadow: 0 4px 1px rgba($black, 0.7);
     }
 
-    .units {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 2em;
+    &:disabled {
+      background-color: $silver;
 
-        span {
-            display: block;
-            background-color: $fidalgo;
-            color: $white;
-            padding: 0.5em 0.3em;
-            border-radius: 7px;
-            width: 16%;
-            text-align: center;
-            cursor: pointer;
-        }
+      &:hover {
+        transform: translateY(0);
+        cursor: not-allowed;
+      }
     }
 
-    button {
-        display: block;
-        width: 100%;
-        bottom: 20px;
-        position: absolute;
-        margin: auto -32px;
-        height: 50px;
-        font-size: 1em;
-        cursor: pointer;
-        outline: none;
-        border: none;
-        background-color: $fidalgo;
-        color: $white;
-        box-shadow: 0 4px 1px rgba($black, 0.4);
-        transition: box-shadow 0.2s linear;
-
-        &.danger {
-            background-color: $imperialred;
-        }
-
-        &:hover {
-            box-shadow: 0 4px 1px rgba($black, 0.7);
-        }
-
-        &:disabled {
-            background-color: $silver;
-            
-            &:hover {
-                transform: translateY(0);
-                cursor: not-allowed;
-            }
-        }
-
-        .spinner {
-            width: 2em;
-            height: 2em;
-            animation: rotate 1s linear infinite;
-        }
-
-        @media screen and (max-width: 490px) {
-            width: 96%;
-        }
+    .spinner {
+      width: 2em;
+      height: 2em;
+      animation: rotate 1s linear infinite;
     }
+
+    @media screen and (max-width: 490px) {
+      width: 96%;
+    }
+  }
 }
 
 @media screen and (max-width: 490px) {
-    .card,
-    .Form {
-        padding: 1;
-        // border-radius: 0;
-    }
+  .card,
+  .Form {
+    padding: 1;
+    // border-radius: 0;
+  }
 
-    .Form {
-        padding: 1.5em 1.5em 70px;
-        
-        button{
-            margin: auto -1.5em;
-            width: 100%;
-        }
+  .Form {
+    padding: 1.5em 1.5em 70px;
+
+    button {
+      margin: auto -1.5em;
+      width: 100%;
     }
+  }
 }
 
-.buttons{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    button{
-        width: 48%;
-        margin: 0;
+  button {
+    width: 48%;
+    margin: 0;
+  }
+
+  .cancel {
+    margin-right: auto;
+    background-color: red;
+  }
+}
+
+.atm {
+  position: relative;
+  user-select: none;
+  cursor: copy;
+  box-shadow: 4px 6px rgba(0, 0, 0, 1);
+
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  display: block;
+  background-color: $fidalgo;
+  background-size: 20px 20px;
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(0, 191, 255, 0.5),
+      rgba(0, 191, 255, 0.5) 1px,
+      transparent 1px,
+      transparent 15px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 225, 225, 0.5),
+      rgba(255, 225, 225, 0.5) 1px,
+      transparent 1px,
+      transparent 15px
+    );
+
+  h2.number {
+    text-align: center;
+    color: $white !important;
+    font-size: 3em;
+    font-family: "Dosis", sans-serif;
+    letter-spacing: 0.2em;
+  }
+
+  h3 {
+    text-align: center;
+    color: $white !important;
+    font-size: 1.4em;
+    font-family: "Dosis", sans-serif;
+    letter-spacing: 0.2em;
+
+    &:nth-of-type(1) {
+      padding-top: 1.3em;
     }
-    
-    .cancel{
-        margin-right: auto;
-        background-color: red;
+    &:nth-of-type(2) {
+      padding-bottom: 1.3em;
     }
+  }
+
+  span {
+    color: #fdfdfd;
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    font-size: 0.5em;
+  }
+
+  @media screen and (max-width: 450px) {
+    width: 75%;
+    padding: 2em 1.5em;
+
+    h2.number {
+      font-size: 1.8em;
+      width: 100%;
+    }
+    h3 {
+      font-size: 0.8em;
+    }
+  }
 }

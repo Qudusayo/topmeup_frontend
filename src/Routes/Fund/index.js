@@ -96,10 +96,7 @@ class Index extends Component {
     const token = Cookies.get("_lab__topup");
 
     axios
-      .get(api, {
-        headers: { Authorization: `Bearer ${token}` },
-        withCredentials: true,
-      })
+      .get(api, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         // console.log(res.data);
         if (!res.data.error) {

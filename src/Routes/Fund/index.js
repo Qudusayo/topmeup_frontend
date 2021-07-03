@@ -178,6 +178,11 @@ class Index extends Component {
             Bank Transfer Payment and start enjoying the Cheapest plan with
             TopUpLabs.
             <br />
+            <b>
+              NOTE: #50 Charge For transfers to your reserved account. Kindly
+              consider the fee while sending
+            </b>
+            <br />
             Thanks for Choosing Us
           </p>
         </div>

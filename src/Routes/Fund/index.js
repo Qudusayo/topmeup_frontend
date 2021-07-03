@@ -27,6 +27,7 @@ class Index extends Component {
       reservedAccount: {},
       processingAccount: true,
       activeAccount: false,
+      accountNumber: '',
       amount: "",
       onlineAmount: "",
       onlinePayment: false,
@@ -117,6 +118,7 @@ class Index extends Component {
         this.setState({
           username: res.data.userName,
           reservedAccount: res.data.reservedAccount,
+          accountNumber: res.data.reservedAccount.accountNumber,
           active: res.data.reservedAccount.active
             ? res.data.reservedAccount.active
             : false,
@@ -126,6 +128,26 @@ class Index extends Component {
       });
     // console.log(this.state);
   }
+
+  copyDetails = () => {
+    navigator.clipboard.writeText(this.state.accountNumber);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      icon: "success",
+      title: "Account Number Copied Successfully",
+    });
+  };
 
   makeOnlinePayment(e) {
     e.preventDefault();

@@ -80,16 +80,14 @@ class Index extends Component {
                                 <div className={[styles.infos].join(" ")}>
                                     <h4>
                                         {trans.type}{" "}
-                                        {trans.id ? (
-                                            <small>( {trans.id} )</small>
-                                        ) : null}
+                                        {(<small>( {trans.id} )</small>)}
                                     </h4>
                                     <p>{trans.date}</p>
                                 </div>
                                 <h2>₦{parseFloat(trans.amount)}</h2>
                                 <div className={[styles.infos].join(" ")}>
                                     <p>
-                                        <b>Topped Up:</b> {trans.reciever}
+                                        <b>Topped Up:</b> {trans.queriedFor}
                                     </p>
                                     <p
                                         className={styles.success}

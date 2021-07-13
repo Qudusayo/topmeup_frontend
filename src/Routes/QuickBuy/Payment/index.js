@@ -55,7 +55,7 @@ function Index(props) {
     // you can call this function anything
     const handlePaystackCloseAction = () => {
         // implementation for  whatever you want to do when the Paystack dialog closed.
-        console.log("closed");
+        // console.log("closed");
         return swal(
             "Opps",
             `Payment Canceled`,

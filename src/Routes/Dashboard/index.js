@@ -12,6 +12,7 @@ class index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      bonus: 0,
       balance: 0,
       today: "",
       username: "",
@@ -37,6 +38,7 @@ class index extends Component {
           res.data.userName[0].toUpperCase() +
           res.data.userName.slice(1);
         this.setState({
+          bonus: res.data.bonus,
           balance: res.data.balance,
           today,
           refUrl,
@@ -74,7 +76,7 @@ class index extends Component {
         <div className={styles.balances}>
           <div>
             <h2>Bonus</h2>
-            <h1>₦ 0</h1>
+            <h1>₦ {this.state.bonus}</h1>
           </div>
           <div>
             <h2>Balance</h2>

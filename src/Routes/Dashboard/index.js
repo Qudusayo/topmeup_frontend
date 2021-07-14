@@ -33,6 +33,7 @@ class index extends Component {
     axios
       .get(api, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
+        console.log(res.data);
         const refUrl =
           this.state.refUrl +
           res.data.userName[0].toUpperCase() +

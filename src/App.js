@@ -24,6 +24,7 @@ import Exam from "./Routes/Exam";
 import CableTV from "./Routes/CableTV";
 import Withdraw from "./Routes/Withdraw";
 import History from "./Routes/History";
+import Transaction from "./Routes/Transaction";
 import BillPayment from "./Routes/BillPayment";
 import DataSubscription from "./Routes/DataSubscription";
 
@@ -60,6 +61,7 @@ function App(props) {
                 <Route path="/cable-TV" component={CableTV} exact></Route>
                 <Route path="/withdraw" component={Withdraw} exact></Route>
                 <Route path="/history" component={History} exact></Route>
+                <Route path="/history/:id" component={Transaction} exact></Route>
                 <Route path="/buy-scratch-card" component={Exam} exact></Route>
                 <Route
                     path="/bill-payment"

@@ -55,16 +55,20 @@ class Index extends Component {
     }, 1500);
   };
 
+  showTransaction = (transactionID) => {
+    this.props.history.push(`/history/${transactionID}`)
+  };
+
   render() {
     return (
       <Wrapper>
         <Helmet>
           <title>TOP UP LAB | TRANSACTION HISTORY </title>
         </Helmet>
-        <form className={[styles.Form, styles.loose].join(" ")}>
+        <div className={[styles.Form, styles.loose].join(" ")}>
           <h1>Transactions</h1>
           <h3>Your Previous Transactions</h3>
-        </form>
+        </div>
         {this.state.loading ? (
           <Loader />
         ) : this.state.history.length ? (
@@ -73,6 +77,7 @@ class Index extends Component {
               <div
                 className={[styles.card, styles.loose].join(" ")}
                 key={index}
+                onClick={() => this.showTransaction(trans.id)}
               >
                 <div className={[styles.infos].join(" ")}>
                   <h4>

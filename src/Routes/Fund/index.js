@@ -27,7 +27,8 @@ class Index extends Component {
       reservedAccount: {},
       processingAccount: true,
       activeAccount: false,
-      accountNumber: '',
+      accountNumber: "",
+      accountName: "",
       amount: "",
       onlineAmount: "",
       onlinePayment: false,
@@ -119,6 +120,7 @@ class Index extends Component {
           username: res.data.userName,
           reservedAccount: res.data.reservedAccount,
           accountNumber: res.data.reservedAccount.accountNumber,
+          accountName: res.data.reservedAccount.accountName,
           active: res.data.reservedAccount.active
             ? res.data.reservedAccount.active
             : false,
@@ -200,10 +202,12 @@ class Index extends Component {
             Bank Transfer Payment and start enjoying the Cheapest plan with
             TopUpLabs.
             <br />
+            <br />
             <b>
-              NOTE: #50 Charge For transfers to your reserved account. Kindly
-              consider the fee while sending
+              NOTE: No Charge For transfers to your reserved account. Kindly use
+              this for your payment
             </b>
+            <br />
             <br />
             Thanks for Choosing Us
           </p>
@@ -217,12 +221,7 @@ class Index extends Component {
             <h2 className={styles.number}>
               {this.state.reservedAccount.accountNumber}
             </h2>
-            <h3>
-              TOP UP LAB{" "}
-              {this.state.username
-                ? this.state.username.toUpperCase().slice(0, 3)
-                : "USERNAME"}
-            </h3>
+            <h3>{this.state.reservedAccount.accountName}</h3>
             <span>BANK TRANSFER</span>
           </div>
         ) : (
@@ -256,7 +255,7 @@ class Index extends Component {
               Select Payment Method
             </option>
             <option value="bankPayment">
-              Bank Payment (Min ₦1000, 0% Fee)
+              Bank Payment (Min ₦10, 0% Fee)
             </option>
             <option value="onlinePayment">
               Online Payment (Min ₦500, 2% Fee)
@@ -269,42 +268,15 @@ class Index extends Component {
           {this.state.payment === "bankPayment" ? (
             <>
               <div className={styles.bankInfo}>
-                <h4>0501764158</h4>
-                <h4>Sterling Bank</h4>
-                <h4>Abdulqudus Bolaji</h4>
+                <h4>
+                  Just Make Payment to your Dedicated Account. Deposit is
+                  Free!!!
+                </h4>
                 <br />
                 <p>
                   Bank Deposit/Atm Transfer/Online Bank Transfer/ USSD & others
                   (Instant/Automated) (Minimum of #1,000): Payments are accepted
                   into any of our bank accounts stated on this page.
-                </p>
-              </div>
-              <div className={styles.bankInfo}>
-                <p>
-                  <b>Kindly Fill the form below if transferred</b>
-                </p>
-                <p>
-                  <b>
-                    Note: If you've filled the form and your wallet is not
-                    credited after 15 minutes, Kindly contact the{" "}
-                    <a
-                      style={{
-                        textDecoration: "none",
-                        color: "#127EB1",
-                      }}
-                      href="https://wa.me/message/YCC5HDYHVI4HA1"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      ADMIN Here
-                    </a>
-                  </b>
-                </p>
-                <p>
-                  <b>
-                    PLEASE DO NOT FILL THIS FORM IF YOU HAVE NOT MAKE THE
-                    PAYMENT OR ELSE YOUR ACCOUNT WILL BE LOCKED.
-                  </b>
                 </p>
               </div>
             </>
@@ -373,48 +345,6 @@ class Index extends Component {
                 }
               />
             )}
-          </form>
-        ) : null}
-        {this.state.payment === "bankPayment" ? (
-          <form className={styles.Form} onSubmit={this.onSubmit}>
-            <h1>BANK PAYMENT</h1>
-            <h3>SUBMIT A REQUEST</h3>
-            <label>Depositors Name</label>
-            <input
-              onChange={this.onChange}
-              type="text"
-              name="depositorsName"
-              id="depositorsName"
-              autoComplete="off"
-              placeholder="Depositors Name"
-              value={this.state.depositorsName}
-              required={true}
-              disabled={this.state.waiting}
-            />
-            <label>Amount</label>
-            <span className={styles.inputHeavySymbolNaira}>
-              <input
-                onChange={this.onChange}
-                type="number"
-                name="amount"
-                id="amount"
-                autoComplete="off"
-                placeholder="Amount"
-                value={this.state.amount}
-                min="1000"
-                required={true}
-                disabled={this.state.waiting}
-              />
-            </span>
-            <div className={styles.units}>
-              <span onClick={() => this.autoBankFill("1000")}>1000</span>
-              <span onClick={() => this.autoBankFill("2000")}>2000</span>
-              <span onClick={() => this.autoBankFill("4000")}>4000</span>
-              <span onClick={() => this.autoBankFill("5000")}>5000</span>
-            </div>
-            <button type="submit" disabled={this.state.waiting}>
-              {this.state.waiting ? <Spinner /> : "SUBMIT"}
-            </button>
           </form>
         ) : null}
       </Wrapper>
